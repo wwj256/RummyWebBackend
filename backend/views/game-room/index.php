@@ -60,12 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             if ($begin > $end) {
                 $begin = $end;
             }          
-            echo Html::tag($tag, Yii::t('yii', 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.', [
-                    'begin' => $begin,
-                    'end' => $end,
-                    'count' => $count,
-                    'totalCount' => $totalCount,
-                ]));            
+            echo "Showing <b>$begin-$end</b> of <b>$totalCount</b> items.";                
         ?>
         <table class="table table-striped table-bordered">
             <thead>
