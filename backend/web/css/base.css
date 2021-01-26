@@ -1,0 +1,8 @@
+body{font-size: 0.58rem;font-family:"宋体","宋体";background:#f0f0f0;}
+
+.html,.body{height:100%;}
+
+.order_help{width: 13.2rem;margin: 0 auto;color: #484848;padding-bottom: 2rem;}
+.order_help h1{width: 13.2rem;line-height:1rem ;font-size: 0.92rem; margin-top: 1.3rem; font-weight: bolder; font-family: 'PingFang SC';}
+.order_help p{width: 13.2rem;line-height:0.9rem;margin-top: 0.88rem;}
+.order_help p em{width: 13.2rem; margin-bottom: 0.78rem; display: block;}

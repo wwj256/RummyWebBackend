@@ -32,9 +32,9 @@ phpunit.phar
 /phpunit.xml
 
 /backend/web/assets
-/backend/web/css
+#/backend/web/css
 /frontend/web/assets
-/frontend/web/css
+#/frontend/web/css
 
 # vagrant runtime
 /.vagrant
