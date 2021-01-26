@@ -31,6 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'RoomID',
             'GameID',
+            'RealGameID',
+            'HaveRbt',
+            'ActivPlayer',
             'RoomStatus',
             'MainSrvId',
             'SubSrvId',

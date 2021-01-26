@@ -24,13 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'ID',
-            [
-                'attribute' => 'Type',
-                'format' => 'raw',
-                'value' => function($model){
-                    return Yii::$app->params['sysMailTypes'][$model->Type];
-                }
-            ],
             'SpreadID',
             'Title',
             'Content',

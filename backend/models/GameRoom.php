@@ -56,8 +56,8 @@ class GameRoom extends \yii\db\ActiveRecord
     {
         return [
     'RoomID' => 'RoomID',
-    'GameID' => 'GameID',
-    'RealGameID' => 'gameid=110 时，代表真实的gameID',
+    'GameID' => 'GameFlag',
+    'RealGameID' => 'GameID',
     'HaveRbt' => '房间机器人开启状态 0:关闭，1:开启',
     'ActivPlayer' => '模拟显示的玩家数量',
     'RoomStatus' => '房间开启状态 0:关闭，1:开启，',

@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'ID',
-            'Type',
             'SpreadID',
             'Title',
             'Content:ntext',

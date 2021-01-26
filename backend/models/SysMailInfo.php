@@ -9,7 +9,6 @@ use Yii;
  *
  * 
  * @property int $ID
- * @property int $Type 类型0-全服 1-指定渠道 2-指定用户
  * @property int $SpreadID 渠道ID，0为所有渠道
  * @property string $Title 邮件标题
  * @property string $Content 邮件内容
@@ -40,7 +39,7 @@ class SysMailInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Type', 'SpreadID'], 'integer'],
+            [['SpreadID'], 'integer'],
             [['Content'], 'required'],
             [['Content'], 'string'],
             [['SendTime', 'ExpireTime'], 'safe'],
@@ -55,7 +54,6 @@ class SysMailInfo extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'MailID',
-            'Type' => 'Type',//0-全服 1-指定渠道 2-指定用户
             'SpreadID' => 'SpreadID',//，0为所有渠道
             'Title' => 'Title',
             'Content' => 'Content',

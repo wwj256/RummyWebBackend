@@ -23,8 +23,6 @@ use yii\widgets\ActiveForm;
     <div class="row" style="margin: 20px 0px 20px 0px" >
         <?= $form->field($model, 'ID') ?>
 
-        <?= $form->field($model, 'Type') ?>
-
         <?= $form->field($model, 'SpreadID') ?>
 
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

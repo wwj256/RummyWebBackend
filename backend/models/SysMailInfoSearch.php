@@ -17,7 +17,7 @@ class SysMailInfoSearch extends SysMailInfo
     public function rules()
     {
         return [
-            [['ID', 'Type', 'SpreadID'], 'integer'],
+            [['ID', 'SpreadID'], 'integer'],
             [['Title', 'Content', 'SendTime', 'ExpireTime'], 'safe'],
         ];
     }
@@ -59,7 +59,6 @@ class SysMailInfoSearch extends SysMailInfo
         // grid filtering conditions
         $query->andFilterWhere([
             'ID' => $this->ID,
-            'Type' => $this->Type,
             'SpreadID' => $this->SpreadID,
             'SendTime' => $this->SendTime,
             'ExpireTime' => $this->ExpireTime,

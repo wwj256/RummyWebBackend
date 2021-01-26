@@ -90,6 +90,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <div id="p0" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000" style="overflow: auto;">
+        <?php 
+            $count = count($model);
+            $totalCount = $pages->totalCount;
+            $begin = $pages->getPage() * $pages->getPageSize() + 1;
+            $end = $begin + $count - 1;
+            if ($begin > $end) {
+                $begin = $end;
+            }          
+            echo Html::tag($tag, Yii::t('yii', 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.', [
+                    'begin' => $begin,
+                    'end' => $end,
+                    'count' => $count,
+                    'totalCount' => $totalCount,
+                ]));            
+        ?>
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
@@ -130,6 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]); ?></td>
                     <td><?=$val['LoginDate'] ?></td>
                     <td><?php
+                        echo html::a('View','view?id='.$val['UserID'], ['class'=>"btn btn-default"]);
                         echo html::button('addScore', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')']);
                         ?>
                     </td>
