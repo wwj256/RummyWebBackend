@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
          */
         function updateStatus(x, dsn)
         {
-            $.post("/game-room/update-status?id="+dsn+"&value="+x.selectedIndex,function (data){alert(data)});
+            $.post("/game-room/update-state?id="+dsn+"&value="+x.selectedIndex,function (data){alert(data)});
         }
         /**
          * 更新严选商品列表
@@ -65,16 +65,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>房间ID</th>
+                <th>RoomID</th>
                 <th>RealGameID</th>
-                <th>房间名称</th>
-                <th>房间状态</th>
+                <th>RoomName</th>
+                <th>RoomStatus</th>
                 <th>是否练习房</th>
                 <th>机器人状态</th>
                 <th>玩家数量基值</th>
                 <th>初始库存</th>
                 <th>库存</th>
                 <th>最大库存</th>
+                <th>MaxPlayer</th>
                 <th>底注</th>
                 <th>最低携带数量</th>
                 <th>报名费</th>
@@ -100,6 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         changeDeliveryno(this,"Score",'. $val['RoomID'].')']); ?></td>
                     <td><?= Html::textInput("text3", $val['MaxScore']/100, ['id' => 'text3', 'style' => 'width:70px','placeholder'=>'输入运单号','onchange'=>'
                         changeDeliveryno(this,"MaxScore",'. $val['RoomID'].')']); ?></td>
+                    <td><?= $roomConfig->MaxPlayer ?></td>
                     <td><?= $roomConfig->Blind/100 ?></td>
                     <td><?= $roomConfig->MinEntry/100 ?></td>
                     <td><?= $roomConfig->EntryFee/100 ?></td>

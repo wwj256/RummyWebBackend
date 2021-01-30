@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'UniqueID',
             'Password',
             'NickName',
+            'Status',
             'FaceUrl',
             'IsRobot',
             'Platform',

@@ -34,6 +34,16 @@ $this->params['breadcrumbs'][] = $this->title;
         </div><!-- /.modal -->
     </div>
     <div id="p0" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000" style="overflow: auto;">
+        <?php 
+            $count = count($model);
+            $totalCount = $pages->totalCount;
+            $begin = $pages->getPage() * $pages->getPageSize() + 1;
+            $end = $begin + $count - 1;
+            if ($begin > $end) {
+                $begin = $end;
+            }          
+            echo "Showing <b>$begin-$end</b> of <b>$totalCount</b> items.";                
+        ?>
         <table class="table table-striped table-bordered">
             <thead>
             <tr>

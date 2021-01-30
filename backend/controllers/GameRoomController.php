@@ -174,7 +174,7 @@ return \yii\widgets\ActiveForm::validate($model);
             return 'change fail';
         }
 
-        $url = Yii::$app->params['ServerURL']."oomstate?roomid={$id}&state={$value}";
+        $url = Yii::$app->params['ServerURL']."roomstate?roomid={$id}&state={$value}";
         //向服务器发送消息，通知变更
         $serverResponStr = HttpTool::doGet($url);
         $serverRespon = json_decode($serverResponStr);

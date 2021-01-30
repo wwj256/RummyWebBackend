@@ -29,31 +29,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'InviteCounts',
             'TotalBonus',
             'InviteBonus',
-            //'DepositBonus',
-            //'TodayOutBonus',
-            //'TotalOutBonus',
-            //'RecordTime',
+            'DepositBonus',
+            'TodayOutBonus',
+            'TotalOutBonus',
+            'RecordTime',
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => Helper::filterActionColumn('{view} {update} {delete}'),
+                'template' => Helper::filterActionColumn('{view} '),
                 'header' => 'Action',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
                         return Html::a('View',$url, [
                             'class' => 'btn btn-default',
-                        ]);
-                    },
-                    'delete' => function ($url, $model, $key) {
-                        return Html::a('Delete',$url, [
-                            'class' => 'btn btn-danger',
-                            'data-confirm'=>"Are you sure you want to delete this item?",
-                            'data-method'=>"post",
-                        ]);
-                    },
-                    'update' => function ($url, $model, $key) {
-                        return Html::a('Update',$url, [
-                            'class' => 'btn btn-primary',
                         ]);
                     },
                 ],
