@@ -305,8 +305,9 @@ class AccountInfoController extends Controller
             header('Content-Type:application/vnd.ms-excel');
             header('Content-Disposition:attachment;filename="'.'AccountInfos'.date("Ymd").'.xlsx"');
 //            header('Cache-Control:max-age=0');
+
             $objWriter =\PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-	    $objWriter->save('php://output');
+            $objWriter->save('php://output');
             exit;
         }catch (\Exception $e){
 		echo "error";
