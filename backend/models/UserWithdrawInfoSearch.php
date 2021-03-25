@@ -38,7 +38,7 @@ class UserWithdrawInfoSearch extends UserWithdrawInfo
     {
         parent::load($data, $formName);
         $params = $data;
-        if (!empty($params)) {
+        if (!empty($params) && array_key_exists('UserWithdrawInfoSearch', $params)) {
             $data = $params['UserWithdrawInfoSearch'];
             if (isset($data['create_time'])){
                 $this->create_time = $data['create_time'];
