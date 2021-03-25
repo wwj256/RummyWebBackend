@@ -259,7 +259,6 @@ class AccountInfoController extends Controller
 //            $objPHPExcel->setActiveSheetIndex(0)->getStyle('B1')
 //                ->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B2','日期：'.date("Y年m月j日 H时:i分:s秒"));
-
             $objPHPExcel->setActiveSheetIndex(0)//表头的信息
                 ->setCellValue('A1', "UserID")
                 ->setCellValue('B1', "NickName")
@@ -292,7 +291,6 @@ class AccountInfoController extends Controller
                 $i++;
             }
             //公式
-
             //得到当前活动的表,注意下文教程中会经常用到$objActSheet
             $objActSheet =$objPHPExcel->getActiveSheet();
             // 位置bbb *为下文代码位置提供锚
@@ -307,13 +305,12 @@ class AccountInfoController extends Controller
             header('Content-Type:application/vnd.ms-excel');
             header('Content-Disposition:attachment;filename="'.'AccountInfos'.date("Ymd").'.xlsx"');
 //            header('Cache-Control:max-age=0');
-
-            $objWriter =\PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-            $objWriter->save('php://output');
-
+            $objWriter =\PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+	    $objWriter->save('php://output');
             exit;
         }catch (\Exception $e){
-            var_dump($e->getMessage());die;
+		echo "error";
+            //var_dump($e->getMessage());die;
         }
     }
 }
