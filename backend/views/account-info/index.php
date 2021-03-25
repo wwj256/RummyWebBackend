@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <input type="text" id="txt-2" placeholder="BindScore" maxlength="255" style="width: 100%;height:50px">
                     <input type="text" id="txt-3" placeholder="BonusScore" maxlength="255" style="width: 100%;height:50px">
                     <input type="text" id="txt-4" placeholder="LuckScore" maxlength="255" style="width: 100%;height:50px">
-                    <!-- <input type="text" id="txt-5" placeholder="ExpScore" maxlength="255" style="width: 100%;height:50px"> -->
+                    <input type="text" id="txt-5" placeholder="ExpScore" maxlength="255" style="width: 100%;height:50px">
                     <input type="text" id="txt-refuse" placeholder="原因" maxlength="255" style="width: 100%;height:50px">
                 </div>
                 <div class="modal-footer">

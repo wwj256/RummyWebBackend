@@ -37,6 +37,9 @@ class UserLoginOutSearch extends UserLoginOut
         parent::load($data, $formName);
         $params = $data;
         if (!empty($params)) {
+            if( !isset($params['UserLoginOutSearch']) ){
+                return;
+            }
             $data = $params['UserLoginOutSearch'];
             if (isset($data['create_time'])){
                 $this->create_time = $data['create_time'];
