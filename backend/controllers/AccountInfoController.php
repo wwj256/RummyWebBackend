@@ -221,12 +221,12 @@ class AccountInfoController extends Controller
     {
 
         $model = $this->findModel($id);
-        $machineLastStr = (int)(substr($model->RegisterMachine, -1, 1));
-        // return substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
+        $indexSpread = strpos($model->UniqueID, '_');
+        $machineStr = \common\components\GFTool::getRandom(32);
 
-        $model->RegisterMachine = substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
-        $model->UniqueID = substr($model->UniqueID, 0, strlen($model->UniqueID)-1).($machineLastStr+1);
-       
+        $model->RegisterMachine = $machineStr;
+        $model->UniqueID = substr($model->UniqueID, 0, $indexSpread>0 ? $indexSpread+1 : 0).$machineStr;
+       // return $indexSpread.$model->UniqueID.'+++++'.$model->RegisterMachine;
         if( $model->save() ){
             return 'change success!';
         }else{
