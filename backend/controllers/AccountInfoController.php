@@ -227,9 +227,9 @@ class AccountInfoController extends Controller
         $model->RegisterMachine = substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
        
         if( $model->save() ){
-            return 'action success!';
+            return 'change success!';
         }else{
-            return 'action failure!';
+            return 'change failure!';
         }
     }
 
