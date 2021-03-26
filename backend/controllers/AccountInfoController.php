@@ -225,6 +225,7 @@ class AccountInfoController extends Controller
         // return substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
 
         $model->RegisterMachine = substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
+        $model->UniqueID = substr($model->UniqueID, 0, strlen($model->UniqueID)-1).($machineLastStr+1);
        
         if( $model->save() ){
             return 'change success!';
