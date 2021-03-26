@@ -213,6 +213,26 @@ class AccountInfoController extends Controller
         return 'change sucess!';
     }
 
+        /**
+     * @param $id       userID
+     * @return string
+     */
+    public function actionUpdateMachine($id)
+    {
+
+        $model = $this->findModel($id);
+        $machineLastStr = (int)(substr($model->RegisterMachine, -1, 1));
+        // return substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
+
+        $model->RegisterMachine = substr($model->RegisterMachine, 0, strlen($model->RegisterMachine)-1).($machineLastStr+1);
+       
+        if( $model->save() ){
+            return 'action success!';
+        }else{
+            return 'action failure!';
+        }
+    }
+
     public function actionExport($data=null)
     {
         // $form = Yii::$app->request->get('AccountInfoSearch');
