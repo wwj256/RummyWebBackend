@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>UpdateMode</th>
                 <th>ApkVersion</th>
                 <th>PacketUrl</th>
+                <th>Conf</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -56,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['UpdateMode']?></td>
                     <td><?=$val['ApkVersion']?></td>
                     <td><?=$val['PacketUrl']?></td>
+                    <th><?=$val['Conf']?></th>
                     <td><?php
                         echo Html::a('View','/spread-config/view?id='.$val["ID"], [
                             'class' => 'btn btn-default',

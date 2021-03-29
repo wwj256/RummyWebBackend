@@ -23,7 +23,7 @@ use yii\helpers\Url;
         }
 
         //下面用于图片上传预览功能
-        function setImagePreview() {
+        function setImagePreview(uploadType='en') {
             var filesList=document.getElementById("files-list");
             var obj = document.getElementById("upimage");
             var imgObjPreview = document.getElementById("preview");
@@ -41,22 +41,24 @@ use yii\helpers\Url;
                 const reader = new FileReader();
                 reader.readAsDataURL(src.files[0]) // input.files[0]为第一个文件
                 reader.onload = ()=>{
-                    var img = document.getElementById('image');
+                    var img = document.getElementById('image_' +uploadType);
                     img.src = reader.result;
                     var base64 = reader.result.replace(/^data:\S+\/\S+;base64,/, '');
                     console.log(base64);
-                    var iName = <?= "'a_$model->ID'" ?>+Math.random();
+                    var iName = <?= "'a_$model->ID'" ?>;
+                    // var iName = <?= "'a_$model->ID'" ?>+Math.random();
                     console.log(iName);
                     $.ajax({
                         type: "POST",
                         dataType: "json",
-                        url: <?php $apiUrl = Yii::$app->params['APIUrl']; echo "'{$apiUrl}image/UploadImg'" ?>,
+                        url: <?php $apiUrl = Yii::$app->params['APIUrl']; echo "'{$apiUrl}image/Uploadlang'" ?>,
                         contentType: "application/json",
                         data:JSON.stringify({
                             "PreKey": "Lami*2020#zz",
                             "Type": 3,
                             "Name": iName,
                             "Data": base64,
+                            "Lang":uploadType,
                         }),
                         success: function (result) {
                             console.log("data is :" + JSON.stringify(result) );
@@ -88,17 +90,33 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Tiltle')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Url')->textInput(['placeholder'=>'点击下方选择文件，上传活动图片', 'readonly'=>true]) ?>
-    <img id='image' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/download?url=$model->Url" : '""' ?> style='width:300px'>
+    <img id='image_en' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=en" : '""' ?> style='width:300px'>
     <div class="form-group field-activityinfo-imageurl">
-        <label class="control-label" for="activityinfo-imageurl">上传活动图片</label>
+        <label class="control-label" for="activityinfo-imageurl">Upload en activity image.</label>
         <input type="hidden" name="ActivityInfo[imageUrl]" value="">
-        <input type="file" id="activityinfo-imageurl" name="ActivityInfo[imageUrl]" onchange="setImagePreview()">
+        <input type="file" id="activityinfo-imageurl" name="ActivityInfo[imageUrl]" onchange="setImagePreview('en')">
         <div id='output'>
-
         </div>
         <div class="help-block"></div>
     </div>
-
+    <img id='image_in' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=in" : '""' ?> style='width:300px'>
+    <div class="form-group field-activityinfo-imageurl">
+        <label class="control-label" for="activityinfo-imageurl">Upload in activity image.</label>
+        <input type="hidden" name="ActivityInfo[imageUrl]" value="">
+        <input type="file" id="activityinfo-imageurl" name="ActivityInfo[imageUrl]" onchange="setImagePreview('in')">
+        <div id='output_in'>
+        </div>
+        <div class="help-block"></div>
+    </div>
+    <img id='image_ta' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=ta" : '""' ?> style='width:300px'>
+    <div class="form-group field-activityinfo-imageurl">
+        <label class="control-label" for="activityinfo-imageurl">Upload ta activity image.</label>
+        <input type="hidden" name="ActivityInfo[imageUrl]" value="">
+        <input type="file" id="activityinfo-imageurl" name="ActivityInfo[imageUrl]" onchange="setImagePreview('ta')">
+        <div id='output_ta'>
+        </div>
+        <div class="help-block"></div>
+    </div>
 
     <?= $form->field($model, 'JumpTo')->textInput() ?>
 

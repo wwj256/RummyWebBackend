@@ -92,16 +92,25 @@ class ActivityInfoController extends Controller
      */
     public function actionCreate()
     {
+        //创建活动时，点击后会先创建个活动，然后跳到修改页面，因为添加活动图需要有活动ID,
         $model = new ActivityInfo();
         //加载默认值
         $model->loadDefaultValues();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+        $model->Tiltle = '1';
+        $model->Url = '1';
+        $model->JumpTo = '1';
+        if ($model->save()) {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-        $model->StartTime = date("Y-m-d");
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['index']);
+        // }
+        // $model->StartTime = date("Y-m-d");
+        // return $this->render('create', [
+        //     'model' => $model,
+        // ]);
     }
     /**
     * 异步校验表单模型,Asynchronously validate the form model
