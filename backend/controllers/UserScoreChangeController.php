@@ -239,6 +239,7 @@ class UserScoreChangeController extends Controller
                 ->setCellValue('N1', "UpdateTime");
 
             $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('M')->setWidth(20);
             $i=2;
             foreach ($data as $key => $value) {
                 $objPHPExcel->getActiveSheet()             //     设置第一个内置表（一个xls文件里可以有多个表）为活动的

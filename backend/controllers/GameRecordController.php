@@ -202,6 +202,7 @@ class GameRecordController extends Controller
                 ->setCellValue('F1', "Tax")
                 ->setCellValue('G1', "SysWin")
                 ->setCellValue('H1', "TimeCost");
+            $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
             $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
             $i=2;
             foreach ($data as $key => $value) {
