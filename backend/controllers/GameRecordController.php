@@ -206,7 +206,7 @@ class GameRecordController extends Controller
             $i=2;
             foreach ($data as $key => $value) {
                 $objPHPExcel->getActiveSheet()             //     设置第一个内置表（一个xls文件里可以有多个表）为活动的
-                ->setCellValue( 'A'.$i, $value['RcdId'] )       //给表的单元格设置数据
+                ->setCellValue( 'A'.$i, "'".$value['RcdId'] )       //给表的单元格设置数据
                 ->setCellValue( 'B'.$i, $value['Turns'] )       //给表的单元格设置数据
                 ->setCellValue( 'C'.$i, $value['GameName'] )      //数据格式可以为字符串
                 ->setCellValue( 'D'.$i, $value['RoomId'])            //数字型

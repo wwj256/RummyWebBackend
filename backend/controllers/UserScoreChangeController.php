@@ -254,7 +254,7 @@ class UserScoreChangeController extends Controller
                 ->setCellValue( 'J'.$i, $value['BonusChg']/100 )
                 ->setCellValue( 'K'.$i, $value['Luck']/100 )
                 ->setCellValue( 'L'.$i, $value['LuckChg']/100 )
-                ->setCellValue( 'M'.$i, $value['RelateID'] )
+                ->setCellValue( 'M'.$i, "'".$value['RelateID'] )
                 ->setCellValue( 'N'.$i, $value['UpdateTime'] );
                 $i++;
             }
