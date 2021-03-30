@@ -69,7 +69,7 @@ class SysMailInfoController extends Controller
         //加载默认值
         $model->loadDefaultValues();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $url = Yii::$app->params['ServerURL']."notifymail?userid=0";
+            $url = Yii::$app->params['ServerURL']."notifymail?userid=0&spread={$model->SpreadID}";
             //向服务器发送消息，通知变更
             $serverResponStr = HttpTool::doGet($url);
 //            $serverRespon = json_decode($serverResponStr);

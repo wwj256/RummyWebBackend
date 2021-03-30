@@ -19,6 +19,7 @@ use Yii;
  */
 class UserMailInfo extends \yii\db\ActiveRecord
 {
+    public $UserIDs;
     /**
      * {@inheritdoc}
      */
@@ -63,6 +64,7 @@ class UserMailInfo extends \yii\db\ActiveRecord
     'Status' => '状态0-未读1-已读',
     'SendTime' => '发送时间',
     'ExpireTime' => '过期时间',
+    'UserIDs' => '用户ID,如果多人,用英文逗号分隔,',
         ];
     }
 

@@ -52,7 +52,9 @@ class GFTool
         curl_close($curl);
         return $r;
     }
-
+    /**
+     * 设置水印
+     */
     public static function setWater($imgSrc,$markImg,$markPos=9)
     {
 //        返回一个具有四个单元的数组。索引 0 包含图像宽度的像素值，索引 1 包含图像高度的像素值。索引
@@ -240,6 +242,25 @@ class GFTool
         }
         return  $key ;
     }   
+    /**
+     * 写入本地日志
+     * GFTool::writeLog("--".$postData['UserMailInfo']['UserIDs']);
+     */
+    public static function writeLog($value){
+        // $url = 'log/log.txt';
+        $url = 'log/'.date("Y-m-d").'.txt';
+        //$years = date('Y-m');
+        $dir_name=dirname($url);
+        //目录不存在就创建
+        if(!file_exists($dir_name))
+        {
+            //iconv防止中文名乱码
+            $res = mkdir(iconv("UTF-8", "GBK", $dir_name),0777,true);
+        }
+        $fp = fopen($url,"a");//打开文件资源通道 不存在则自动创建       
+        fwrite($fp,date("Y-m-d H:i:s").':'.$value."\r\n");//写入文件
+        fclose($fp);//关闭资源通
+    }
 
 
 }

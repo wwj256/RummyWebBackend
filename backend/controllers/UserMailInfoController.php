@@ -7,6 +7,8 @@ use common\components\HttpTool;
 use Yii;
 use backend\models\UserMailInfo;
 use backend\models\UserMailInfoSearch;
+use Codeception\Extension\Logger;
+use common\components\GFTool;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,13 +71,27 @@ class UserMailInfoController extends Controller
         $model = new UserMailInfo();
         //加载默认值
         $model->loadDefaultValues();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $url = Yii::$app->params['ServerURL']."notifymail?userid={$model->UserID}";
-            //向服务器发送消息，通知变更
-            $serverResponStr = HttpTool::doGet($url);
-            return $this->redirect(['view', 'id' => $model->ID]);
+        $postData = Yii::$app->request->post();
+        $model->load($postData);
+        if (isset($postData['UserMailInfo'])) {            
+            $model->UserIDs = $postData['UserMailInfo']['UserIDs'];
+            // $model->UserIDs = isset($postData['UserMailInfo']['UserIDs'])?trim($$postData['UserMailInfo']['UserIDs']):'';
+            if( $model->UserIDs != ''){
+                $UserIDArrays = explode(',',$model->UserIDs);
+                for ($i=0; $i < count($UserIDArrays); $i++) { 
+                    $uid = $UserIDArrays[$i];
+                    $model->UserID = $uid;
+                    unset($model->ID);//isset检测变量是否设置，并且不是 null。相反取消设置值unset
+                    if ($model->save()) {
+                        $url = Yii::$app->params['ServerURL']."notifymail?userid={$model->UserID}";
+                        //向服务器发送消息，通知变更
+                        $serverResponStr = HttpTool::doGet($url);
+                        // return $this->redirect(['view', 'id' => $model->ID]);
+                    }
+                }
+                return $this->redirect('/user-mail-info/index?sort=-ID');
+            }
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -91,7 +107,7 @@ class UserMailInfoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->UserIDs = $model->UserID;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $url = Yii::$app->params['ServerURL']."notifymail?userid={$model->UserID}";
             //向服务器发送消息，通知变更
