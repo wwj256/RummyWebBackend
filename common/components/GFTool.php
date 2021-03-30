@@ -232,7 +232,9 @@ class GFTool
 
         imagedestroy($image);
     }
-
+    /**
+     * 获取n位的随机字符串
+     */
     public static function  getRandom( $param ){
         $str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
         $key  =  "" ;
