@@ -40,13 +40,27 @@ class UserScoreChangeController extends Controller
     {
         $form = Yii::$app->request->get('UserScoreChangeSearch');
         $UserID = isset($form['UID'])?trim($form['UID']):'';
+
+        $create_time = isset($form['create_time'])?trim($form['create_time']):'';
+        $end_time = isset($form['end_time'])?trim($form['end_time']):'';
+
         $query = UserScoreChange::find()
             ->select('user_score_change.*, account_info.NickName')
             ->joinWith("account_info");
+        $query->andFilterWhere(['>=', 'UpdateTime', $create_time])
+            ->andFilterWhere(['<=', 'UpdateTime', $end_time]);
         $query->andFilterWhere([
             'user_score_change.UID' => $UserID
         ]);
         $query->orderBy('UpdateTime DESC');
+
+        $action = Yii::$app->request->get('action');
+        if ($action == 'export') {
+            $model = $query->asArray()->all();    
+            $this->actionExport($model);
+            return;
+        }
+
         $pages = new Pagination(['totalCount' =>$query->count(), 'pageSize' => '50']);
         $model = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
         $searchModel = new UserScoreChangeSearch();
@@ -177,5 +191,95 @@ class UserScoreChangeController extends Controller
 //        return $model->save();
     }
 
+    public function actionExport($data=null)
+    {
+        if (!$data) {
+            return;
+            // $query = GameRecord::find()
+            // ->select('user_coupon_info.*, account_info.NickName')
+            // ->joinWith("account_info");
+        
+            // $query->orderBy('ID DESC');
+            // $data = $query->offset(0)->limit(1)->asArray()->all();
 
+            // echo json_encode($data);
+            // return;
+            // $data = $query->asArray()->all();  
+        }
+        
+        try{
+            //实例化
+            $objPHPExcel = new \PHPExcel();
+            //设置文件的一些属性，在xls文件——>属性——>详细信息里可以看到这些值，xml表格里是没有这些值的
+            $objPHPExcel
+                ->getProperties()  //获得文件属性对象，给下文提供设置资源
+                ->setCreator( "rummyAdmin")             //设置文件的创建者
+                ->setLastModifiedBy( "rummyAdmin");       //设置最后修改者
+            $objPHPExcel->getDefaultStyle()->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//            $objPHPExcel->getActiveSheet()->mergeCells('B1:I1');
+//            $objPHPExcel->getActiveSheet()->setCellValue('B1','用户游戏记录');
+//            $objPHPExcel->setActiveSheetIndex(0)->getStyle('B1')->getFont()->setSize(24);
+//            $objPHPExcel->setActiveSheetIndex(0)->getStyle('B1')
+//                ->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+//            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B2','日期：'.date("Y年m月j日 H时:i分:s秒"));
+            $objPHPExcel->setActiveSheetIndex(0)//表头的信息
+                ->setCellValue('A1', "ID")
+                ->setCellValue('B1', "UID")
+                ->setCellValue('C1', "NickName")
+                ->setCellValue('D1', "Type")
+                ->setCellValue('E1', "Score")
+                ->setCellValue('F1', "SChange")
+                ->setCellValue('G1', "Bind")
+                ->setCellValue('H1', "BindChg")
+                ->setCellValue('I1', "Bonus")
+                ->setCellValue('J1', "BonusChg")
+                ->setCellValue('K1', "Luck")
+                ->setCellValue('L1', "LuckChg")
+                ->setCellValue('M1', "RelateID")
+                ->setCellValue('N1', "UpdateTime");
+
+            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+            $i=2;
+            foreach ($data as $key => $value) {
+                $objPHPExcel->getActiveSheet()             //     设置第一个内置表（一个xls文件里可以有多个表）为活动的
+                ->setCellValue( 'A'.$i, $value['ID'] )       //给表的单元格设置数据
+                ->setCellValue( 'B'.$i, $value['UID'] )       //给表的单元格设置数据
+                ->setCellValue( 'C'.$i, $value['NickName'] )      //数据格式可以为字符串
+                ->setCellValue( 'D'.$i, Yii::$app->params['scoreChangeTypes'][$value['SType']])            //数字型
+                ->setCellValue( 'E'.$i, $value['Score']/100)            //数字型
+                ->setCellValue( 'F'.$i, $value['SChange']/100 )            //
+                ->setCellValue( 'G'.$i, $value['Bind']/100 )
+                ->setCellValue( 'H'.$i, $value['BindChg']/100 )
+                ->setCellValue( 'I'.$i, $value['Bonus']/100 )
+                ->setCellValue( 'J'.$i, $value['BonusChg']/100 )
+                ->setCellValue( 'K'.$i, $value['Luck']/100 )
+                ->setCellValue( 'L'.$i, $value['LuckChg']/100 )
+                ->setCellValue( 'M'.$i, $value['RelateID'] )
+                ->setCellValue( 'N'.$i, $value['UpdateTime'] );
+                $i++;
+            }
+            //公式
+            //得到当前活动的表,注意下文教程中会经常用到$objActSheet
+            $objActSheet =$objPHPExcel->getActiveSheet();
+            // 位置bbb *为下文代码位置提供锚
+            //给当前活动的表设置名称
+            $objActSheet->setTitle('UserScoreChangeList');
+            //代码还没有结束，可以复制下面的代码来决定我们将要做什么
+
+            //我们将要做的是
+            //1,直接生成一个文件
+//            $objWriter =\PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+//            $objWriter->save('myexchel.xlsx');
+            header('Content-Type:application/vnd.ms-excel');
+            header('Content-Disposition:attachment;filename="'.'UserScoreChangeList'.'_'.date("Ymd").'.xlsx"');
+//            header('Cache-Control:max-age=0');
+
+            $objWriter =\PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+            $objWriter->save('php://output');
+            exit;
+        }catch (\Exception $e){
+		    echo "error:".$e->getMessage();
+            //var_dump($e->getMessage());die;
+        }
+    }
 }

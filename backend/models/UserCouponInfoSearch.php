@@ -36,7 +36,7 @@ class UserCouponInfoSearch extends UserCouponInfo
     {
         parent::load($data, $formName);
         $params = $data;
-        if (!empty($params)) {
+        if (!empty($params) && array_key_exists('UserCouponInfoSearch', $params)) {
             $data = $params['UserCouponInfoSearch'];
             if (isset($data['create_time'])){
                 $this->create_time = $data['create_time'];

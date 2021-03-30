@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['PlyNum']?></td>
                     <td><?=$val['Tax']/100 ?></td>
                     <td><?=$val['SysWin']/100 ?></td>
-                    <td><?= 'ww' ?></td>
+                    <td><?= '' ?></td>
                     <td><?= $val['TimeCost'] ?></td>
                     <td><?= $val['BeginTime'] ?></td>
                     <td><?=html::a('ViewPlayerInfo',"/game-record-player/index?GameRecordPlayerSearch[RcdId]={$val['RcdId']}&GameRecordPlayerSearch[Turns]={$val['Turns']}", ['class' => 'btn btn-primary'])?></td>

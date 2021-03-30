@@ -44,7 +44,7 @@ class UserCouponInfoController extends Controller
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';
 
-        $action = Yii::$app->request->get('action');
+        
 
         $query = UserCouponInfo::find()
             ->select('user_coupon_info.*, account_info.NickName')
@@ -59,6 +59,7 @@ class UserCouponInfoController extends Controller
             ->andFilterWhere(['<=', 'CreateTime', $end_time])
             ->orderBy('CreateTime DESC');
 
+        $action = Yii::$app->request->get('action');
         if ($action == 'export') {
             $model = $query->asArray()->all();    
             // return json_encode($model);

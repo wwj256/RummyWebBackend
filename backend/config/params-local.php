@@ -2,8 +2,9 @@
 return [
     // 'APIUrl' => 'http://192.168.3.237:18080/',
     // 'ServerURL' => 'http://192.168.3.237:6011/',
-   'APIUrl' => 'https://test.rummyjugaad.com:18080/',
-   'ServerURL' => 'http://test.rummyjugaad.com:6011/',
+    'APIUrl' => 'http://15.206.188.191:18080/',
+   'ServerURL' => 'http://15.206.188.191:6011/',
+   // 'APIUrl' => 'https://srv.rummygenius.com:18080/',
     // 'imageUploadRelativePath' => 'C:/work/src/shopres/shop/',//'./bg/', // 商品图片默认上传的目录
     'imageUploadSuccessPath' => '/shop/', // 图片上传成功后，路径前缀
     'imageUploadRelativePath1' => 'C:/work/src/shopres/config/', // 系统图片默认上传的目录

@@ -30,7 +30,7 @@ use kartik\datetime\DateTimePicker;
 
         <?= $form->field($model, 'Status') ?>
 
-        <?= $form->field($model, 'create_time')->label('获得日期范围')->widget(DateTimePicker::classname(), [
+        <?= $form->field($model, 'create_time')->label('日期范围')->widget(DateTimePicker::classname(), [
             'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'开始日','readonly'=>'readonly'],
             'pluginOptions' => [
                 'autoclose' => true,
@@ -50,10 +50,6 @@ use kartik\datetime\DateTimePicker;
             ]
         ]); ?>
     </div>
-
-    <?php // echo $form->field($model, 'CreateTime') ?>
-
-    <?php // echo $form->field($model, 'ExpireTime') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary', 'name'=>'action', 'value'=>'search']) ?>

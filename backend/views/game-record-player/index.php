@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['BindChg']/100 ?></td>
                     <td><?=$val['Bonus']/100 ?></td>
                     <td><?=$val['BonusChg']/100 ?></td>
-                    <td><?= $val['PlyTax'] ?></td>
+                    <td><?= $val['PlyTax']/100 ?></td>
                     <td><?= $val['BrokeUp'] ?></td>
                     <td><?= $val['BeginTime'] ?></td>
                 </tr>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserScoreChangeSearch */
@@ -23,8 +24,30 @@ use yii\widgets\ActiveForm;
     <div class="row" style="margin: 20px 0px 20px 0px" >
         <?= $form->field($model, 'UID') ?>
 
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= $form->field($model, 'create_time')->label('日期范围')->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'开始日','readonly'=>'readonly'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'todayBtn'=>true,
+                'format'=>'yyyy-mm-dd hh:ii:ss',
 
+            ]
+        ]); ?>
+        <label class=" form-label">至</label>
+
+        <?= $form->field($model, 'end_time')->label(false)->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($model['end_time'])?$model['end_time']:'截至日','readonly'=>'readonly'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'todayBtn'=>true,
+                'format'=>'yyyy-mm-dd hh:ii:ss',
+            ]
+        ]); ?>
+    </div>
+
+    <div class="form-group">
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary', 'name'=>'action', 'value'=>'search']) ?>
+        <?= Html::submitButton('Expor Data', ['class' => 'btn btn-success', 'name'=>'action', 'value'=>'export']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

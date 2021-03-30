@@ -11,6 +11,8 @@ use backend\models\GameRecord;
  */
 class GameRecordSearch extends GameRecord
 {
+    public $create_time;
+    public $end_time;
     /**
      * {@inheritdoc}
      */
@@ -29,6 +31,22 @@ class GameRecordSearch extends GameRecord
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
+    }
+
+    
+    public function load($data, $formName = null)
+    {
+        parent::load($data, $formName);
+        $params = $data;
+        if (!empty($params) && array_key_exists('GameRecordSearch', $params)) {
+            $data = $params['GameRecordSearch'];
+            if (isset($data['create_time'])){
+                $this->create_time = $data['create_time'];
+            }
+            if (isset($data['end_time'])){
+                $this->end_time = $data['end_time'];
+            }
+        }
     }
 
     /**

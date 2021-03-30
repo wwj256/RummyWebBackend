@@ -72,8 +72,8 @@ use kartik\datetime\DateTimePicker;
     <?php // echo $form->field($model, 'LoginMachine') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('查询', ['class' => 'btn btn-primary', 'name'=>'action', 'value'=>'search']) ?>
-        <?= Html::submitButton('导出数据', ['class' => 'btn btn-success', 'name'=>'action', 'value'=>'export']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary', 'name'=>'action', 'value'=>'search']) ?>
+        <?= Html::submitButton('Export Data', ['class' => 'btn btn-success', 'name'=>'action', 'value'=>'export']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

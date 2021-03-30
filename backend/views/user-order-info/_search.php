@@ -66,7 +66,8 @@ use kartik\datetime\DateTimePicker;
     <?php // echo $form->field($model, 'CreateTime') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary', 'name'=>'action', 'value'=>'search']) ?>
+        <?php //Html::submitButton('Expor Data', ['class' => 'btn btn-success', 'name'=>'action', 'value'=>'export']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
