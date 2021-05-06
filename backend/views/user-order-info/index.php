@@ -39,8 +39,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'CreateTime',
             'SpreadID',
-            'ScoreAmount',
-            'Amount',
+            [
+                'attribute' => 'ScoreAmount',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->ScoreAmount/100;
+                }
+            ],
+            [
+                'attribute' => 'Amount',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->Amount/100;
+                }
+            ],
             [
                 'attribute' => 'CouponID',
                 'format' => 'raw',
@@ -55,7 +67,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ($model->ScoreAmount - $model->Amount)/100;
                 }
             ],
-            'UserEndScore',
+            [
+                'attribute' => 'UserEndScore',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->UserEndScore/100;
+                }
+            ],
             [
                 'attribute' => 'Status',
                 'format' => 'raw',
