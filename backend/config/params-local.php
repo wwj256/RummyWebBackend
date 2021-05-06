@@ -50,6 +50,7 @@ return [
         '已支付',
         '已取消',
         '已支付未加币',
+        '未知',
     ],
     'withdrawStatusLabels' =>[
         '中请中',

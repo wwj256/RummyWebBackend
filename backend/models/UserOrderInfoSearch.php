@@ -56,7 +56,7 @@ class UserOrderInfoSearch extends UserOrderInfo
 
 
         $this->load($params);
-        if (!empty($params)) {
+        if (!empty($params) && array_key_exists('UserOrderInfoSearch', $params)) {
             $data = $params['UserOrderInfoSearch'];
             if (isset($data['create_time'])){
                 $this->create_time = $data['create_time'];
