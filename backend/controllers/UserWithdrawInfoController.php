@@ -68,9 +68,8 @@ class UserWithdrawInfoController extends Controller
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';
         $query = UserWithdrawInfo::find()
-            ->select('user_withdraw_info.*, account_info.NickName, user_backend.username as OperatorName')
-            ->joinWith("account_info")
-            ->innerJoinWith("user_backend");
+            ->select('user_withdraw_info.*, account_info.NickName')
+            ->joinWith("account_info");
         $query->andFilterWhere([
             'user_withdraw_info.UserID' => $UserID,
             'OperatorID' => $OperatorID,

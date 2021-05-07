@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'SpreadID')->textInput() ?>
+    <?= $form->field($model, 'SpreadID')->textInput()->label('SpreadID,渠道ID:0所有渠道') ?>
 
     <?= $form->field($model, 'Title')->textInput(['maxlength' => true]) ?>
 

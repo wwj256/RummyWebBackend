@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' => '赠送金额',
+                'attribute' => 'Bonus',//赠送金额
                 'format' => 'raw',
                 'value' => function($model){
                     return ($model->ScoreAmount - $model->Amount)/100;
