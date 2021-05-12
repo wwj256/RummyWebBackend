@@ -51,11 +51,11 @@ class UserInviteStat extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UID' => '用户ID',
-    'DayStat' => '日期',
-    'TotalBonus' => '总奖金',
-    'InviteBonus' => '日总邀请奖金',
-    'DepositBonus' => '日总支付奖金',
+    'UID' => 'UserID',
+    'DayStat' => 'Date',
+    'TotalBonus' => 'TotalBonus',//总奖金
+    'InviteBonus' => 'InviteBonus',//日总邀请奖金
+    'DepositBonus' => 'DepositBonus',//日总支付奖金
         ];
     }
 

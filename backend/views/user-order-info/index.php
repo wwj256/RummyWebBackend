@@ -57,16 +57,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'CouponID',
                 'format' => 'raw',
                 'value' => function($model){
-                    return html::a($model->CouponID,"/user-coupon-info/index?UserCouponInfoSearch[ID]={$model->CouponID}");
+                    if( $model->CouponID == 0 ){
+
+                    }else{
+                        return html::a($model->CouponID,"/user-coupon-info/index?UserCouponInfoSearch[ID]={$model->CouponID}");
+                    }
+                    
                 }
             ],
-            [
-                'attribute' => 'Bonus',//赠送金额
-                'format' => 'raw',
-                'value' => function($model){
-                    return ($model->ScoreAmount - $model->Amount)/100;
-                }
-            ],
+            // [
+            //     'attribute' => 'Bonus',//赠送金额
+            //     'format' => 'raw',
+            //     'value' => function($model){
+            //         return ($model->ScoreAmount - $model->Amount)/100;
+            //     }
+            // ],
             [
                 'attribute' => 'UserEndScore',
                 'format' => 'raw',

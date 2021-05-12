@@ -50,9 +50,9 @@ class PlatformConfig extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'K' => '',
-    'V' => '',
-    'info' => '',
+    'K' => 'Key',
+    'V' => 'Value',
+    'info' => 'Desc',
         ];
     }
 }

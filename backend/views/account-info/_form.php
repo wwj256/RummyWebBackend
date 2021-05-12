@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'LoginMachine')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

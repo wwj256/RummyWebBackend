@@ -57,16 +57,16 @@ class UserRealInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户标识',
-    'Type' => '类型0-阿尔哈达卡1-驾驶证2-护照',
-    'FrontUrl' => '身份证正面地址',
-    'BackUrl' => '身份证背面地址',
-    'Name' => '姓名',
-    'CardID' => '身份证号',
-    'Birth' => '生日',
-    'Address' => '地址',
-    'Status' => '审核状态1-待审核 2-已通过 3-未通过',
-    'RecordTime' => '时间',
+    'UserID' => 'UserID',//用户标识
+    'Type' => 'Type',//类型0-阿尔哈达卡1-驾驶证2-护照
+    'FrontUrl' => 'FrontImgUrl',//身份证正面地址
+    'BackUrl' => 'BackImgUrl',//身份证背面地址
+    'Name' => 'Name',//姓名
+    'CardID' => 'CardID',//身份证号
+    'Birth' => 'Birth',//生日
+    'Address' => 'Address',//地址
+    'Status' => 'Status',//审核状态1-待审核 2-已通过 3-未通过
+    'RecordTime' => 'RecordTime',//时间
         ];
     }
 

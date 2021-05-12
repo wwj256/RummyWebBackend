@@ -56,16 +56,16 @@ class UserBindInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户标识',
-    'UniqueID' => '',
-    'Phone' => '绑定手机号',
-    'FacebookID' => '绑定facebook账号',
-    'Mail' => '绑定邮箱',
-    'GoogleID' => '绑定google账号',
-    'RealName' => '真实姓名',
-    'PayName' => '支付人姓名',
-    'PayPhone' => '支付人手机号',
-    'PayEmail' => '支付人邮箱',
+    'UserID' => 'UserID',
+    'UniqueID' => 'UniqueID',
+    'Phone' => 'Phone',//绑定手机号
+    'FacebookID' => 'FacebookID',//绑定facebook账号
+    'Mail' => 'Mail',//绑定邮箱
+    'GoogleID' => 'GoogleID',//绑定google账号
+    'RealName' => 'RealName',//真实姓名
+    'PayName' => 'PayName',//支付人姓名
+    'PayPhone' => 'PayPhone',//支付人手机号
+    'PayEmail' => 'PayEmail',//支付人邮箱
         ];
     }
 

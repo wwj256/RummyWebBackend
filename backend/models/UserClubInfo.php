@@ -54,7 +54,7 @@ class UserClubInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户标识',
+    'UserID' => 'UserID',
     'LoyalPoints' => '忠诚分值',
     'RedeemScore' => '可赎回金额',
     'Level' => '俱乐部等级',

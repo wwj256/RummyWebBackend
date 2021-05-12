@@ -55,15 +55,15 @@ class UserInviteInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户标识',
-    'MyInviter' => '我的邀请人',
-    'InviteCounts' => '总邀请人数',
-    'TotalBonus' => '总奖金',
-    'InviteBonus' => '邀请奖金',
-    'DepositBonus' => '充值奖金',
-    'TodayOutBonus' => '今天贡献奖金',
-    'TotalOutBonus' => '总贡献奖金',
-    'RecordTime' => '记录时间',
+    'UserID' => 'UserID',
+    'MyInviter' => 'MyInviter',//我的邀请人
+    'InviteCounts' => 'InviteCounts',//总邀请人数
+    'TotalBonus' => 'TotalBonus',//总奖金
+    'InviteBonus' => 'InviteBonus',//邀请奖金
+    'DepositBonus' => 'DepositBonus',//充值奖金
+    'TodayOutBonus' => 'TodayOutBonus',//今天贡献奖金
+    'TotalOutBonus' => 'TotalOutBonus',//总贡献奖金
+    'RecordTime' => 'RecordTime',//记录时间
         ];
     }
 

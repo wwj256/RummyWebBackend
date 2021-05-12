@@ -63,21 +63,21 @@ class UserScoreChange extends \yii\db\ActiveRecord
     {
         return [
     'ID' => '',
-    'UID' => '用户标识',
-    'NewUser' => '1:新用户,0:老用户',
-    'SpreadID' => '渠道ID',
-    'SType' => '1游戏,2支付,3提现,4管理员,5:返拥',
-    'Score' => '原始分数',
-    'SChange' => '变化量',
-    'Bind' => '原绑定金币',
-    'BindChg' => '绑定金币变化',
-    'Bonus' => '原始赠送金币',
-    'BonusChg' => '赠送金币变化',
-    'Luck' => '幸运金币',
-    'LuckChg' => '幸运金币变更',
-    'RelateID' => '关联ID，SType=2兑换券ID，SType=1游戏记录ID，SType=4管理员ID，，SType=5被邀请人ID,，SType=6被邀请人充值ID',
-    'Reason' => '原因',
-    'UpdateTime' => '记录时间',
+    'UID' => 'UserID',//用户标识
+    'NewUser' => 'IsNewUser',//1:新用户,0:老用户
+    'SpreadID' => 'SpreadID',//渠道ID
+    'SType' => 'ChangeType',//1游戏,2支付,3提现,4管理员,5:返拥
+    'Score' => 'Score',//原始分数
+    'SChange' => 'ScoreChange',//变化量
+    'Bind' => 'BindScore',//原绑定金币
+    'BindChg' => 'BindScoreChg',//绑定金币变化
+    'Bonus' => 'Bonus',//原始赠送金币
+    'BonusChg' => 'BonusChg',//赠送金币变化
+    'Luck' => 'Luck',//幸运金币
+    'LuckChg' => 'LuckChg',//幸运金币变更
+    'RelateID' => 'RelateID',//关联ID，SType=2兑换券ID，SType=1游戏记录ID，SType=4管理员ID，，SType=5被邀请人ID,，SType=6被邀请人充值ID
+    'Reason' => 'Reason',//原因
+    'UpdateTime' => 'UpdateTime',//记录时间
         ];
     }
 

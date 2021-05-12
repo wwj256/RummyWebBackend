@@ -62,20 +62,20 @@ class UserOrderInfo extends \yii\db\ActiveRecord
     {
         return [
             'ID' => '',
-            'OrderID' => '订单ID',
-            'UserID' => '用户ID',
-            'SpreadID' => '渠道ID',
+            'OrderID' => 'OrderID',//订单ID
+            'UserID' => 'UserID',//用户ID
+            'SpreadID' => 'SpreadID',//渠道ID
             'NewUser' => 'isNewUser',//1:new user
-            'ScoreAmount' => '订单金额',
-            'UserEndScore' => '充值后金额',
-            'BindBonus' => '绑定金币',
-            'CouponID' => '优惠券ID',
-            'Amount' => '支付金额',
-            'Status' => 'Status',//状态0-待支付 1-已支付 2-已取消 3-已支付未加币
-            'ReferenceId' => 'ReferenceId',//Transaction reference ID, if payment has been attempted
+            'ScoreAmount' => 'ActualAmount',//实际到账金额,支付不成功时为0，只有支付成功时才显示具体值
+            'UserEndScore' => 'UserEndScore',//充值后金额
+            'BindBonus' => 'BindBonus',//绑定金币
+            'CouponID' => 'CouponID',//优惠券ID
+            'Amount' => 'PayAmount',//支付金额
+            'Status' => 'Status',//状态0-待支付 1-已支付 2-已取消 3-已支付未加币,3是一种错误状态，用户支付成功了，但是后台没有加币，需要单独处理
+            'ReferenceId' => 'ReferenceID',//Transaction reference ID, if payment has been attempted
             'PaymentMode' => 'PaymentMode',//'Payment mode of transaction, if payment has been attempted',
-            'PayTime' => '支付时间',
-            'CreateTime' => '创建时间',
+            'PayTime' => 'PayTime',//支付时间
+            'CreateTime' => 'CreateTime',//创建时间
         ];
     }
 

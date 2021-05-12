@@ -60,20 +60,20 @@ class GameRecordPlayer extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UID' => '用户ID',
-    'RcdId' => '记录ID',
-    'Turns' => '轮数',
-    'NewUser' => '是否新用户',
-    'SpreadID' => '渠道ID',
-    'BeginScore' => '初始总金币',
-    'WinScore' => '总金币变化量',
-    'Bind' => '原绑定金币',
-    'BindChg' => '绑定金币变化量',
-    'Bonus' => '原始赠送金币',
-    'BonusChg' => '赠送金币变化',
-    'PlyTax' => '税收',
-    'BrokeUp' => '是否破产',//是否破产,1为破产
-    'BeginTime' => '开始时间',
+    'UID' => 'UserID',
+    'RcdId' => 'RcdId',//记录ID
+    'Turns' => 'Turns',//轮数
+    'NewUser' => 'IsNewUser',//是否新用户
+    'SpreadID' => 'SpreadID',//渠道ID
+    'BeginScore' => 'BeginScore',//初始总金币
+    'WinScore' => 'WinScore',//总金币变化量
+    'Bind' => 'Bind',//原绑定金币
+    'BindChg' => 'BindChg',//绑定金币变化量
+    'Bonus' => 'Bonus',//原始赠送金币
+    'BonusChg' => 'BonusChg',//赠送金币变化
+    'PlyTax' => 'Tax',//税收
+    'BrokeUp' => 'BrokeUp',//是否破产,1为破产
+    'BeginTime' => 'BeginTime',//开始时间
         ];
     }
 

@@ -65,10 +65,10 @@ use yii\helpers\Url;
                             if (result.code == 0) {
                                 var urlT = document.getElementById('activityinfo-url');
                                 urlT.value = result.data.Url;
-                                output.innerHTML="图片上传成功！";
+                                output.innerHTML="Pictures uploaded successfully";//图片上传成功！
                             }else {
                                 output.innerHTML="图片上传失败，code=！"+result.code;
-                                alert("图片上传失败，code=！"+result.code);
+                                alert("Image upload failed，code=！"+result.code);//图片上传失败
                             }
                         }
                     });

@@ -58,18 +58,18 @@ class UserWithdrawInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => '提现ID',
-            'UserID' => '用户ID',
-            'Amount' => '提现金额',
-            'BeforeScore' => '提现前金额',
-            'Tax' => '手续费',
-            'Status' => '状态',// 0-申请中，1-通过，2-拒绝
-            'Desc' => '拒绝原因',
-            'ClubLV' => '俱乐部等级',
-            'OperatorID' => '操作员ID',
-            'OperatorTime' => '操作员时间',
-            'WithDrawTime' => '提现时间',
-            'CreateTime' => '申请时间',
+            'ID' => 'ID',
+            'UserID' => 'UserID',//用户ID
+            'Amount' => 'Amount',//提现金额
+            'BeforeScore' => 'BeforeScore',//提现前金额
+            'Tax' => 'Tax',//手续费
+            'Status' => 'Status',// 0-申请中，1-通过，2-拒绝
+            'Desc' => 'Desc',//拒绝原因
+            'ClubLV' => 'ClubLV',//俱乐部等级
+            'OperatorID' => 'OperatorID',//操作员ID
+            'OperatorTime' => 'OperatorTime',//操作员时间
+            'WithDrawTime' => 'WithDrawTime',//提现时间
+            'CreateTime' => 'CreateTime',//申请时间
         ];
     }
 

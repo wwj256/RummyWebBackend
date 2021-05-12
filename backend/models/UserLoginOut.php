@@ -52,12 +52,12 @@ class UserLoginOut extends \yii\db\ActiveRecord
     {
         return [
     'ID' => 'LogID',
-    'UID' => '用户ID',
+    'UID' => 'UserID',
     'IsLogin' => 'IsLogin',//0:登出,1:登入
-    'SpreadID' => '渠道ID',
-    'IsNew' => 'IsNew',//1:新用户,0: 老用户
-    'OnTime' => '在线时间',
-    'UpdateTime' => '日志时间',
+    'SpreadID' => 'SpreadID',//渠道ID
+    'IsNew' => 'IsNewUser',//1:新用户,0: 老用户
+    'OnTime' => 'OnlineTime',//在线时间
+    'UpdateTime' => 'UpdateTime',
         ];
     }
 

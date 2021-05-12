@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="account-info-view">
 
     <p>
-        <?= Html::a('修改', ['update', 'id' => $model->UserID], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->UserID], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

@@ -53,12 +53,12 @@ class ActivityInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => '活动ID',
-            'Tiltle' => '展示标题',
-            'Url' => '图片地址 活动必填',
-            'JumpTo' => '跳转地址编号 ',
-            'StartTime' => '开始时间 活动必填',
-            'EndTime' => '结束时间 活动必填',
+            'ID' => 'ID',//活动ID
+            'Tiltle' => 'Tiltle',//展示标题
+            'Url' => 'Url',//图片地址 活动必填
+            'JumpTo' => 'JumpTo',//跳转地址编号 
+            'StartTime' => 'StartTime',//开始时间 活动必填
+            'EndTime' => 'EndTime',//结束时间 活动必填
         ];
     }
 }

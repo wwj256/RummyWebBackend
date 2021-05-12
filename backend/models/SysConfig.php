@@ -49,9 +49,9 @@ class SysConfig extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'K' => '键',
-    'V' => '值',
-    'Info' => '描述',
+    'K' => 'Key',
+    'V' => 'Value',
+    'Info' => 'Desc',
         ];
     }
 }

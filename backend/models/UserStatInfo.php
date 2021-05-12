@@ -62,23 +62,23 @@ class UserStatInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '',
-    'TPayScore' => '总充值金额',
-    'TPayCnt' => '充值次数',
-    'TDrawScore' => '总提现金额',
-    'TDrawCnt' => '总提现次数',
-    'TGameCnt' => '总游戏局数',
-    'TBrokeUp' => '总破产次数',
-    'TWinScore' => '总赢分数',
-    'TLostScore' => '总输分数',
-    'TPointCnt' => '',
-    'TPoolCnt' => '',
-    'TDealCnt' => '',
-    'TPoint10Cnt' => '',
-    'TMatchCnt' => '',
-    'TTicketScore' => '门票分数',
-    'TAssistScore' => '救助分数',
-    'TInviteScore' => '邀请获得分数',
+    'UserID' => 'UserID',
+    'TPayScore' => 'TPayScore',//总充值金额
+    'TPayCnt' => 'TPayCnt',//充值次数
+    'TDrawScore' => 'TDrawScore',//总提现金额
+    'TDrawCnt' => 'TDrawCnt',//总提现次数
+    'TGameCnt' => 'TGameCnt',//总游戏局数
+    'TBrokeUp' => 'TBrokeUp',//总破产次数
+    'TWinScore' => 'TWinScore',//总赢分数
+    'TLostScore' => 'TLostScore',//总输分数
+    'TPointCnt' => 'TPointCnt',
+    'TPoolCnt' => 'TPoolCnt',
+    'TDealCnt' => 'TDealCnt',
+    'TPoint10Cnt' => 'TPoint10Cnt',
+    'TMatchCnt' => 'TMatchCnt',
+    'TTicketScore' => 'TTicketScore',//门票分数
+    'TAssistScore' => 'TAssistScore',//救助分数
+    'TInviteScore' => 'TInviteScore',//邀请获得分数
         ];
     }
 }

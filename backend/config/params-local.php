@@ -34,56 +34,63 @@ return [
             'threads' => 1,
         ],
     ],
+    //实名认证审核
     'realInfoStatus' =>[
         '',
-        '待审核',
-        '已通过',
-        '未通过'
+        'Waiting',//待审核,waiting for review
+        'Succeed',//已通过
+        'Fail'//未通过
     ],
+    //KYC认证 卡类型
     'identityCardTypes' =>[
-        '阿尔哈达卡',
-        '驾驶证',
-        '护照'
+        'AadhaarCard',//阿尔哈达卡
+        'DrivingLicence',//驾驶证
+        'Passport'//护照
     ],
+    //优惠券类型
     'couponTypes' =>[
         '',
-        '首冲优惠券',
+        'SupremeFirstDeposit',//首冲优惠券
         '',
         ''
     ],
+    //充值信息状态
     'orderInfoStatusLabels' =>[
-        '待支付',
-        '已支付',
-        '已取消',
-        '已支付未加币',
-        '未知',
+        'Waiting',//待支付,
+        'Success',//已支付
+        'Cancel',//已取消
+        'WithoutAddScore',//已支付未加币
+        'Nnknown',//未知
     ],
+    //提现订单信息状态
     'withdrawStatusLabels' =>[
-        '中请中',
-        '通过',
-        '拒绝',
-        '完成',
-        '失败',
-        '失效',
-        '系统申请失败',
+        'Waiting',//中请中
+        'Pass',//通过
+        'Refuse',//拒绝
+        'Success',//成功
+        'Failure',//失败
+        'Overtime',//失效
+        'SystemError',//系统申请失败
         '',
         '',
     ],
+    //货币变化类型1游戏,2支付,3提现,4管理员,5:返拥,6:实名认证,7: 抽奖奖励,8:破产补助
     'scoreChangeTypes' =>[
         '',
         'Game',
         'Pay',
-        'Refer',
+        'Withdraw',
         'Admin',
-        '返佣',
-        'KYC认证',
-        '抽奖奖励',
-        '破产补助'
+        'PayRebate',//返佣
+        'KYC',//KYC认证
+        'LuckyDraw',//抽奖奖励
+        'Bankruptcy'//破产补助
     ],
+    //系统邮件类型
     'sysMailTypes' =>[
-        '全服',
-        '指定渠道',
-        '指定用户'
+        'AllServer',//全服
+        'SpecifiedChannel',//指定渠道
+        'SpecifiedUser'//指定用户
     ],
 
 ];

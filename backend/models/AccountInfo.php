@@ -65,21 +65,21 @@ class AccountInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户编号',
-    'SpreadID' => '渠道id',
-    'UniqueID' => '唯一标识',
-    'Password' => '登录密码',
-    'NickName' => '昵称',
-    'FaceUrl' => '头像URL',
-    'IsRobot' => '是否机器人',
-    'Platform' => '手机型号',//0是android，1是IOS
-    'RegisterIP' => '注册IP',
-    'RegisterDate' => '注册时间',
-    'RegisterMachine' => '注册机器码',
-    'ClientVersion' => '最后登录版本',
-    'LoginIP' => '最后登录IP',
-    'LoginDate' => '最后登录时间',
-    'LoginMachine' => '最后登录机器码',
+    'UserID' => 'UserID',//用户编号
+    'SpreadID' => 'SpreadID',//渠道id
+    'UniqueID' => 'UniqueID',//唯一标识
+    'Password' => 'Password',//登录密码
+    'NickName' => 'NickName',//昵称
+    'FaceUrl' => 'FaceUrl',//头像URL
+    'IsRobot' => 'IsRobot',//是否机器人
+    'Platform' => 'Platform',//手机型号,0是android，1是IOS
+    'RegisterIP' => 'RegisterIP',//注册IP
+    'RegisterDate' => 'RegisterDate',//注册时间
+    'RegisterMachine' => 'RegisterMachine',//注册机器码
+    'ClientVersion' => 'ClientVersion',//最后登录版本
+    'LoginIP' => 'LoginIP',//最后登录IP
+    'LoginDate' => 'LoginDate',//最后登录时间
+    'LoginMachine' => 'LoginMachine',//最后登录机器码
         ];
     }
 

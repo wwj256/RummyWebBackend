@@ -52,11 +52,11 @@ class ScoreInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => '用户编号',
-    'Score' => '用户当前金币',
-    'BindScore' => '系统赠送金币',
-    'LockScore' => '锁定金币',
-    'BonusScore' => '充值赠送金额',
+    'UserID' => 'UserID',
+    'Score' => 'Score',//用户当前金币
+    'BindScore' => 'BindScore',//系统赠送金币
+    'LockScore' => 'LockScore',//锁定金币
+    'BonusScore' => 'BonusScore',//充值赠送金额
     'LuckScore' => 'LuckScore',
     'ExpScore' => 'ExpScore',
         ];

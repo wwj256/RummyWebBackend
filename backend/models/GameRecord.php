@@ -57,16 +57,16 @@ class GameRecord extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'RcdId' => '记录ID',
-    'Turns' => '轮数',
-    'GameId' => '游戏id',
-    'RoomId' => '房间id',
-    'PlyNum' => '玩家数量',
-    'Tax' => '税收',
-    'SysWin' => '系统输赢',
-    'Procedure' => '过程',
-    'TimeCost' => '消耗时间',
-    'BeginTime' => '开始时间',
+    'RcdId' => 'RecordID',//记录ID
+    'Turns' => 'Turns',//轮数
+    'GameId' => 'GameId',//游戏id
+    'RoomId' => 'RoomId',//房间id
+    'PlyNum' => 'PlyerNum',//玩家数量
+    'Tax' => 'Tax',//税收
+    'SysWin' => 'SysWin',//系统输赢
+    'Procedure' => 'Procedure',//过程
+    'TimeCost' => 'TimeCost',//消耗时间
+    'BeginTime' => 'BeginTime',//开始时间
         ];
     }
 

@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>Procedure</th>
                 <th>TimeCost</th>
                 <th>BeginTime</th>
-                <th>操作</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'First', 'lastPageLabel' => 'Last', 'hideOnSinglePage' => false ]); ?>
     </div>
 
 </div>

@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">请输入所要加的分数</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please enter the number of points you want to add!</h4>
                 </div>
                 <div class="modal-body">
                     <input type="text" id="txt-1" placeholder="Score" maxlength="255" style="width:100%;;height:50px">
@@ -89,8 +89,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <input type="text" id="txt-refuse" placeholder="原因" maxlength="255" style="width: 100%;height:50px">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <?=html::button('确定', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <?=html::button('Confirm', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -123,7 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>SpreadID</th>
                 <th>Status</th>
                 <th>LoginDate</th>
-                <th>操作</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>

@@ -52,13 +52,13 @@ class RoomControl extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'RoomID' => '',
-    'MinScore' => '',
-    'Score' => '',
-    'MaxScore' => '',
-    'Ticket' => '门票次数',
-    'FeeTicket' => '支付金币门票次数',
-    'WinInterval' => '玩家赢的间隔',
+    'RoomID' => 'RoomID',
+    'MinScore' => 'MinScore',
+    'Score' => 'Score',
+    'MaxScore' => 'MaxScore',
+    'Ticket' => 'Ticket',//门票次数
+    'FeeTicket' => 'FeeTicket',//支付金币门票次数
+    'WinInterval' => 'WinInterval',//玩家赢的间隔
         ];
     }
 }

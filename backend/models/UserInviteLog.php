@@ -55,11 +55,11 @@ class UserInviteLog extends \yii\db\ActiveRecord
     {
         return [
     'ID' => 'Log ID',
-    'UserID' => '用户ID',
-    'InviteUID' => ' 被邀请人ID',
-    'RelateID' => '0邀请,其他为充值ID',
-    'OutBonus' => '贡献奖金',
-    'UpdateTime' => '日期',
+    'UserID' => 'UserID',
+    'InviteUID' => 'InviteUID',//被邀请人ID
+    'RelateID' => 'RelateID',//0邀请,其他为充值ID
+    'OutBonus' => 'OutBonus',//贡献奖金
+    'UpdateTime' => 'UpdateTime',
         ];
     }
 

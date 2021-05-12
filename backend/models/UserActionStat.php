@@ -62,22 +62,22 @@ class UserActionStat extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UniqueID' => '用户唯一码',
-    'UID' => '用户ID',
-    'Loading' => '加载',
-    'Lobby' => '进入大厅',
-    'NewGuide' => '打开新手引导',
-    'FinishGuide' => '完成新手引导',
-    'EnterPractise' => '进入练习场',
-    'EnterGold' => '进入金币场',
-    'FinishGame' => '完成游戏局数',
-    'BrakeUp' => '破产次数',
-    'BrakeOpenPayWeb' => '破产时打开支付页面',
-    'BrakeOpenActivity' => '破产时打开活动页面',
-    'OpenDraw' => '打开兑换页面',
-    'OpenVip' => '打开vip页面',
-    'OpenShare' => '打开分享页面',
-    'NetBrake' => '网络断开次数',
+    'UniqueID' => 'UniqueID',//用户唯一码
+    'UID' => 'UserID',
+    'Loading' => 'Loading',
+    'Lobby' => 'Lobby',//进入大厅
+    'NewGuide' => 'OpenNewGuide',//打开新手引导
+    'FinishGuide' => 'FinishGuide',//完成新手引导
+    'EnterPractise' => 'EnterPractise',//进入练习场
+    'EnterGold' => 'EnterGold',//进入金币场
+    'FinishGame' => 'FinishGame',//完成游戏局数
+    'BrakeUp' => 'BrakeUp',//破产次数
+    'BrakeOpenPayWeb' => 'BrakeOpenPayWeb',//破产时打开支付页面
+    'BrakeOpenActivity' => 'BrakeOpenActivity',//破产时打开活动页面
+    'OpenDraw' => 'OpenDraw',//打开兑换页面
+    'OpenVip' => 'OpenVip',//打开vip页面
+    'OpenShare' => 'OpenShare',//打开分享页面
+    'NetBrake' => 'NetBrake',//网络断开次数
         ];
     }
 }

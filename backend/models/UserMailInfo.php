@@ -57,14 +57,14 @@ class UserMailInfo extends \yii\db\ActiveRecord
     {
         return [
     'ID' => 'MailID',
-    'SysID' => '系统邮件ID',
-    'UserID' => '用户标识',
-    'Title' => '邮件标题',
-    'Content' => '邮件内容',
-    'Status' => '状态0-未读1-已读',
-    'SendTime' => '发送时间',
-    'ExpireTime' => '过期时间',
-    'UserIDs' => '用户ID,如果多人,用英文逗号分隔,',
+    'SysID' => 'SysID',//系统邮件ID
+    'UserID' => 'UserID',//用户标识
+    'Title' => 'Title',//邮件标题
+    'Content' => 'Content',//邮件内容
+    'Status' => 'Status',//状态0-未读1-已读
+    'SendTime' => 'SendTime',//发送时间
+    'ExpireTime' => 'ExpireTime',//过期时间
+    'UserIDs' => 'UserIDs',//用户ID,如果多人,用英文逗号分隔,
         ];
     }
 
