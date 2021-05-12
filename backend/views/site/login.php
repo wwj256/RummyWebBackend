@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>后台管理系统</b></a>
+        <a href="#"><b>Rummy management system</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -30,17 +30,17 @@ $fieldOptions2 = [
         <?= $form
             ->field($model, 'username', $fieldOptions1)
             ->label(false)
-            ->textInput(['placeholder' => '请输入用户名']) ?>
+            ->textInput(['placeholder' => 'Please enter a user name']) ?>
 
         <?= $form
             ->field($model, 'password', $fieldOptions2)
             ->label(false)
-            ->passwordInput(['placeholder' => '请输入密码']) ?>
+            ->passwordInput(['placeholder' => 'Please enter your password']) ?>
 
         <div class="row">
             <!-- /.col -->
             <div class="col-xs-4">
-                <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
         </div>
