@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="game-type-index">
 
     <p>
-        <?= Html::a(Yii::t('app', '添加Game Type'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Add Game Type'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => Helper::filterActionColumn('{view} {update} {delete}'),
-                'header' => '操作',
+                'header' => 'Action',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
                         return Html::a('View',$url, [
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'delete' => function ($url, $model, $key) {
                         return Html::a('Delete',$url, [
                             'class' => 'btn btn-danger',
-                            'data-confirm'=>"您确定要删除此项吗？",
+                            'data-confirm'=>"Are you sure you want to delete this item？",
                             'data-method'=>"post",
                         ]);
                     },

@@ -25,8 +25,8 @@ use kartik\datetime\DateTimePicker;
 
         <?= $form->field($model, 'IsLogin')->textInput(['placeholder'=>'0:out,1:login']) ?>
 
-        <?= $form->field($model, 'create_time')->label('日期范围')->widget(DateTimePicker::classname(), [
-            'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'开始日','readonly'=>'readonly'],
+        <?= $form->field($model, 'create_time')->label('UpdateTime Date')->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'Start Date','readonly'=>'readonly'],
             'pluginOptions' => [
                 'autoclose' => true,
                 'todayBtn'=>true,
@@ -34,10 +34,10 @@ use kartik\datetime\DateTimePicker;
 
             ]
         ]); ?>
-        <label class=" form-label">至</label>
+        <label class=" form-label">-</label>
 
         <?= $form->field($model, 'end_time')->label(false)->widget(DateTimePicker::classname(), [
-            'options' => ['placeholder' => isset($model['end_time'])?$model['end_time']:'截至日','readonly'=>'readonly'],
+            'options' => ['placeholder' => isset($model['end_time'])?$model['end_time']:'End date','readonly'=>'readonly'],
             'pluginOptions' => [
                 'autoclose' => true,
                 'todayBtn'=>true,

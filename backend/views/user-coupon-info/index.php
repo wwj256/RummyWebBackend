@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['UserID']?></td>
                     <td><?=$val['NickName']?></td>
                     <td><?=$val['Type']?></td>
-                    <td><?= [$val['Status']] == 1 ? '已使用': '未使用' ?></td>
+                    <td><?= [$val['Status']] == 1 ? 'used': 'unused' ?></td>
                     <td><?=$val['UsedTime']?></td>
                     <td><?=$val['CreateTime']?></td>
                     <td><?=$val['ExpireTime']?></td>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'first', 'lastPageLabel' => 'last', 'hideOnSinglePage' => false ]); ?>
     </div>
 
 </div>

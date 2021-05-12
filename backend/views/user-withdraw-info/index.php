@@ -54,14 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">请输入不通过原因，将以邮件形式发给用户</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please enter the reason for failure and email it to the user</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="txt-refuse" placeholder="不通过原因" maxlength="255" style="width: 100%;height:50px">
+                    <input type="text" id="txt-refuse" placeholder="cause" maxlength="255" style="width: 100%;height:50px">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <?=html::button('确定', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <?=html::button('Confirm', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -94,8 +94,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'Action',
                 'format' => 'raw',
                 'value' => function($model){
-                    return html::button('同意', ['id'=>'btn-agree','class'=>"btn btn-primary", 'onclick'=>'updateName(1,'. $model->ID .')']).
-                    html::button('拒绝', ['id'=>'btn-refuse','class'=>"btn btn-danger", 'onclick'=>'onRefuseClick('. $model->ID.')']);
+                    return html::button('Agree', ['id'=>'btn-agree','class'=>"btn btn-primary", 'onclick'=>'updateName(1,'. $model->ID .')']).
+                    html::button('Refuse', ['id'=>'btn-refuse','class'=>"btn btn-danger", 'onclick'=>'onRefuseClick('. $model->ID.')']);
                 }
             ],
         ],

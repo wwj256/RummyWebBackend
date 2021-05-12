@@ -67,8 +67,8 @@ use yii\helpers\Url;
                                 urlT.value = result.data.Url;
                                 output.innerHTML="Pictures uploaded successfully";//图片上传成功！
                             }else {
-                                output.innerHTML="图片上传失败，code=！"+result.code;
-                                alert("Image upload failed，code=！"+result.code);//图片上传失败
+                                output.innerHTML="Image upload failed，code="+result.code;
+                                alert("Image upload failed，code="+result.code);//图片上传失败
                             }
                         }
                     });
@@ -89,7 +89,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'Tiltle')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Url')->textInput(['placeholder'=>'点击下方选择文件，上传活动图片', 'readonly'=>true]) ?>
+    <?= $form->field($model, 'Url')->textInput(['placeholder'=>'Click below to select files and upload active images', 'readonly'=>true]) ?>
     <img id='image_en' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=en" : '""' ?> style='width:300px'>
     <div class="form-group field-activityinfo-imageurl">
         <label class="control-label" for="activityinfo-imageurl">Upload en activity image.</label>

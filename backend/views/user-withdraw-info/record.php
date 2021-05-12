@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($searchModel, 'UserID') ?>
 
-        <?= $form->field($searchModel, 'create_time')->label('充值日期范围')->widget(DateTimePicker::classname(), [
-            'options' => ['placeholder' => isset($searchModel['create_time'])?$searchModel['create_time']:'开始日','readonly'=>'readonly'],
+        <?= $form->field($searchModel, 'create_time')->label('CreateTime')->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($searchModel['create_time'])?$searchModel['create_time']:'Start date','readonly'=>'readonly'],
             'pluginOptions' => [
                 'autoclose' => true,
                 'todayBtn'=>true,
@@ -41,10 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ]
         ]); ?>
-        <label class=" form-label">至</label>
+        <label class=" form-label">-</label>
 
         <?= $form->field($searchModel, 'end_time')->label(false)->widget(DateTimePicker::classname(), [
-            'options' => ['placeholder' => isset($searchModel['end_time'])?$searchModel['end_time']:'截至日','readonly'=>'readonly'],
+            'options' => ['placeholder' => isset($searchModel['end_time'])?$searchModel['end_time']:'End date','readonly'=>'readonly'],
             'pluginOptions' => [
                 'autoclose' => true,
                 'todayBtn'=>true,
@@ -66,17 +66,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>提现ID</th>
-                <th>用户ID</th>
-                <th>用户昵称</th>
-                <th>提现金额</th>
-                <th>提现前金额</th>
-                <th>税</th>
-                <th>状态</th>
-                <th>操作人员</th>
-                <th>操作时间</th>
-                <th>俱乐部等级</th>
-                <th>申请时间</th>
+                <th>ID</th>
+                <th>UserID</th>
+                <th>UserName</th>
+                <th>Amount</th>
+                <th>BeforeScore</th>
+                <th>Tax</th>
+                <th>Status</th>
+                <th>OperatorID</th>
+                <th>OperatorTime</th>
+                <th>CreateTime</th>
             </tr>
             </thead>
             <tbody>
@@ -93,12 +92,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= Yii::$app->params['withdrawStatusLabels'][$val['Status']]?></td>
                     <td><?=$val['OperatorID']?></td>
                     <td><?=$val['OperatorTime']?></td>
-                    <td><?=$val['ClubLV']?></td>
                     <td><?=$val['CreateTime']?></td>
                 </tr>
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'First', 'lastPageLabel' => 'Last', 'hideOnSinglePage' => false ]); ?>
     </div>
 </div>

@@ -34,6 +34,12 @@ return [
             'threads' => 1,
         ],
     ],
+    //用户状态 0:'正常',1=>'禁止游戏和提现',2=>'禁止登录'
+    'userStatus' =>[
+        'Normal',
+        'Ban games and withdrawals',
+        'Ban login'
+    ],
     //实名认证审核
     'realInfoStatus' =>[
         '',

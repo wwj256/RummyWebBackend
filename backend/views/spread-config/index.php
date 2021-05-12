@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tr>
                 <th>ID</th>
                 <th>SpreadID</th>
-                <th>适配版本号</th>
+                <th>RegVersion</th>
                 <th>ApkUrl</th>
                 <th>HotUrl</th>
                 <th>PageUrl</th>
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'first', 'lastPageLabel' => 'last', 'hideOnSinglePage' => false ]); ?>
     </div>
 </div>
 <?php // create modal

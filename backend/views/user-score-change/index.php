@@ -16,23 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">请输入不通过原因，将以邮件形式发给用户</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="text" id="txt-refuse" placeholder="不通过原因" maxlength="255" style="width: 100%;height:50px">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <?=html::button('确定', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
+
     <div id="p0" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000" style="overflow: auto;">
         <?php 
             $count = count($model);
@@ -51,15 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>UserID</th>
                 <th>NickName</th>
                 <th>Type</th>
-                <th>变化前金币</th>
-                <th>变化量</th>
-                <th>原绑定金币</th>
-                <th>绑定金币变化量</th>
-                <th>原赠送金币</th>
-                <th>赠送金币变化量</th>
-                <th>原幸运金币</th>
-                <th>幸运金币变化量</th>
-                <th>关联ID</th>
+                <th>Score</th>
+                <th>ScoreChange</th>
+                <th>Bind</th>
+                <th>BindChange</th>
+                <th>Bonus</th>
+                <th>BonusChange</th>
+                <th>Luck</th>
+                <th>LuckChange</th>
+                <th>RelateID</th>
                 <th>Time</th>
             </tr>
             </thead>
@@ -103,6 +87,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'First', 'lastPageLabel' => 'Last', 'hideOnSinglePage' => false ]); ?>
     </div>
 </div>

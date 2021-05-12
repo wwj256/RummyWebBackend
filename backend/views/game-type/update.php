@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\GameType */
 
-$this->title = Yii::t('app', '修改 Game Type: {name}', [
+$this->title = Yii::t('app', 'update Game Type: {name}', [
     'name' => $model->GameID,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Game Types'), 'url' => ['index']];

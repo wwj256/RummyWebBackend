@@ -69,18 +69,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>RealGameID</th>
                 <th>RoomName</th>
                 <th>RoomStatus</th>
-                <th>是否练习房</th>
-                <th>机器人状态</th>
-                <th>玩家数量基值</th>
-                <th>初始库存</th>
-                <th>库存</th>
-                <th>最大库存</th>
+                <th>IsPractice</th>
+                <th>HaveRobot</th>
+                <th>ActivPlayer</th>
+                <th>InitScore</th>
+                <th>Score</th>
+                <th>MaxScore</th>
                 <th>MaxPlayer</th>
-                <th>底注</th>
-                <th>最低携带数量</th>
-                <th>报名费</th>
-                <th>奖金</th>
-                <th>操作</th>
+                <th>Blind</th>
+                <th>MinEntry</th>
+                <th>EntryFee</th>
+                <th>Prize</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -89,11 +89,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['RoomID']?></td>
                     <td><?=$val['RealGameID']?></td>
                     <td><?= $roomConfig->RoomName ?></td>
-                    <td><?= Html::dropDownList($val['RoomStatus'], $val['RoomStatus'], [0=>'关闭',1=>'开启'], ['onchange'=>'
+                    <td><?= Html::dropDownList($val['RoomStatus'], $val['RoomStatus'], [0=>'Open',1=>'Close'], ['onchange'=>'
                         updateStatus(this,'. $val['RoomID'].')'
                         ]); ?></td>
                     <td><?= $roomConfig->IsPrac == 1 ? 'yes' : 'no' ?></td>
-                    <td><?= $val['HaveRbt'] == 1 ? '开启' : '关闭' ?></td>
+                    <td><?= $val['HaveRbt'] == 1 ? 'Open' : 'Close' ?></td>
                     <td><?= $val['ActivPlayer'] ?></td>
                     <td><?= Html::textInput("text1", $val['MinScore']/100, ['id' => 'text1', 'style' => 'width:70px','placeholder'=>'输入运单号','onchange'=>'
                         changeDeliveryno(this,"MinScore",'. $val['RoomID'].')']); ?></td>
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'first', 'lastPageLabel' => 'last', 'hideOnSinglePage' => false ]); ?>
     </div>
 </div>
 <?php // create modal

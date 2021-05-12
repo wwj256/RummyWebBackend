@@ -67,14 +67,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">请输入不通过原因，将以邮件形式发给用户</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please enter the reason for failure and email it to the user</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="txt-refuse" placeholder="不通过原因" maxlength="255" style="width: 100%;height:50px">
+                    <input type="text" id="txt-refuse" placeholder="cause" maxlength="255" style="width: 100%;height:50px">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <?=html::button('确定', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <?=html::button('Confirm', ['class'=>"btn btn-danger", 'onclick'=>'onConfirmHandler()']); ?>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -93,18 +93,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>用户ID</th>
-                <th>昵称</th>
-                <th>证件类型</th>
-                <th>正面</th>
-                <th>背面</th>
-                <th>姓名</th>
-                <th>证件号码</th>
-                <th>出生日期</th>
-                <th>地址</th>
-                <th>审核状态</th>
-                <th>提交时间</th>
-                <th>操作</th>
+                <th>UserID</th>
+                <th>UserName</th>
+                <th>IdentityCardTypes</th>
+                <th>FrontImg</th>
+                <th>BackImg</th>
+                <th>Name</th>
+                <th>CardID</th>
+                <th>Birth</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>RecordTime</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -123,8 +123,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['RecordTime']?></td>
                     <td ><?php
                         if( $val['Status'] == 1 ){
-                            echo html::button('同意', ['class'=>"btn btn-danger", 'onclick'=>'updateName(2,'. $val['UserID'] .')']);
-                            echo html::button('拒绝', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')']);
+                            echo html::button('Agree', ['class'=>"btn btn-danger", 'onclick'=>'updateName(2,'. $val['UserID'] .')']);
+                            echo html::button('Refuse', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')']);
                         }
                         ?>
                     </td>
@@ -132,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'First', 'lastPageLabel' => 'Last', 'hideOnSinglePage' => false ]); ?>
     </div>
 </div>
 <?php // 创建modal

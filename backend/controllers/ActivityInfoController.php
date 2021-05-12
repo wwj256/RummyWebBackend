@@ -100,6 +100,8 @@ class ActivityInfoController extends Controller
         $model->Url = '1';
         $model->JumpTo = '1';
         if ($model->save()) {
+            $model->Tiltle = '';
+            $model->Url = '';
             return $this->render('update', [
                 'model' => $model,
             ]);

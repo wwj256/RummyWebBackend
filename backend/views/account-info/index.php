@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['LuckScore']/100 ?></td>
                     <td><?=$val['ExpScore']/100 ?></td>
                     <td><?=$val['SpreadID'] ?></td>
-                    <td><?=Html::dropDownList('isBrand', $val['Status'], [0=>'正常',1=>'禁止游戏和提现',2=>'禁止登录'], ['style'=>'width:100px', 'onchange'=>'
+                    <td><?=Html::dropDownList('isBrand', $val['Status'], Yii::$app->params['userStatus'], ['style'=>'width:100px', 'onchange'=>'
                         updateStatus(this,'. $val['UserID'].')'
                         ]); ?></td>
                     <td><?=$val['LoginDate'] ?></td>
@@ -159,7 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php }?>
             </tbody>
         </table>
-        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => '首页', 'lastPageLabel' => '尾页', 'hideOnSinglePage' => false ]); ?>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'first', 'lastPageLabel' => 'last', 'hideOnSinglePage' => false ]); ?>
     </div>
 
 </div>
