@@ -37,7 +37,7 @@ use kartik\datetime\DateTimePicker;
 
             ]
         ]); ?>
-        <label class=" form-label">至</label>
+        <label class=" form-label">-</label>
 
         <?= $form->field($model, 'end_time')->label(false)->widget(DateTimePicker::classname(), [
             'options' => ['placeholder' => isset($model['end_time'])?$model['end_time']:'End date','readonly'=>'readonly'],

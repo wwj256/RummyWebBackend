@@ -42,7 +42,7 @@ class AccountInfoController extends Controller
         $UserID = isset($form['UserID'])?trim($form['UserID']):'';
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';
-        $SpreadID = isset($form['SpreadID'])?trim($form['SpreadID']):'';
+        $NickName = isset($form['NickName'])?trim($form['NickName']):'';
         $RegisterIP = isset($form['RegisterIP'])?trim($form['RegisterIP']):'';
 
         $action = Yii::$app->request->get('action');
@@ -53,7 +53,7 @@ class AccountInfoController extends Controller
             ->joinWith("score_info");
         $query->andFilterWhere([
             'account_info.UserID' => $UserID,
-            'account_info.SpreadID' => $SpreadID,
+            'account_info.NickName' => $NickName,
         ]);
         $query->andFilterWhere(['like', 'account_info.RegisterIP', $RegisterIP])
             ->andFilterWhere(['>=', 'RegisterDate', $create_time])
