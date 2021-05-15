@@ -39,7 +39,7 @@ class PlatformConfig extends \yii\db\ActiveRecord
             [['K'], 'required'],
             [['K'], 'string', 'max' => 32],
             [['V'], 'string', 'max' => 1024],
-            [['info'], 'string', 'max' => 128],
+            [['info'], 'string', 'max' => 512],
             [['K'], 'unique'],
         ];
     }

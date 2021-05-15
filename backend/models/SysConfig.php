@@ -37,8 +37,9 @@ class SysConfig extends \yii\db\ActiveRecord
     {
         return [
             [['K'], 'required'],
-            [['K', 'Info'], 'string', 'max' => 64],
+            [['K'], 'string', 'max' => 64],
             [['V'], 'string', 'max' => 128],
+            [['Info'], 'string', 'max' => 512],
             [['K'], 'unique'],
         ];
     }

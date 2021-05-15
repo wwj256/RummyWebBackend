@@ -164,7 +164,7 @@ return \yii\widgets\ActiveForm::validate($model);
         $model = $this->findModel($id);
 //        return Yii::$app->runAction('acctemail/add-mail',['id'=>$id,'title'=>"承兑商审核结果", 'content'=>'恭喜您，您的承兑商申请已审核通过，谢谢您的支持！']);
         if( $model->Status  == $value ){
-           return '不用修改';
+           return 'change complete';
         }
         $changeTypeSucess = true;
 //        if( $desc ) $model->Desc = $desc;
@@ -232,9 +232,9 @@ return \yii\widgets\ActiveForm::validate($model);
             }else{
                 Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'KYC Certification','Content'=>"KYC Application：{$model->RecordTime}\nYour KYC authentication failed, please fill in the KYC information correctly, if you have any questions, please contact customer service.\nThank you for playing Rummy Genius."]);
             }
-            return '修改成功';
+            return 'change complete';
         }else{
-            return '修改失败';
+            return 'change error';
         }
     }
 }
