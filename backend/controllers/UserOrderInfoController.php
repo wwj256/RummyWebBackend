@@ -8,6 +8,7 @@ use backend\models\UserOrderInfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * UserOrderInfoController implements the CRUD actions for UserOrderInfo model.
@@ -35,18 +36,51 @@ class UserOrderInfoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserOrderInfoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new UserOrderInfoSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
-        $action = Yii::$app->request->get('action');
-        if ($action == 'export') {
-            // $model = $query->asArray()->all();    
-            $this->actionExport($dataProvider);
-            return;
-        }
+        // $action = Yii::$app->request->get('action');
+        // if ($action == 'export') {
+        //     // $model = $query->asArray()->all();    
+        //     $this->actionExport($dataProvider);
+        //     return;
+        // }
+        // return $this->render('index', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        $form = Yii::$app->request->get('UserOrderInfoSearch');
+        $OrderID = isset($form['OrderID'])?trim($form['OrderID']):'';
+        $UserID = isset($form['UserID'])?trim($form['UserID']):'';
+        $NickName = isset($form['NickName'])?trim($form['NickName']):'';
+        $create_time = isset($form['create_time'])?trim($form['create_time']):'';
+        $end_time = isset($form['end_time'])?trim($form['end_time']):'';
+        $query = UserOrderInfo::find()
+            ->select('user_order_info.*, account_info.NickName, account_info.LoginIP,user_bind_info.Phone,user_bind_info.Mail')
+            ->joinWith("account_info")
+            ->joinWith("user_bind_info");
+        $query->andFilterWhere([
+            'user_order_info.OrderID' => $OrderID,
+            'user_order_info.UserID' => $UserID,
+        ]);
+
+        $query->andFilterWhere(['!=', 'user_order_info.Status', 0])
+            ->andFilterWhere(['>=', 'CreateTime', $create_time])
+            ->andFilterWhere(['<=', 'CreateTime', $end_time])
+            ->andFilterWhere(['=', 'account_info.NickName', $NickName])
+            ->orderBy('CreateTime DESC');
+
+        $pages = new Pagination(['totalCount' =>$query->count(), 'pageSize' => '20']);
+        $model = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
+        $searchModel = new UserOrderInfoSearch();
+        $searchModel->load(Yii::$app->request->queryParams);
+
+
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'pages' => $pages,
         ]);
     }
 

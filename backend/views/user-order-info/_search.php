@@ -23,11 +23,11 @@ use kartik\datetime\DateTimePicker;
 
     <div class="row" style="margin: 20px 0px 20px 0px" >
 
+        <?= $form->field($model, 'OrderID') ?>
+
         <?= $form->field($model, 'UserID') ?>
 
         <?= $form->field($model, 'NickName')->label("NickName") ?>
-
-        <?= $form->field($model, 'OrderID') ?>
 
         <?= $form->field($model, 'create_time')->label('CreateTime')->widget(DateTimePicker::classname(), [
             'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'Start date','readonly'=>'readonly'],

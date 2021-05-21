@@ -87,4 +87,13 @@ class UserOrderInfo extends \yii\db\ActiveRecord
         //同样第一个参数指定关联的子表模型类名
         return $this->hasOne(AccountInfo::className(), ['UserID' => 'UserID']);
     }
+
+    /*
+     * AccountInfo
+     * */
+    public function getuser_bind_info()
+    {
+        //同样第一个参数指定关联的子表模型类名
+        return $this->hasOne(UserBindInfo::className(), ['UserID' => 'UserID']);
+    }
 }

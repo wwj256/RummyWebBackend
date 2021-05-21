@@ -62,6 +62,7 @@ class UserWithdrawInfoController extends Controller
     public function actionRecord()
     {
         $form = Yii::$app->request->get('UserWithdrawInfoSearch');
+        $ID = isset($form['ID'])?trim($form['ID']):'';
         $UserID = isset($form['UserID'])?trim($form['UserID']):'';
         $NickName = isset($form['NickName'])?trim($form['NickName']):'';
         $OperatorID = isset($form['OperatorID'])?trim($form['OperatorID']):'';
@@ -71,6 +72,7 @@ class UserWithdrawInfoController extends Controller
             ->select('user_withdraw_info.*, account_info.NickName')
             ->joinWith("account_info");
         $query->andFilterWhere([
+            'user_withdraw_info.ID' => $ID,
             'user_withdraw_info.UserID' => $UserID,
             'OperatorID' => $OperatorID,
         ]);

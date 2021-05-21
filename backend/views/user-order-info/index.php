@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use mdm\admin\components\Helper;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserOrderInfoSearch */
@@ -18,81 +19,61 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-//            'ID',
-            'OrderID',
-            'UserID',
-//            'NickName',
-            [
-                'attribute' => 'NickName',
-                'format' => 'raw',
-                'value' => function($model){
-//                    Yii::warning('$model='.json_encode($model->NickName));
-                    $tModel = \backend\models\AccountInfo::find()->select('NickName')->where('UserID='.$model->UserID)->one();
-                    if( !$tModel ) return '';
-                    return $tModel->NickName;
-                }
-            ],
-            'CreateTime',
-            'SpreadID',
-            [
-                'attribute' => 'ScoreAmount',
-                'format' => 'raw',
-                'value' => function($model){
-                    return $model->ScoreAmount/100;
-                }
-            ],
-            [
-                'attribute' => 'Amount',
-                'format' => 'raw',
-                'value' => function($model){
-                    return $model->Amount/100;
-                }
-            ],
-            [
-                'attribute' => 'CouponID',
-                'format' => 'raw',
-                'value' => function($model){
-                    if( $model->CouponID == 0 ){
-
-                    }else{
-                        return html::a($model->CouponID,"/user-coupon-info/index?UserCouponInfoSearch[ID]={$model->CouponID}");
-                    }
-                    
-                }
-            ],
-            // [
-            //     'attribute' => 'Bonus',//赠送金额
-            //     'format' => 'raw',
-            //     'value' => function($model){
-            //         return ($model->ScoreAmount - $model->Amount)/100;
-            //     }
-            // ],
-            [
-                'attribute' => 'UserEndScore',
-                'format' => 'raw',
-                'value' => function($model){
-                    return $model->UserEndScore/100;
-                }
-            ],
-            [
-                'attribute' => 'Status',
-                'format' => 'raw',
-                'value' => function($model){
-                    return Yii::$app->params['orderInfoStatusLabels'][$model->Status];
-                }
-            ],
-            'ReferenceId',
-            'PaymentMode',
-            'PayTime',
-
-
-
-
-        ],
-    ]); ?>
+    <div id="p0" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000" style="overflow: auto;">
+        <?php 
+            $count = count($model);
+            $totalCount = $pages->totalCount;
+            $begin = $pages->getPage() * $pages->getPageSize() + 1;
+            $end = $begin + $count - 1;
+            if ($begin > $end) {
+                $begin = $end;
+            }          
+            echo "Showing <b>$begin-$end</b> of <b>$totalCount</b> items.";                
+        ?>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>UserID</th>
+                <th>NickName</th>
+                <th>LoginIP</th>
+                <th>Phone</th>
+                <th>Mail</th>
+                <th>CreateTime</th>
+                <th>SpreadID</th>
+                <th>ActualAmount</th>
+                <th>PayAmount</th>
+                <th>CouponID</th>
+                <th>UserEndScore</th>
+                <th>Status</th>
+                <th>ReferenceID</th>
+                <th>PaymentMode</th>
+                <th>PayTime</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($model as $val){  ?>
+                <tr data-key="<?=$val['ID']?>">
+                    <td><?=$val['OrderID']?></td>
+                    <td><?=$val['UserID']?></td>
+                    <td><?=$val['NickName']?></td>
+                    <td><?=$val['LoginIP']?></td>
+                    <td><?=$val['Phone']?></td>
+                    <td><?=$val['Mail']?></td>
+                    <td><?=$val['CreateTime']?></td>
+                    <td><?=$val['SpreadID']?></td>
+                    <td><?=$val['ScoreAmount']/100 ?></td>
+                    <td><?=$val['Amount']/100 ?></td>
+                    <td><?=$val['CouponID']==0?'':html::a($model->CouponID,"/user-coupon-info/index?UserCouponInfoSearch[ID]={$val['CouponID']}") ?></td>
+                    <td><?=$val['UserEndScore']/100 ?></td>
+                    <td><?=Yii::$app->params['orderInfoStatusLabels'][$val['Status']] ?></td>
+                    <td><?=$val['ReferenceId'] ?></td>
+                    <td><?=$val['PaymentMode'] ?></td>
+                    <td><?=$val['PayTime'] ?></td>
+                </tr>
+            <?php }?>
+            </tbody>
+        </table>
+        <?= LinkPager::widget(['pagination' => $pages, 'nextPageLabel' => false, 'prevPageLabel' => false, 'firstPageLabel' => 'first', 'lastPageLabel' => 'last', 'hideOnSinglePage' => false ]); ?>
+    </div>
 </div>
