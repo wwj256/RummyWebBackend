@@ -10,7 +10,7 @@ class DemoController extends Controller
 {
     public function actionTest()
     {
-        echo 'Test controller hello world';
+        echo 'Test controller hello world'.date("r").'\n';
         GFTool::writeLog('test controller '.date("r"));
     }
 }
