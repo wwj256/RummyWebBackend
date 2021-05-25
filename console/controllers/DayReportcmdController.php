@@ -42,4 +42,9 @@ class DayReportcmdController extends Controller
     {
         echo 'test';
     }    
+
+    public function actionUpdateDayReport($dayTime)
+    {
+        DayReportController::updateDayReport($dayTime);
+    }
 }

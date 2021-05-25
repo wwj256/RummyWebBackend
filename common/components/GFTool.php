@@ -263,6 +263,23 @@ class GFTool
         fwrite($fp,date("Y-m-d H:i:s").':'.$value."\r\n");//写入文件
         fclose($fp);//关闭资源通
     }
+    /**
+     * 正则表达式来匹配日期格式 "YYYY-MM-DD"：
+     */
+    public static function checkDateFormat($date)
+    {
+        //匹配日期格式
+        if (preg_match ("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/", $date, $parts))
+        {
+            //检测是否为日期
+            if(checkdate($parts[2],$parts[3],$parts[1]))
+                return true;
+            else
+            return false;
+        }
+        else
+            return false;
+    }
 
 
 }

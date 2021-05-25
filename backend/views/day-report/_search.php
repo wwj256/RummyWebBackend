@@ -8,7 +8,20 @@ use kartik\datetime\DateTimePicker;
 /* @var $model backend\models\DayReportSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<script >
+    function updateDateReport() {
+        let dateTxt = document.getElementById('updateDateTxt').value;
+        var matchArray=dateTxt.match(/^([0-9]{4})-([0-1][0-9])-([0-3][0-9])$/);
+        if( matchArray == null ){//检测是否是正确的日期格式
+            alert('The format of the input date is incorrect. Please reenter it');
+            return;
+        }
+        $.post("/day-report/change-day-report?dayTime="+dateTxt, function (data){
+            alert(data);
+            window.location.reload();
+        });
+    }
+</script>
 <div class="day-report-search">
 
     <?php $form = ActiveForm::begin([
@@ -45,5 +58,10 @@ use kartik\datetime\DateTimePicker;
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-
+    <div >
+        <input type="text" id="updateDateTxt" placeholder="Date Time" maxlength="255" style="width:100;height:30px">
+        <button type="button" class="btn btn-danger" onclick="updateDateReport()" >Update</button>
+        <div style='display:inline'>update day report.date format 2021-01-01</div>
+    </div>
+    
 </div>

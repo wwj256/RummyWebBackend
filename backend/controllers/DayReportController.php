@@ -126,7 +126,13 @@ class DayReportController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
-    public static function updateDayReport($dayTime)
+    public function actionChangeDayReport($dayTime)
+    {
+        $this::UpdateDayReport($dayTime);
+        return 'update complete!';
+    }
+
+    public static function UpdateDayReport($dayTime)
     {
         //新注册玩家人数
         $statisticsSql = "SELECT COUNT(*) as count  FROM lami_account.account_info WHERE IsRobot = 0 AND (DATEDIFF(RegisterDate,'$dayTime') = 0);";
