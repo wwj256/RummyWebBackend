@@ -57,17 +57,17 @@ class DayReport extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'DayDate' => '日期',
-    'NewPlayers' => '新注册玩家数',
-    'FirstDeposit' => '首冲玩家数',
-    'SecondDeposit' => '再冲玩家数',
-    'AverageOnline' => '平均在线人数（小时）',
-    'TotalDeposit' => '总存款',
-    'TotalWithdraw' => '总提款',
-    'TotalBonus' => '总奖金',
-    'TotalFee' => '转账手续费',
-    'TotalRake' => '总税收',
-    'UseBonus' => '消耗奖金数',
+    'DayDate' => 'DayDate',//日期
+    'NewPlayers' => 'NewPlayers',//新注册玩家数
+    'FirstDeposit' => 'FirstDeposit',//首冲玩家数
+    'SecondDeposit' => 'SecondDeposit',//再冲玩家数
+    'AverageOnline' => 'AverageOnline',//平均在线人数（小时）
+    'TotalDeposit' => 'TotalDeposit',//总存款
+    'TotalWithdraw' => 'TotalWithdraw',//总提款
+    'TotalBonus' => 'TotalBonus',//总奖金
+    'TotalFee' => 'TotalFee',//转账手续费
+    'TotalRake' => 'TotalRake',//总税收
+    'UseBonus' => 'UseBonus',//消耗奖金数
         ];
     }
 }
