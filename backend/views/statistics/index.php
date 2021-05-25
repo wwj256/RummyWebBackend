@@ -94,7 +94,7 @@ $this->title = '';
         <div class="small-box bg-green">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['CurrentMontyFTD'];
+                    echo $homeData['CurrentMontyFTD']>0 ? $homeData['CurrentMontyFTD'] : '0';
                     ?></h3>
                 <p>CurrentMontyFTD</p>
             </div>
