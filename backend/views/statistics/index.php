@@ -25,7 +25,7 @@ $this->title = '';
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['TotalDepositors']>0 ? $homeData['TotalDepositors'] : '0';
+                    echo $homeData['TotalDepositors']>0 ? $homeData['TotalDepositors']/100 : '0';
                     ?></h3>
                 <p>Total Depositors</p>
             </div>
@@ -36,7 +36,7 @@ $this->title = '';
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['TotalRake'];
+                    echo $homeData['TotalRake']/100;
                     ?></h3>
                 <p>Total Rake</p>
             </div>
@@ -105,7 +105,7 @@ $this->title = '';
         <div class="small-box bg-green">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['CurrentMontyTotalDepositors']>0 ? $homeData['CurrentMontyTotalDepositors'] : '0';
+                    echo $homeData['CurrentMontyTotalDepositors']>0 ? $homeData['CurrentMontyTotalDepositors']/100 : '0';
                     ?></h3>
                 <p>CurrentMontyTotalDepositors</p>
             </div>
