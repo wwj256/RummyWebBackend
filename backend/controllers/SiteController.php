@@ -62,7 +62,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
 //        return "ee3";
-        return $this->redirect('/account-info/index');
+        return $this->redirect('/statistics/index');
     }
 
     /**

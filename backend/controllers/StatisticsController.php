@@ -50,9 +50,13 @@ class StatisticsController extends \yii\web\Controller
         $statisticsSql = "SELECT COUNT(DISTINCT UserID) as count FROM lami_account.account_info WHERE UserID > 9999 AND DATE_FORMAT( RegisterDate, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' );";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryOne();
-        $homeData['NewRegistrations'] = $statisticsData['count'];
+        $homeData['CurrentMontyNewRegistrations'] = $statisticsData['count'];
 
         //当前月首充账号数
+        $statisticsSql = "SELECT SUM(FirstDeposit) as count FROM lami_record.day_report WHERE DATE_FORMAT( DayDate, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' );";
+        $statisticsData = Yii::$app->db->createCommand($statisticsSql)
+            ->queryOne();
+        $homeData['CurrentMontyFTD'] = $statisticsData['count'];
 
         //当前月总充值
         $statisticsSql = "SELECT SUM(Amount) as count FROM lami_account.user_order_info WHERE Status = 1 AND DATE_FORMAT( CreateTime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m');";

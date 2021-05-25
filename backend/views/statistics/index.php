@@ -1,8 +1,13 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'Statistics info';
+// $this->title = 'Statistics info';
+$this->title = '';
 ?>
-
+<section class="content-header">
+    <h1>
+    Statistics Data           </h1>
+    <p/>
+</section>
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -40,7 +45,7 @@ $this->title = 'Statistics info';
 </div>
 <section class="content-header">
     <h1>
-        今日信息            </h1>
+    Nearly a month data            </h1>
     <p/>
 </section>
 <div class="row">
@@ -66,20 +71,38 @@ $this->title = 'Statistics info';
             </div>
         </div>
     </div>
+    
+</div>
+<section class="content-header">
+    <h1>
+    Current month data            </h1>
+    <p/>
+</section>
+<div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-yellow">
+        <div class="small-box bg-green">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['NewRegistrations'];
+                    echo $homeData['CurrentMontyNewRegistrations'];
                     ?></h3>
-                <p>NewRegistrations</p>
+                <p>CurrentMontyNewRegistrations</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3><?php
+                    echo $homeData['CurrentMontyFTD'];
+                    ?></h3>
+                <p>CurrentMontyFTD</p>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-yellow">
+        <div class="small-box bg-green">
             <div class="inner">
                 <h3><?php
                     echo $homeData['CurrentMontyTotalDepositors']>0 ? $homeData['CurrentMontyTotalDepositors'] : '0';
