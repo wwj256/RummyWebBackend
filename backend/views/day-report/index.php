@@ -24,12 +24,56 @@ $this->params['breadcrumbs'][] = $this->title;
             'FirstDeposit',
             'SecondDeposit',
             'AverageOnline',
-            'TotalDeposit',
-            'TotalWithdraw',
-            'TotalBonus',
+            [
+                'attribute' => 'TotalDeposit',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->TotalDeposit/100;
+                }
+            ],
+            [
+                'attribute' => 'TotalWithdraw',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->TotalWithdraw/100;
+                }
+            ],
+            [
+                'attribute' => 'TotalBonus',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->TotalBonus/100;
+                }
+            ],
             'TotalFee',
-            'TotalRake',
-            'UseBonus',
+            [
+                'attribute' => 'Back Cash',
+                'format' => 'raw',
+                'value' => function($model){
+                    return ($model->TotalDeposit - $model->TotalWithdraw - $model->TotalFee)/100;
+                }
+            ],
+            [
+                'attribute' => 'TotalRake',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->TotalRake/100;
+                }
+            ],
+            [
+                'attribute' => 'UseBonus',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->UseBonus/100;
+                }
+            ],
+            [
+                'attribute' => 'Net Rake',
+                'format' => 'raw',
+                'value' => function($model){
+                    return ($model->TotalRake - $model->UseBonus)/100;
+                }
+            ],
         ],
     ]); ?>
 
