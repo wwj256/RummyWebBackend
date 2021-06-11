@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['SpreadID']?></td>
                     <td><?=$val['ScoreAmount']/100 ?></td>
                     <td><?=$val['Amount']/100 ?></td>
-                    <td><?=$val['CouponID']==0?'':html::a($model->CouponID,"/user-coupon-info/index?UserCouponInfoSearch[ID]={$val['CouponID']}") ?></td>
+                    <td><?=$val['CouponID']==0?'':html::a($val['CouponID'],"/user-coupon-info/index?UserCouponInfoSearch[ID]={$val['CouponID']}") ?></td>
                     <td><?=$val['UserEndScore']/100 ?></td>
                     <td><?=Yii::$app->params['orderInfoStatusLabels'][$val['Status']] ?></td>
                     <td><?=$val['ReferenceId'] ?></td>

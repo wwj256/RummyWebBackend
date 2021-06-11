@@ -75,8 +75,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'ID',
             'UserID',
-            'Amount',
-            'BeforeScore',
+            [
+                'attribute' => 'Amount',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->Amount/100;
+                }
+            ],
+            [
+                'attribute' => 'BeforeScore',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->BeforeScore/100;
+                }
+            ],
             'Tax',
             [
                 'attribute' => 'Status',
