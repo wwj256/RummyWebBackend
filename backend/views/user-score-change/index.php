@@ -70,10 +70,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $str = html::a($val['RelateID'],"/game-record/index?GameRecordSearch[RcdId]={$val['RelateID']}");
                                 break;
                             case 2:
-                                $str = html::a($val['RelateID'],"/user-order-info/index?UserOrderInfoSearch[OrderID]={$val['RelateID']}");
+                                $str = html::a($val['RelateID'],"/user-order-info/index?UserOrderInfoSearch[ID]={$val['RelateID']}");
                                 break;
                             case 3:
-                                $str = html::a($val['RelateID'],"/user-withdraw-info/index?UserWithdrawInfoSearch[ID]={$val['RelateID']}");
+                                $str = html::a($val['RelateID'],"/user-withdraw-info/record?UserWithdrawInfoSearch[ID]={$val['RelateID']}");
                                 break;
                             case 4:
                                 $str = $val['RelateID'];
