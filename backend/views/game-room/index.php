@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['RoomID']?></td>
                     <td><?=$val['RealGameID']?></td>
                     <td><?= $roomConfig->RoomName ?></td>
-                    <td><?= Html::dropDownList($val['RoomStatus'], $val['RoomStatus'], [0=>'Open',1=>'Close'], ['onchange'=>'
+                    <td><?= Html::dropDownList($val['RoomStatus'], $val['RoomStatus'], [0=>'Close',1=>'Open'], ['onchange'=>'
                         updateStatus(this,'. $val['RoomID'].')'
                         ]); ?></td>
                     <td><?= $roomConfig->IsPrac == 1 ? 'yes' : 'no' ?></td>
