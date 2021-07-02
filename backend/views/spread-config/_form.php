@@ -16,7 +16,6 @@ use yii\helpers\Url;
     'validationUrl' => Url::toRoute(['validate-form']),
     ]); ?>
 
-    <?= $form->field($model, 'SpreadID')->textInput() ?>
 
     <?= $form->field($model, 'RegVersion')->textInput(['maxlength' => true]) ?>
 
