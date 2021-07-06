@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             case 3:
                                 $str = html::a($val['RelateID'],"/user-withdraw-info/record?UserWithdrawInfoSearch[ID]={$val['RelateID']}");
                                 break;
-                            case 4:
+                            default:
                                 $str = $val['RelateID'];
                                 break;
                         }
