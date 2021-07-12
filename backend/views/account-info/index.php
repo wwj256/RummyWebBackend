@@ -33,17 +33,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
         function onConfirmHandler() {
             let desc = document.getElementById('txt-refuse');
-            let txt_1 = document.getElementById('txt-1').value;
-            let txt_2 = document.getElementById('txt-2').value;
-            let txt_3 = document.getElementById('txt-3').value;
-            let txt_4 = document.getElementById('txt-4').value;
-            let txt_5 = document.getElementById('txt-5').value;
-            $().closeModal();
-            console.log("/account-info/add-score?id="+curUid+"&SChange="+ txt_1+"&BindChg="+ txt_2+"&BonusChg="+ txt_3 +"&LuckChg="+ txt_4 +"&desc="+desc.value);
-            $.post("/account-info/add-score?id="+curUid+"&SChange="+ txt_1+"&BindChg="+ txt_2+"&BonusChg="+ txt_3 +"&LuckChg="+ txt_4 +"&ExpScore="+ txt_5 +"&desc="+desc.value, function (data){
-                alert(data);
-                window.location.reload();
-            });
+            let txt_1 = parseFloat(document.getElementById('txt-1').value);
+            let txt_2 = parseFloat(document.getElementById('txt-2').value);
+            let txt_3 = parseFloat(document.getElementById('txt-3').value);
+            let txt_4 = parseFloat(document.getElementById('txt-4').value);
+            let txt_5 = parseFloat(document.getElementById('txt-5').value);
+            if( txt_1 || txt_2 || txt_3 || txt_4 || txt_5 ){
+                $().closeModal();
+                console.log("/account-info/add-score?id="+curUid+"&SChange="+ txt_1+"&BindChg="+ txt_2+"&BonusChg="+ txt_3 +"&LuckChg="+ txt_4 +"&desc="+desc.value);
+                $.post("/account-info/add-score?id="+curUid+"&SChange="+ txt_1+"&BindChg="+ txt_2+"&BonusChg="+ txt_3 +"&LuckChg="+ txt_4 +"&ExpScore="+ txt_5 +"&desc="+desc.value, function (data){
+                    alert(data);
+                    window.location.reload();
+                });
+            }else{
+                alert("Please enter the correct number!");
+            }
+            
         }
 
         function onResetMachineClick(uid) {
@@ -144,15 +149,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['LuckScore']/100 ?></td>
                     <td><?=$val['ExpScore']/100 ?></td>
                     <td><?=$val['SpreadID'] ?></td>
-                    <td><?=Html::dropDownList('isBrand', $val['Status'], Yii::$app->params['userStatus'], ['style'=>'width:100px', 'onchange'=>'
-                        updateStatus(this,'. $val['UserID'].')'
-                        ]); ?></td>
+                    <td><?php
+                        if( $isAdmin ){
+                            echo Html::dropDownList('isBrand', $val['Status'], Yii::$app->params['userStatus'], ['style'=>'width:100px', 'onchange'=>'
+                            updateStatus(this,'. $val['UserID'].')'
+                            ]);
+                        }else{
+                            echo Yii::$app->params['userStatus'][$val['Status']];
+                        }
+                        ?></td>
                     <td><?=$val['LoginDate'] ?></td>
                     <td><?php
-                        echo html::a('View','view?id='.$val['UserID'], ['class'=>"btn btn-default"]);
-                        echo html::a('Update','update?id='.$val['UserID'], ['class'=>"btn btn-default"]);
-                        echo html::button('addScore', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')']);
-                        echo html::button('ResetMachineID', ['id'=>'btn-danger','class'=>"btn btn-danger", 'onclick'=>'onResetMachineClick('. $val['UserID'] .')']);
+                        echo html::a('View','view?id='.$val['UserID'], ['class'=>"btn btn-default"])." ";
+                        if( $isAdmin ){
+                            echo html::a('Update','update?id='.$val['UserID'], ['class'=>"btn btn-default"])." ";
+                            echo html::button('addScore', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')'])." ";
+                            echo html::button('ResetMachineID', ['id'=>'btn-danger','class'=>"btn btn-danger", 'onclick'=>'onResetMachineClick('. $val['UserID'] .')']);
+                        }
                         ?>
                     </td>
                 </tr>

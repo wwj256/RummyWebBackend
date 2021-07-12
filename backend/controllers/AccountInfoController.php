@@ -69,10 +69,17 @@ class AccountInfoController extends Controller
         $searchModel = new AccountInfoSearch();
         $searchModel->load(Yii::$app->request->queryParams);
 
+        $uid = Yii::$app->user->identity->getId();
+        $statisticsSql = "SELECT * FROM lami_backend.auth_assignment WHERE item_name = '管理员' AND user_id = $uid";
+        $statisticsData = Yii::$app->db->createCommand($statisticsSql)
+            ->queryAll();
+        $isAdmin = count($statisticsData) > 0;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'model' => $model,
             'pages' => $pages,
+            'isAdmin' => $isAdmin,
         ]);
     }
 

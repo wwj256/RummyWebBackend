@@ -151,4 +151,13 @@ class UserBackendController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionChangepwd($id, $pwd)
+    {
+        $model = $this->findModel($id);
+        $model->setPassword($pwd);
+        // $model->Password = md5($pwd);
+        // echo Yii::$app->security->generatePasswordHash($pwd);
+        return $model->save(false);
+    }
 }

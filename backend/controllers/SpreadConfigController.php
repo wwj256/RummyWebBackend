@@ -85,10 +85,10 @@ return $this->renderAjax('create', [
 */
 public function actionValidateForm()
 {
-$model = new SpreadConfig();
-$model->load(Yii::$app->request->post());
-Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-return \yii\widgets\ActiveForm::validate($model);
+    $model = new SpreadConfig();
+    $model->load(Yii::$app->request->post());
+    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    return \yii\widgets\ActiveForm::validate($model);
 }
     /**
      * Updates an existing SpreadConfig model.
