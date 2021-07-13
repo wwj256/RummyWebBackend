@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = '商户登录';
+$this->title = 'Merchant Login';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>商户后台管理系统</b></a>
+        <a href="#"><b>Merchant background management system</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -30,12 +30,12 @@ $fieldOptions2 = [
         <?= $form
             ->field($model, 'username', $fieldOptions1)
             ->label(false)
-            ->textInput(['placeholder' => '请输入用户名']) ?>
+            ->textInput(['placeholder' => 'Please enter a user name']) ?>
 
         <?= $form
             ->field($model, 'password', $fieldOptions2)
             ->label(false)
-            ->passwordInput(['placeholder' => '请输入密码']) ?>
+            ->passwordInput(['placeholder' => 'Please enter your password']) ?>
 
         <div class="row">
             <!-- /.col -->
