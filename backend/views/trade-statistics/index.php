@@ -31,7 +31,7 @@ $this->title = '统计信息';
         <div class="small-box bg-orange" onclick="toDealOut()">
             <div class="inner">
                 <h3><?php
-                    echo $homeData['sellCount'] ? $homeData['sellCount']/100 : 0;
+                    echo $homeData['sellCount'] ? abs($homeData['sellCount'])/100 : 0;
                     ?></h3>
                 <p>累计转入给用户金币</p>
             </div>
