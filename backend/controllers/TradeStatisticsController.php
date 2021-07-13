@@ -68,7 +68,7 @@ class TradeStatisticsController extends \yii\web\Controller
         $chatLabels = [];
         $chatDatasIn = [];
         $chatDatasOut = [];
-        for ($i=1; $i < 31; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
             $dateStr = substr(date("Y-m-d",strtotime("-$i day")),5,5);
             array_unshift($chatLabels,$dateStr);
             if( array_key_exists($dateStr, $dealInData) ){
