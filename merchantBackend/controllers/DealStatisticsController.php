@@ -33,7 +33,7 @@ class DealStatisticsController extends \yii\web\Controller
             ->queryAll();
         $dealInData = [];
         foreach ($statisticsData as $key => $value) {
-            $dealInData[substr($value['time'],5,5)] = $value['score'];
+            $dealInData[substr($value['time'],5,5)] = $value['score']/100;
         }
 
 
@@ -43,7 +43,7 @@ class DealStatisticsController extends \yii\web\Controller
         $dealOutData = [];
         
         foreach ($statisticsData as $key => $value) {
-            $dealOutData[substr($value['time'],5,5)] = $value['score'];
+            $dealOutData[substr($value['time'],5,5)] = $value['score']/100;
         }
         // echo json_encode($dealInData);
         $chatLabels = [];
