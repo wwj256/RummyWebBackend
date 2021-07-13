@@ -84,6 +84,7 @@ $this->title = '';
     <div class="formItem">
         <span class="leftLabel" >DealScore:</span>
         <input type="text" id="dealCount" placeholder="Transaction amount" oninput = "value=value.replace(/[^\d]/g,'')">
+        <span id="error_phone" style="color: #000000;">Users need to keep at least <?= $tradeUserMinScore/100 ?> gold coins</span>
     </div>
     <div class="formItem">
         <span class="leftLabel">Phone:</span>

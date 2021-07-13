@@ -19,12 +19,12 @@ $fieldOptions2 = [
 ];
 ?>
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>Merchant background management system</b></a>
+<div class="login-box" style="width: 500px;text-align: center;">
+    <div class="login-logo" >
+        <a href="#"><b>Rummy management system</b></a>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body">
+    <div class="login-box-body" style="width: 360px;display: inline-block;">
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
         <?= $form

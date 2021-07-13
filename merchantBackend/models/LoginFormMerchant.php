@@ -46,7 +46,7 @@ class LoginFormMerchant extends Model
             $user = $this->getUser();
             if ($user){
                 if(!$user->validatePassword($this->password)){
-                    $this->addError($attribute, '账户密码错误！');
+                    $this->addError($attribute, 'Account password error！');
                 }else{
                     // if ($user->ustate == 0 ){
                     //     $this->addError($attribute, '您的账户已冻结，请与客服联系！');
@@ -61,7 +61,7 @@ class LoginFormMerchant extends Model
                     // }
                 }
             }else{
-                $this->addError($attribute, '账户名不存在！');
+                $this->addError($attribute, 'The account name does not exist！');
             }
         }
     }

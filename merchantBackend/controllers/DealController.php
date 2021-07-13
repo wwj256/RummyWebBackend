@@ -2,6 +2,7 @@
 
 namespace merchantBackend\controllers;
 
+use backend\models\SysConfig;
 use backend\models\UserDeal;
 use common\components\HttpTool;
 use merchantBackend\models\LogDeal;
@@ -11,7 +12,11 @@ class DealController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $sysConfig = SysConfig::findOne("TradeUserMinScore");
+        $tradeUserMinScore = $sysConfig["V"];
+        return $this->render('index',[
+            "tradeUserMinScore" => $tradeUserMinScore,
+        ]);
     }
 
     /**
@@ -20,6 +25,7 @@ class DealController extends \yii\web\Controller
      */
     public function actionDeal($type, $targetID, $score, $phone, $code)
     {
+
         $uid = \Yii::$app->user->identity->getId();
         $userDeal = UserDeal::findIdentity($uid);
         if( $type == 0 ){
@@ -29,13 +35,14 @@ class DealController extends \yii\web\Controller
                 return 'SMS code error!';
             }
             
-            $sqlStr = "SELECT * lami_account.score_info WHERE UserID = $targetID;";
+            $sqlStr = "SELECT * FROM lami_account.score_info WHERE UserID = $targetID;";
             $sqlData = Yii::$app->db->createCommand($sqlStr)
                 ->queryOne();
             if( !$sqlData ){
                 return "The user's game ID was not found, please enter it again！";//用户游戏ID未到找，请重新输入
             }else{
-                if( $sqlData['Score'] - $sqlData['BindScore'] < ($score * 100)){
+                $sysConfig = SysConfig::findOne("TradeUserMinScore");
+                if( ($sqlData['Score'] - $sysConfig['V']) < ($score * 100)){
                     return 'The user is short of gold coins, please contact the user';//'用户的金币不足，请与用户联系！';
                 }
             }
@@ -73,7 +80,7 @@ class DealController extends \yii\web\Controller
             return 'User deal success，trade deal error！';
         }
         if( $type == 0 ){
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['ApiURL']."houtai/delsms??ph={$phone}");
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/delsms??ph={$phone}");
         }
 
         //保存日志
