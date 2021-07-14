@@ -61,7 +61,7 @@ class SiteController extends Controller
     public function actionError()
     {
 //        return "ee3";
-        return $this->redirect('/deal-statistics/index');
+        return $this->redirect('/deal/index');
     }
     /**
      * Displays homepage.
@@ -71,7 +71,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
 //        return "ee3";
-        return $this->redirect('/deal-statistics/index');
+        return $this->redirect('/deal/index');
     }
 
     /**
