@@ -67,8 +67,9 @@ $this->title = '';
         }
     }
 </script>
-<span style="margin-left:200px;font-size: 25px;">Trading operations</span>
-<div style="display: flex;flex-direction:column;width: 850px;margin-top:15px;">
+<span style="font-size: 25px;">Trading operations</span>
+<div style="width: 100%;overflow: auto;" >
+    <div style="display: flex;flex-direction:column;width: 850px;margin-top:15px;">
     <div class="formItem">
         <span class="leftLabel" >User ID:</span>
         <input type="text" id="targetID" placeholder="Game ID" oninput = "value=value.replace(/[^\d]/g,'')" >
@@ -78,13 +79,13 @@ $this->title = '';
     <div class="formItem" id="targetInfo" style="display: none;">
         <span class="leftLabel" >NickName:</span>
         <input type="text" id="targetName"  >
-        <span class="leftLabel" >Score:</span>
+        <span class="leftLabel" >BlueGems:</span>
         <input type="text" id="targetScore"  >
     </div>
     <div class="formItem">
         <span class="leftLabel" >DealScore:</span>
         <input type="text" id="dealCount" placeholder="Transaction amount" oninput = "value=value.replace(/[^\d]/g,'')">
-        <span id="error_phone" style="color: #000000;">Users need to keep at least <?= $tradeUserMinScore/100 ?> gold coins</span>
+        <span id="error_phone" style="color: #000000;">Users need to keep at least <?= $tradeUserMinScore/100 ?> bluegems</span>
     </div>
     <div class="formItem">
         <span class="leftLabel">Phone:</span>
@@ -98,10 +99,11 @@ $this->title = '';
         <span id="error_code" style="color: #000000;">The verification code received by the counterparty</span>
     </div>
     <div class="formItem" style="display: flex;justify-content:center;width:600px;">
-        <button type="button" onclick="btnDealHandler(0)" class="btn btn-primary">Deduct user gold</button>
-        <button type="button" onclick='btnDealHandler(1)' class="btn btn-primary" style="margin-left: 100px;">Give the user gold</button>
+        <button type="button" onclick="btnDealHandler(0)" class="btn btn-primary">Deduct user bluegem</button>
+        <button type="button" onclick='btnDealHandler(1)' class="btn btn-primary" style="margin-left: 100px;">Give the user bluegem</button>
     </div>
     <div class="formItem" style="width:700px;">
-        <span style="display:block;text-align:center">Tips: transfer to the user gold, do not need to input the phone number and ID code</span>
+        <span style="display:block;text-align:center">Tips: transfer to the user bluegems, do not need to input the phone number and ID code</span>
     </div>
+</div>
 </div>

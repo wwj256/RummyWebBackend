@@ -55,7 +55,7 @@ use yii\helpers\Html;
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li >
-                    <div style="margin-top: 15px;font-size: 17px;color:white">Score：
+                    <div style="margin-top: 15px;font-size: 17px;color:white">BlueGem：
                     <?php 
                         echo Yii::$app->user->identity->Score/100;
                     ?></div>

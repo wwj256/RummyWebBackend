@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 "format" => "raw",
                 "value" => function($model){
                     if( $model->Type == 1 ){
-                        return "Give the user gold";
+                        return "Give the user bluegem";
                     }else{
-                        return "Deduct user gold";
+                        return "Deduct user bluegem";
                     }
                 },
 
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                "attribute" => "AfterScore",
+                "attribute" => "AfterBlueGems",
                 "format" => 'raw',
                 'value' => function($model){
                     return ($model->DealScore + $model->Score)/100;

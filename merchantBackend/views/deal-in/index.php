@@ -28,7 +28,7 @@ $this->title = 'Transfer to daily statistics';
             <thead>
             <tr style="text-align: center;">
                 <th>Date</th>
-                <th>Transferred Gold</th>
+                <th>Transferred BlueGems</th>
                 <th>Check the details</th>
             </tr>
             </thead>
@@ -36,7 +36,7 @@ $this->title = 'Transfer to daily statistics';
             <?php foreach($dataProvider as $val){  ?>
                 <tr data-key="<?=$val['time']?> " style="text-align: center;">
                     <td><?=$val['time']?></td>
-                    <td><?=$val['score']?></td>
+                    <td><?=$val['score']/100 ?></td>
                     <td><?php
                         echo Html::a($val['count'],'/log-deal/index?LogDealSearch[Type]=0&LogDealSearch[UpdateTime]='.$val['time']);
                         ?>

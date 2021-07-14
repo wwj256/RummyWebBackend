@@ -43,14 +43,14 @@ class DealController extends \yii\web\Controller
             }else{
                 $sysConfig = SysConfig::findOne("TradeUserMinScore");
                 if( ($sqlData['Score'] - $sysConfig['V']) < ($score * 100)){
-                    return 'The user is short of gold coins, please contact the user';//'用户的金币不足，请与用户联系！';
+                    return 'The user is short of bluegems, please contact the user';//'用户的金币不足，请与用户联系！';
                 }
             }
             $score = $score * -100;
         }else{
             $score = $score * 100;
             if( $userDeal->Score < $score ){
-                return 'You are currently short of gold coins!';
+                return 'You are currently short of bluegems!';
             }
         }
         

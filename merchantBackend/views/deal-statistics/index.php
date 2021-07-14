@@ -18,7 +18,7 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['sellCount'] ? abs($homeData['sellCount'])/100 : 0;
                     ?></h3>
-                <p onclick="toDealOut()">Accumulate selling of gold coins</p>
+                <p onclick="toDealOut()">Accumulate selling of bluegems</p>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['buyCount'] ? $homeData['buyCount']/100 : 0;
                     ?></h3>
-                <p onclick="toDealIn()">Accumulated purchase of gold coins</p>
+                <p onclick="toDealIn()">Accumulated purchase of bluegems</p>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['curCount'] ? $homeData['curCount']/100 : 0;
                     ?></h3>
-                <p>Current remaining gold</p>
+                <p>Current remaining bluegems</p>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ $this->title = 'Statistics';
             labels: chatLabels,
         
             datasets: [{
-                label: 'Sell gold',
+                label: 'Sell bluegems',
                 data: chatDatasOut,
                 backgroundColor: '#FF851B',
                 borderWidth: 1,
@@ -98,7 +98,7 @@ $this->title = 'Statistics';
             labels: chatLabels,
         
             datasets: [{
-                label: 'Buy gold COINS',
+                label: 'Buy bluegems',
                 data: chatDatasIn,
                 backgroundColor: '#00a65a',
                 borderWidth: 1,
