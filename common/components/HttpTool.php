@@ -8,6 +8,7 @@
 
 namespace common\components;
 
+use Yii;
 
 class HttpTool
 {
@@ -79,5 +80,15 @@ class HttpTool
         $data = curl_exec($ch);
         curl_close($ch);
         return $data;
+    }
+
+    public static function actionSendsms($phone)
+    {
+        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
+        $serverRespon = json_decode($serverResponStr);
+        if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+            return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
+        }
+        return "1";
     }
 }

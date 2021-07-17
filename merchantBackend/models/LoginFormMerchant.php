@@ -4,6 +4,7 @@ namespace merchantBackend\models;
 use Yii;
 use yii\base\Model;
 use backend\models\UserDeal as User;
+use common\components\HttpTool;
 use yii\helpers\Url;
 
 /**
@@ -14,6 +15,7 @@ class LoginFormMerchant extends Model
     public $username;
     public $password;
     public $rememberMe = true;
+    public $code;
 
     private $_user;
 
@@ -30,6 +32,7 @@ class LoginFormMerchant extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['code', 'validateSMSCode']
         ];
     }
 
@@ -60,8 +63,20 @@ class LoginFormMerchant extends Model
                     //     $this->addError($attribute, '您的账户类型不是商户，请与客服联系！');
                     // }
                 }
+                $this->validateSMSCode('code',null);
             }else{
                 $this->addError($attribute, 'The account name does not exist！');
+            }
+        }
+    }
+
+    public function validateSMSCode($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$this->username&cd=$this->code");
+            $serverRespon = json_decode($serverResponStr);
+            if( $serverRespon->code != 0 ){
+                $this->addError($attribute, 'SMS code error!');
             }
         }
     }

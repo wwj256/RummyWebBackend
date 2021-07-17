@@ -1,6 +1,7 @@
 <?php
 namespace merchantBackend\controllers;
 
+use common\components\HttpTool;
 use merchantBackend\models\LoginFormMerchant;
 use Yii;
 use yii\helpers\Url;
@@ -23,7 +24,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','sendsms'],
                         'allow' => true,
                     ],
                     [
@@ -81,20 +82,23 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-//        if (!Yii::$app->user->isGuest) {
-//            return $this->goHome();
-//        }
-//        return "ee";
         $model = new LoginFormMerchant();
+        // if ($model->load(Yii::$app->request->post())) {
+        //     if( $model->login() ){
+
+        //     }
+        //     return json_encode($model);
+        //     return $this->goHome();
+        // } 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
-        } else {
-            $model->password = '';
+        } 
+        // echo json_encode($model);
+        $model->password = '';
 
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -129,5 +133,15 @@ class SiteController extends Controller
         $model = new \common\models\AdminLog();
         $model->setAttributes($data);
         $model->save();
+    }
+
+    public function actionSendsms($phone)
+    {
+        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
+        $serverRespon = json_decode($serverResponStr);
+        if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+            return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
+        }
+        return "1";
     }
 }
