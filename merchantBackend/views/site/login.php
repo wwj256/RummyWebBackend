@@ -42,7 +42,7 @@ $fieldOptions3 = [
     function onSendSMS()
     {
         let txt_1 = document.getElementById('loginformmerchant-username').value;
-        if( txt_1.length < 9 ){
+        if( txt_1.length < 3 ){
             alert("Please input the correct mobile phone number!");
             return;
         }
