@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel merchantBackend\models\LogDealSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Log Deals';
+$this->title = 'Transaction Logs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-deal-index">
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                "attribute" => "AfterBlueGems",
+                "attribute" => "Post-Transaction Balance",
                 "format" => 'raw',
                 'value' => function($model){
                     return ($model->DealScore + $model->Score)/100;

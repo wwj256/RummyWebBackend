@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'User Action Stats');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-action-stat-index">
+<div class="user-action-stat-index" style="width: 100%;overflow: auto;">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -36,8 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'OpenVip',
             'OpenShare',
             'NetBrake',
+            'CreateDate',
         ],
     ]); ?>
 
 
 </div>
+<?

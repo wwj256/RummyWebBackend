@@ -37,6 +37,46 @@ $fieldOptions3 = [
         text-align: center;
     }
 </style>
+
+
+<div class="login-box" style="width: 500px;text-align: center;">
+    <div class="login-logo" >
+        <a href="#"><b>Rummy management system</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body" style="width: 360px;display: inline-block;">
+        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
+
+        <?= $form
+            ->field($model, 'username', $fieldOptions1)
+            ->label(false)
+            ->textInput(['placeholder' => 'Please enter a user phone']) ?>
+
+        <?= $form
+            ->field($model, 'password', $fieldOptions2)
+            ->label(false)
+            ->passwordInput(['placeholder' => 'Please enter your password']) ?>
+
+        <div id="checkOTPDiv" style="display: none;" class="form-group has-feedback field-loginformmerchant-code <?= $model->getFirstError('code') ? 'has-error' : "" ?>">
+            <input type="txt" id="loginformmerchant-code" style="width: 100%;" class="form-control" name="LoginFormMerchant[code]" placeholder="Verification Code" value="<?= $model->code ?>" oninput = "value=value.replace(/[^\d]/g,'')">
+            <button type="button" onclick="onSendSMS()" class="codeBtn">Send</button>
+            <p class="help-block help-block-error"><?= $model->getFirstError('code') ?></p>
+        </div>
+
+        <div class="row">
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+        <?php ActiveForm::end(); ?>
+
+    </div>
+    <!-- /.login-box-body -->
+</div><!-- /.login-box -->
 <script>
     var serverUrl = "<?= Yii::$app->params['APIUrl']?>"
     function onSendSMS()
@@ -95,43 +135,8 @@ $fieldOptions3 = [
 
         }
     }
+    <?php if($model->needCheckOTP){ ?>
+        document.getElementById('checkOTPDiv').style.display = 'block';
+        // $("#checkOTPDiv").show();
+    <?php } ?>
 </script>
-
-<div class="login-box" style="width: 500px;text-align: center;">
-    <div class="login-logo" >
-        <a href="#"><b>Rummy management system</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body" style="width: 360px;display: inline-block;">
-        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
-
-        <?= $form
-            ->field($model, 'username', $fieldOptions1)
-            ->label(false)
-            ->textInput(['placeholder' => 'Please enter a user phone']) ?>
-
-        <?= $form
-            ->field($model, 'password', $fieldOptions2)
-            ->label(false)
-            ->passwordInput(['placeholder' => 'Please enter your password']) ?>
-
-        <div class="form-group has-feedback field-loginformmerchant-code <?= $model->getFirstError('code') ? 'has-error' : "" ?>">
-            <input type="txt" id="loginformmerchant-code" style="width: 100%;" class="form-control" name="LoginFormMerchant[code]" placeholder="Verification Code" value="<?= $model->code ?>" oninput = "value=value.replace(/[^\d]/g,'')">
-            <button type="button" onclick="onSendSMS()" class="codeBtn">Send</button>
-            <p class="help-block help-block-error"><?= $model->getFirstError('code') ?></p>
-        </div>
-
-        <div class="row">
-            <!-- /.col -->
-            <div class="col-xs-4">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
-            </div>
-            <!-- /.col -->
-        </div>
-
-
-        <?php ActiveForm::end(); ?>
-
-    </div>
-    <!-- /.login-box-body -->
-</div><!-- /.login-box -->

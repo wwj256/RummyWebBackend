@@ -82,13 +82,21 @@ class HttpTool
         return $data;
     }
 
-    public static function actionSendsms($phone)
+    public static function sendSMS($phone)
     {
-        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
+        $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
         $serverRespon = json_decode($serverResponStr);
-        if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
-            return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
+        // echo $serverResponStr;
+        // echo var_dump(property_exists($serverRespon, 'code2'));
+        if( !property_exists($serverRespon, 'code') ){
+            return "OTP Sending Error";
+        }else if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+            return "OTP Sending Error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
         }
         return "1";
+    }
+
+    public static function deleteSMS($phone){
+        self::doGet(Yii::$app->params['APIUrl']."houtai/delsms??ph=%2B91{$phone}");
     }
 }

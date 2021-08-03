@@ -91,6 +91,8 @@ class SiteController extends Controller
         //     return $this->goHome();
         // } 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            //登录成功后，删除短验证码
+            HttpTool::deleteSMS($model->username);
             return $this->goHome();
         } 
         // echo json_encode($model);
@@ -137,11 +139,12 @@ class SiteController extends Controller
 
     public function actionSendsms($phone)
     {
-        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
-        $serverRespon = json_decode($serverResponStr);
-        if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
-            return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
-        }
-        return "1";
+        // $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
+        // $serverRespon = json_decode($serverResponStr);
+        // if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+        //     return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
+        // }
+        // return "1";
+        return HttpTool::sendSMS($phone);
     }
 }

@@ -42,6 +42,8 @@ class AccountInfoController extends Controller
         $UserID = isset($form['UserID'])?trim($form['UserID']):'';
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';
+        $login_startTime = isset($form['create_time'])?trim($form['login_startTime']):'';
+        $login_endTime = isset($form['end_time'])?trim($form['login_endTime']):'';
         $NickName = isset($form['NickName'])?trim($form['NickName']):'';
         $RegisterIP = isset($form['RegisterIP'])?trim($form['RegisterIP']):'';
 
@@ -58,6 +60,8 @@ class AccountInfoController extends Controller
         $query->andFilterWhere(['like', 'account_info.RegisterIP', $RegisterIP])
             ->andFilterWhere(['>=', 'RegisterDate', $create_time])
             ->andFilterWhere(['<=', 'RegisterDate', $end_time])
+            ->andFilterWhere(['>=', 'LoginDate', $login_startTime])
+            ->andFilterWhere(['<=', 'LoginDate', $login_endTime])
             ->orderBy('UserID DESC');
         if ($action == 'export') {
             $model = $query->asArray()->all();    

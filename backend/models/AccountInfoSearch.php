@@ -14,6 +14,10 @@ class AccountInfoSearch extends AccountInfo
 {
     public $create_time;
     public $end_time;
+    public $login_startTime;
+    public $login_endTime;
+
+
     /**
      * {@inheritdoc}
      */
@@ -44,6 +48,12 @@ class AccountInfoSearch extends AccountInfo
             }
             if (isset($data['end_time'])){
                 $this->end_time = $data['end_time'];
+            }
+            if (isset($data['login_startTime'])){
+                $this->login_startTime = $data['login_startTime'];
+            }
+            if (isset($data['login_endTime'])){
+                $this->login_endTime = $data['login_endTime'];
             }
         }
     }
@@ -93,6 +103,8 @@ class AccountInfoSearch extends AccountInfo
             ->andFilterWhere(['like', 'LoginMachine', $this->LoginMachine])
             ->andFilterWhere(['>=', 'RegisterDate', $this->create_time])
             ->andFilterWhere(['<=', 'RegisterDate', $this->end_time])
+            ->andFilterWhere(['>=', 'LoginDate', $this->login_startTime])
+            ->andFilterWhere(['<=', 'LoginDate', $this->login_endTime])
             ->orderBy('UserID DESC');
         Yii::warning('$this->create_time='.$this->create_time."  ".$this->UserID."  ");
 

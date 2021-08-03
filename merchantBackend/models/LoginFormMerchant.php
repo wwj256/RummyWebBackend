@@ -16,6 +16,7 @@ class LoginFormMerchant extends Model
     public $password;
     public $rememberMe = true;
     public $code;
+    public $needCheckOTP = false;
 
     private $_user;
 
@@ -73,10 +74,20 @@ class LoginFormMerchant extends Model
     public function validateSMSCode($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$this->username&cd=$this->code");
-            $serverRespon = json_decode($serverResponStr);
-            if( $serverRespon->code != 0 ){
-                $this->addError($attribute, 'SMS code error!');
+            if( $this->code ){
+                $this->needCheckOTP = true;
+                $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=%2B91$this->username&cd=$this->code");
+                $serverRespon = json_decode($serverResponStr);
+                if( $serverRespon->code != 0 ){
+                    $this->addError($attribute, "OTP Sending Error! code=$serverRespon->code");
+                }
+            }else{
+                $user = $this->getUser();
+                $ip = Yii::$app->request->userIP;
+                if( $user->LoginIP != "" && $user->LoginIP != $ip ){
+                    $this->needCheckOTP = true;
+                    $this->addError($attribute, "The IP address is different from the last login IP address and requires OTP authentication");    
+                }
             }
         }
     }
@@ -129,6 +140,11 @@ class LoginFormMerchant extends Model
         ];
         $model = new \common\models\AdminLog();
         $model->setAttributes($data);
+        $model->save();
+
+        $model = $this->getUser();
+        $model->LoginIP = Yii::$app->request->userIP;
+        $model->LoginDate = date("Y-m-d H:m:s");
         $model->save();
     }
 

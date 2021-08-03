@@ -3,7 +3,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
-$this->title = 'Go to the day table';
+$this->title = 'Outflow Transaction Records';
 ?>
 <style>
     tr th{
@@ -28,8 +28,8 @@ $this->title = 'Go to the day table';
             <thead>
             <tr style="text-align: center;">
                 <th>Date</th>
-                <th>Transferred BlueGems</th>
-                <th>Check the details</th>
+                <th>Total Tokens Transferred</th>
+                <th>Check Details</th>
             </tr>
             </thead>
             <tbody>

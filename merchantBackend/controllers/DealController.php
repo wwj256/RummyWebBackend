@@ -29,7 +29,7 @@ class DealController extends \yii\web\Controller
         $uid = \Yii::$app->user->identity->getId();
         $userDeal = UserDeal::findIdentity($uid);
         if( $type == 0 ){
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code");
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=%2B91$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
             if( $serverRespon->code != 0 ){
                 return 'SMS code error!';
@@ -39,18 +39,18 @@ class DealController extends \yii\web\Controller
             $sqlData = Yii::$app->db->createCommand($sqlStr)
                 ->queryOne();
             if( !$sqlData ){
-                return "The user's game ID was not found, please enter it again！";//用户游戏ID未到找，请重新输入
+                return "The account name does not exist, please enter it again！";//用户游戏ID未到找，请重新输入
             }else{
                 $sysConfig = SysConfig::findOne("TradeUserMinScore");
                 if( ($sqlData['Score'] - $sysConfig['V']) < ($score * 100)){
-                    return 'The user is short of bluegems, please contact the user';//'用户的金币不足，请与用户联系！';
+                    return 'This user has insufficient funds. Please contact the user to help resolve his issue.';//'用户的金币不足，请与用户联系！';
                 }
             }
             $score = $score * -100;
         }else{
             $score = $score * 100;
             if( $userDeal->Score < $score ){
-                return 'You are currently short of bluegems!';
+                return 'You have an insufficient balance.';
             }
         }
         
@@ -67,10 +67,10 @@ class DealController extends \yii\web\Controller
         $serverRespon = json_decode($serverResponStr);
         if( $serverRespon ){
             if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
-                return "User deal error code=$serverRespon->CODE, ".Yii::$app->params['errorCode'][$serverRespon->CODE];
+                return "User Transaction Error code=$serverRespon->CODE, ".Yii::$app->params['errorCode'][$serverRespon->CODE];
             }
         }else{
-            return 'User deal error';
+            return 'User Transaction Error';
         }
 
         $statisticsSql = "UPDATE lami_deal.user_deal SET Score=Score+$model->DealScore WHERE UserID = $uid;";
@@ -80,7 +80,7 @@ class DealController extends \yii\web\Controller
             return 'User deal success，trade deal error！';
         }
         if( $type == 0 ){
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/delsms??ph={$phone}");
+            $serverResponStr = HttpTool::deleteSMS($phone);
         }
 
         //保存日志
@@ -112,12 +112,13 @@ class DealController extends \yii\web\Controller
 
     public function actionSendsms($phone)
     {
-        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
-        $serverRespon = json_decode($serverResponStr);
-        if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
-            return "Send SMS error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
-        }
-        return "1";
+        return HttpTool::sendSMS($phone);
+        // $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
+        // $serverRespon = json_decode($serverResponStr);
+        // if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+        //     return "OTP Sending Error code=$serverRespon->code, ".Yii::$app->params['errorCode'][$serverRespon->code];
+        // }
+        // return "1";
     }
 
 }

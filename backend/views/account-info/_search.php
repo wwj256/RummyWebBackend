@@ -47,6 +47,26 @@ use kartik\datetime\DateTimePicker;
                 'format'=>'yyyy-mm-dd hh:ii:ss',
             ]
         ]); ?>
+
+        <?= $form->field($model, 'login_startTime')->label('LoginDate')->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($model['login_startTime'])?$model['login_startTime']:'Start date','readonly'=>'readonly'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'todayBtn'=>true,
+                'format'=>'yyyy-mm-dd hh:ii:ss',
+
+            ]
+        ]); ?>
+        <label class=" form-label">-</label>
+
+        <?= $form->field($model, 'login_endTime')->label(false)->widget(DateTimePicker::classname(), [
+            'options' => ['placeholder' => isset($model['login_endTime'])?$model['login_endTime']:'End date','readonly'=>'readonly'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'todayBtn'=>true,
+                'format'=>'yyyy-mm-dd hh:ii:ss',
+            ]
+        ]); ?>
     </div>
 
 

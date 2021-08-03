@@ -28,11 +28,12 @@ class DayReportcmdController extends Controller
         // GFTool::writeLog('test controller '.date("r"));
     }
     /**
-     * 添加今日日报表数据，第天的23:59分，统计下今日数据，添加到日报表中
+     * 添加昨日日报表数据，第天的00:02分，统计下昨日数据，添加到日报表中
      */
     public function actionAddDayReport()
     {
-        $todayTimeStr = date("Y-m-d");
+        // $todayTimeStr = date("Y-m-d");
+        $todayTimeStr = date("Y-m-d",strtotime("-1 day"));
         DayReportController::updateDayReport($todayTimeStr);
     }
     /**

@@ -67,7 +67,7 @@ $this->title = '';
         }
     }
 </script>
-<span style="font-size: 25px;">Trading operations</span>
+<span style="font-size: 25px;">Transaction Operations Portal</span>
 <div style="width: 100%;overflow: auto;" >
     <div style="display: flex;flex-direction:column;width: 850px;margin-top:15px;">
     <div class="formItem">
@@ -88,22 +88,22 @@ $this->title = '';
         <span id="error_phone" style="color: #000000;">Users need to keep at least <?= $tradeUserMinScore/100 ?> bluegems</span>
     </div>
     <div class="formItem">
-        <span class="leftLabel">Phone:</span>
+        <span class="leftLabel">Mobile #:</span>
         <input type="text" id="targetPhone" placeholder="Mobile phone no." oninput = "value=value.replace(/[^\d]/g,'')">
-        <span id="error_phone" style="color: #000000;">The mobile phone number of the transaction party's game binding</span>
+        <span id="error_phone" style="color: #000000;">User's Linked Mobile #</span>
     </div>
     <div class="formItem">
-        <span class="leftLabel">Code:</span>
+        <span class="leftLabel">OTP:</span>
         <input type="text" id="targetCode" placeholder="The verification code received by the counterparty" >
-        <button type="button" onclick="onSendSMS()" class="btn btn-primary">Send verification code</button>
-        <span id="error_code" style="color: #000000;">The verification code received by the counterparty</span>
+        <button type="button" onclick="onSendSMS()" class="btn btn-primary">Send OTP</button>
+        <span id="error_code" style="color: #000000;">User's OTP</span>
     </div>
     <div class="formItem" style="display: flex;justify-content:center;width:600px;">
-        <button type="button" onclick="btnDealHandler(0)" class="btn btn-primary">Deduct user bluegem</button>
-        <button type="button" onclick='btnDealHandler(1)' class="btn btn-primary" style="margin-left: 100px;">Give the user bluegem</button>
+        <button type="button" onclick="btnDealHandler(0)" class="btn btn-primary">Deduct Tokens</button>
+        <button type="button" onclick='btnDealHandler(1)' class="btn btn-primary" style="margin-left: 100px;">Recharge Tokens</button>
     </div>
     <div class="formItem" style="width:700px;">
-        <span style="display:block;text-align:center">Tips: transfer to the user bluegems, do not need to input the phone number and ID code</span>
+        <span style="display:block;text-align:center">Note: Mobile Number/OTP is not needed for recharges</span>
     </div>
 </div>
 </div>

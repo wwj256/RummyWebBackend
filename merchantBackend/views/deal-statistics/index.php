@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'Statistics';
+$this->title = 'Statstics';
 ?>
 <script>
     function toDealOut(){
@@ -18,7 +18,7 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['sellCount'] ? abs($homeData['sellCount'])/100 : 0;
                     ?></h3>
-                <p onclick="toDealOut()">Accumulate selling of bluegems</p>
+                <p onclick="toDealOut()">Total Tokens Sold</p>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['buyCount'] ? $homeData['buyCount']/100 : 0;
                     ?></h3>
-                <p onclick="toDealIn()">Accumulated purchase of bluegems</p>
+                <p onclick="toDealIn()">Total Tokens Redeemed</p>
             </div>
         </div>
     </div>
@@ -38,13 +38,13 @@ $this->title = 'Statistics';
                 <h3><?php
                     echo $homeData['curCount'] ? $homeData['curCount']/100 : 0;
                     ?></h3>
-                <p>Current remaining bluegems</p>
+                <p>Total App-Wide Token Balance</p>
             </div>
         </div>
     </div>
 </div>
 <div class="good-type-order-box">
-    <div >Statistics of recent 30 days</div>
+    <div >Last 30 Days</div>
     <div id="container" >
         <canvas id="chatDealOut" ></canvas>
     </div>
@@ -71,7 +71,7 @@ $this->title = 'Statistics';
             labels: chatLabels,
         
             datasets: [{
-                label: 'Sell bluegems',
+                label: 'Tokens Sold',
                 data: chatDatasOut,
                 backgroundColor: '#FF851B',
                 borderWidth: 1,
@@ -98,7 +98,7 @@ $this->title = 'Statistics';
             labels: chatLabels,
         
             datasets: [{
-                label: 'Buy bluegems',
+                label: 'Tokens Redeemed',
                 data: chatDatasIn,
                 backgroundColor: '#00a65a',
                 borderWidth: 1,

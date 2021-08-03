@@ -54,14 +54,14 @@ class LogDeal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'ID' => 'Log ID',
+    'ID' => 'Sr. No.',
     'UserID' => 'TraderID',
-    'Type' => 'Deal Type',
-    'Score' => 'Trade original bluegems',
-    'DealScore' => 'Deal BlueGem',
-    'TargetID' => 'TargetUserID',
-    'TargetPhone' => 'TargetPhone',
-    'UpdateTime' => 'DealTime',
+    'Type' => 'Transaction Type',
+    'Score' => 'Pre-Transaction Balance',
+    'DealScore' => 'Transaction Amount',
+    'TargetID' => 'User ID',
+    'TargetPhone' => 'User Mobile #',
+    'UpdateTime' => 'Transaction Time',
         ];
     }
 }

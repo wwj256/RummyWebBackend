@@ -24,6 +24,7 @@ use Yii;
  * @property int $OpenVip 打开vip页面
  * @property int $OpenShare 打开分享页面
  * @property int $NetBrake 网络断开次数
+ * @property int $CreateDate 创建时间
  */
 class UserActionStat extends \yii\db\ActiveRecord
 {
@@ -78,6 +79,7 @@ class UserActionStat extends \yii\db\ActiveRecord
     'OpenVip' => 'OpenVip',//打开vip页面
     'OpenShare' => 'OpenShare',//打开分享页面
     'NetBrake' => 'NetBrake',//网络断开次数
+    'CreateDate' => 'CreateDate',//创建时间
         ];
     }
 }

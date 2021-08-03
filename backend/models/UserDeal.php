@@ -13,6 +13,8 @@ use yii\web\IdentityInterface;
  * @property string $Password 登录密码
  * @property string $Phone 手机号
  * @property int $Score 当前金币
+ * @property string $LoginIP 登录IP
+ * @property string $LoginDate 登录时间
  * @property string $CreateDate 创建账号时间
  */
 class UserDeal extends \yii\db\ActiveRecord implements IdentityInterface
@@ -58,6 +60,8 @@ class UserDeal extends \yii\db\ActiveRecord implements IdentityInterface
     'Password' => '登录密码',
     'Phone' => '手机号',
     'Score' => '当前金币',
+    'LoginIP' => '登录IP',
+    'LoginDate' => '登录时间',
     'CreateDate' => '创建账号时间',
         ];
     }
