@@ -27,6 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->Score / 100;
                 }
             ],
+            'LoginIP',
+            'LoginDate',
             'CreateDate',
         ],
     ]) ?>

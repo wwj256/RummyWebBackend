@@ -18,7 +18,7 @@ class UserDealSearch extends UserDeal
     {
         return [
             [['UserID', 'Score'], 'integer'],
-            [['Password', 'Phone', 'CreateDate'], 'safe'],
+            [['Password', 'Phone', 'LoginIP', 'LoginDate', 'CreateDate'], 'safe'],
         ];
     }
 

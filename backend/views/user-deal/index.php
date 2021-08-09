@@ -93,6 +93,11 @@ $this->params['breadcrumbs'][] = $this->title;
         $buttons = [];
         if( $isAdmin ){
             $buttons = [
+                'update' => function ($url, $model, $key) {
+                    return Html::a('Update',$url, [
+                    'class' => 'btn btn-primary',
+                    ]);
+                },
                 'addscore' => function ($url, $model, $key) {
                     return html::button('addScore', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $model->UserID .')']);
                 },
@@ -119,10 +124,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->Score/100;
                 }
             ],
+            'LoginIP',
+            'LoginDate',
             'CreateDate',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => Helper::filterActionColumn('{addscore} {changepwd}'),
+                'template' => Helper::filterActionColumn('{update} {addscore} {changepwd}'),
                 'header' => 'Action',
                 'buttons' => $buttons,
             ],

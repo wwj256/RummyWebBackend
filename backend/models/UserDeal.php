@@ -43,7 +43,7 @@ class UserDeal extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['Phone'], 'required'],
             [['UserID', 'Score'], 'integer'],
-            [['CreateDate'], 'safe'],
+            [['LoginIP', 'LoginDate', 'CreateDate'], 'safe'],
             [['Password'], 'string', 'max' => 64],
             [['Phone'], 'string', 'max' => 20],
             [['Phone'], 'unique'],

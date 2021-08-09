@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-club-info-index">
 
     <h1><?=Html::encode($this->title) ?></h1>
-    <?php// echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a(Yii::t('app', 'Create User Club Info'), ['create'], [
@@ -47,23 +46,23 @@ $this->params['breadcrumbs'][] = $this->title;
     'template' => Helper::filterActionColumn('{view} {update} {delete}'),
     'header' => 'Action',
     'buttons' => [
-    'view' => function ($url, $model, $key) {
-    return Html::a('View',$url, [
-    'class' => 'btn btn-default',
-    ]);
-    },
-    'delete' => function ($url, $model, $key) {
-    return Html::a('Delete',$url, [
-    'class' => 'btn btn-danger',
-    'data-confirm'=>"Are you sure you want to delete this item?",
-    'data-method'=>"post",
-    ]);
-    },
-    'update' => function ($url, $model, $key) {
-    return Html::a('Update',$url, [
-    'class' => 'btn btn-primary',
-    ]);
-    },
+        'view' => function ($url, $model, $key) {
+            return Html::a('View',$url, [
+            'class' => 'btn btn-default',
+            ]);
+        },
+        'delete' => function ($url, $model, $key) {
+            return Html::a('Delete',$url, [
+            'class' => 'btn btn-danger',
+            'data-confirm'=>"Are you sure you want to delete this item?",
+            'data-method'=>"post",
+            ]);
+        },
+        'update' => function ($url, $model, $key) {
+            return Html::a('Update',$url, [
+            'class' => 'btn btn-primary',
+            ]);
+        },
     ],
     ],
     ],
