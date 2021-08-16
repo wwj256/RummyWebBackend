@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-bind-info-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->UserID], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->UserID], [
@@ -35,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'FacebookID',
             'Mail',
             'GoogleID',
+            'AppleID',
             'RealName',
             'PayName',
             'PayPhone',

@@ -40,6 +40,7 @@ class UserScoreChangeController extends Controller
     {
         $form = Yii::$app->request->get('UserScoreChangeSearch');
         $UserID = isset($form['UID'])?trim($form['UID']):'';
+        $SType = isset($form['SType'])?trim($form['SType']):'';
 
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';
@@ -50,7 +51,8 @@ class UserScoreChangeController extends Controller
         $query->andFilterWhere(['>=', 'UpdateTime', $create_time])
             ->andFilterWhere(['<=', 'UpdateTime', $end_time]);
         $query->andFilterWhere([
-            'user_score_change.UID' => $UserID
+            'user_score_change.UID' => $UserID,
+            'user_score_change.SType' => $SType,
         ]);
         $query->orderBy('UpdateTime DESC');
 

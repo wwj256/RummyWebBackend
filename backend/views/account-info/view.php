@@ -13,7 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-info-view">
 
-
+    <p>
+        <?= Html::a(Yii::t('app', 'UserBindInfo'), ['/user-bind-info/view', 'id' => $model->UserID], ['class' => 'btn btn-primary']) ?>
+    </p>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

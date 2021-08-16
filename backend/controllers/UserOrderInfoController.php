@@ -65,8 +65,9 @@ class UserOrderInfoController extends Controller
             'user_order_info.UserID' => $UserID,
         ]);
 
-        $query->andFilterWhere(['!=', 'user_order_info.Status', 0])
-            ->andFilterWhere(['>=', 'CreateTime', $create_time])
+        $query->
+            andFilterWhere(['>=', 'CreateTime', $create_time])
+            // ->andFilterWhere(['!=', 'user_order_info.Status', 0])
             ->andFilterWhere(['<=', 'CreateTime', $end_time])
             ->andFilterWhere(['=', 'account_info.NickName', $NickName])
             ->orderBy('CreateTime DESC');

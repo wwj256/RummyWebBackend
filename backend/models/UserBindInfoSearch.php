@@ -18,7 +18,7 @@ class UserBindInfoSearch extends UserBindInfo
     {
         return [
             [['UserID'], 'integer'],
-            [['UniqueID', 'Phone', 'FacebookID', 'Mail', 'GoogleID', 'RealName', 'PayName', 'PayPhone', 'PayEmail'], 'safe'],
+            [['UniqueID', 'Phone', 'FacebookID', 'Mail', 'GoogleID', 'AppleID', 'RealName', 'PayName', 'PayPhone', 'PayEmail'], 'safe'],
         ];
     }
 
@@ -66,6 +66,7 @@ class UserBindInfoSearch extends UserBindInfo
             ->andFilterWhere(['like', 'FacebookID', $this->FacebookID])
             ->andFilterWhere(['like', 'Mail', $this->Mail])
             ->andFilterWhere(['like', 'GoogleID', $this->GoogleID])
+            ->andFilterWhere(['like', 'AppleID', $this->AppleID])
             ->andFilterWhere(['like', 'RealName', $this->RealName])
             ->andFilterWhere(['like', 'PayName', $this->PayName])
             ->andFilterWhere(['like', 'PayPhone', $this->PayPhone])

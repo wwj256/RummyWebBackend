@@ -8,7 +8,7 @@ use backend\models\UserBindInfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\Url;
+
 /**
  * UserBindInfoController implements the CRUD actions for UserBindInfo model.
  */
@@ -62,27 +62,20 @@ class UserBindInfoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-public function actionCreate()
-{
-$model = new UserBindInfo();
-if ($model->load(Yii::$app->request->post()) && $model->save()) {
-return $this->redirect(['index']);
-} else {
-return $this->render('create', [
-'model' => $model,
-]);
-}
-}
-/**
-* 异步校验表单模型,Asynchronously validate the form model
-*/
-public function actionValidateForm()
-{
-$model = new UserBindInfo();
-$model->load(Yii::$app->request->post());
-Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-return \yii\widgets\ActiveForm::validate($model);
-}
+    public function actionCreate()
+    {
+        $model = new UserBindInfo();
+        //加载默认值
+        $model->loadDefaultValues();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->UserID]);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Updates an existing UserBindInfo model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -93,13 +86,14 @@ return \yii\widgets\ActiveForm::validate($model);
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(Url::toRoute('index'));
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->redirect(['view', 'id' => $model->UserID]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

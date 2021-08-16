@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserBindInfo */
 /* @var $form yii\widgets\ActiveForm */
@@ -10,11 +10,7 @@ use yii\helpers\Url;
 
 <div class="user-bind-info-form">
 
-    <?php $form = ActiveForm::begin([
-    'id' => 'user-bind-info-id',
-    'enableAjaxValidation' => true,
-    'validationUrl' => Url::toRoute(['validate-form']),
-    ]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'UserID')->textInput() ?>
 
@@ -28,6 +24,8 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'GoogleID')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'AppleID')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'RealName')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'PayName')->textInput(['maxlength' => true]) ?>
@@ -37,7 +35,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'PayEmail')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?=Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

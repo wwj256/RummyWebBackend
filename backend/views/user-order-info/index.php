@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>OrderID</th>
                 <th>UserID</th>
                 <th>NickName</th>
@@ -54,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tbody>
             <?php foreach($model as $val){  ?>
                 <tr data-key="<?=$val['ID']?>">
+                    <td><?=$val['ID']?></td>
                     <td><?=$val['OrderID']?></td>
                     <td><?=$val['UserID']?></td>
                     <td><?=$val['NickName']?></td>

@@ -24,6 +24,8 @@ use kartik\datetime\DateTimePicker;
     <div class="row" style="margin: 20px 0px 20px 0px" >
         <?= $form->field($model, 'UID') ?>
 
+        <?= $form->field($model, 'SType')->dropDownList(Yii::$app->params['scoreChangeTypes']) ?>
+
         <?= $form->field($model, 'create_time')->label('UpdateTime')->widget(DateTimePicker::classname(), [
             'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'Start date','readonly'=>'readonly'],
             'pluginOptions' => [

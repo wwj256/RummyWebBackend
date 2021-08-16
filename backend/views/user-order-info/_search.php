@@ -7,6 +7,8 @@ use kartik\datetime\DateTimePicker;
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserOrderInfoSearch */
 /* @var $form yii\widgets\ActiveForm */
+
+// <?= $form->field($model, 'Status')->dropDownList(Yii::$app->params['orderInfoStatusLabels']) 
 ?>
 
 <div class="user-order-info-search">
@@ -28,6 +30,8 @@ use kartik\datetime\DateTimePicker;
         <?= $form->field($model, 'UserID') ?>
 
         <?= $form->field($model, 'NickName')->label("NickName") ?>
+
+        
 
         <?= $form->field($model, 'create_time')->label('CreateTime')->widget(DateTimePicker::classname(), [
             'options' => ['placeholder' => isset($model['create_time'])?$model['create_time']:'Start date','readonly'=>'readonly'],

@@ -1,9 +1,7 @@
 <?php
-
+use mdm\admin\components\Helper;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\bootstrap\Modal;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserBindInfoSearch */
@@ -12,18 +10,10 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'User Bind Infos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-bind-info-index">
+<div class="user-bind-info-index" style="overflow: auto;">
 
-    <h1><?=Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create User Bind Info'), ['create'], [
-        'class' => 'btn btn-success',
-        'id' => 'create',
-        'data-toggle' => 'modal',
-        'data-target' => '#operate-modal',
-        ]) ?>
-    </p>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -36,69 +26,32 @@ $this->params['breadcrumbs'][] = $this->title;
             'Phone',
             'FacebookID',
             'Mail',
-            //'GoogleID',
-            //'RealName',
-            //'PayName',
-            //'PayPhone',
-            //'PayEmail:email',
+            'GoogleID',
+            'AppleID',
+            'RealName',
+            'PayName',
+            'PayPhone',
+            'PayEmail:email',
 
-
-    [
-    'class' => 'yii\grid\ActionColumn',
-    'template' => Helper::filterActionColumn('{view} {update} {delete}'),
-    'header' => 'Action',
-    'buttons' => [
-    'view' => function ($url, $model, $key) {
-    return Html::a('View',$url, [
-    'class' => 'btn btn-default',
-    ]);
-    },
-    'delete' => function ($url, $model, $key) {
-    return Html::a('Delete',$url, [
-    'class' => 'btn btn-danger',
-    'data-confirm'=>"Are you sure you want to delete this item?",
-    'data-method'=>"post",
-    ]);
-    },
-    'update' => function ($url, $model, $key) {
-    return Html::a('Update',$url, [
-    'class' => 'btn btn-primary',
-    ]);
-    },
-    ],
-    ],
-    ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => Helper::filterActionColumn('{view} {update}'),
+                'header' => 'Action',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                        return Html::a('View',$url, [
+                            'class' => 'btn btn-default',
+                        ]);
+                    },
+                    'update' => function ($url, $model, $key) {
+                        return Html::a('Update',$url, [
+                            'class' => 'btn btn-primary',
+                        ]);
+                    },
+                ],
+            ],
+        ],
     ]); ?>
+
+
 </div>
-<?php // create modal
-Modal::begin([
-'id' => 'operate-modal',
-'header' => '<h4 class="modal-title"></h4>',
-]);
-Modal::end();
-// update
-$requestCreateUrl = Url::toRoute('create');
-// update
-$requestUpdateUrl = Url::toRoute('update');
-$js = <<<JS
-// create action
-$('#create').on('click', function () {
-$('.modal-title').html('Create');
-$.get('{$requestCreateUrl}',
-function (data) {
-$('.modal-body').html(data);
-}
-);
-});
-// update action
-$('.btn-update').on('click', function () {
-$('.modal-title').html('Info');
-$.get('{$requestUpdateUrl}', { id: $(this).closest('tr').data('key') },
-function (data) {
-$('.modal-body').html(data);
-}
-);
-});
-JS;
-$this->registerJs($js);
-?>
