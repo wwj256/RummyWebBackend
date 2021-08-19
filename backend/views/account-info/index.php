@@ -47,8 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 });
             }else{
                 alert("Please enter the correct number!");
-            }
-            
+            }            
         }
 
         function onChangeStateClick(flag) {
