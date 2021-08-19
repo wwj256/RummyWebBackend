@@ -51,14 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
             
         }
 
-        function onResetMachineClick(uid) {
-            console.log("/account-info/update-machine?id="+uid);
-            $.post("/account-info/update-machine?id="+uid, function (data){
-                alert(data);
-                // window.location.reload();
-            });
-        }        
-
         function onChangeStateClick(flag) {
             curUid = flag;
             $().openModal();
@@ -162,9 +154,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?php
                         echo html::a('View','view?id='.$val['UserID'], ['class'=>"btn btn-default"])." ";
                         if( $isAdmin ){
-                            echo html::a('Update','update?id='.$val['UserID'], ['class'=>"btn btn-default"])." ";
                             echo html::button('addScore', ['id'=>'btn-refuse','class'=>"btn btn-primary", 'onclick'=>'onRefuseClick('. $val['UserID'] .')'])." ";
-                            echo html::button('ResetMachineID', ['id'=>'btn-danger','class'=>"btn btn-danger", 'onclick'=>'onResetMachineClick('. $val['UserID'] .')']);
                         }
                         ?>
                     </td>

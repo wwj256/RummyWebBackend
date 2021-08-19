@@ -55,7 +55,7 @@ class UserInviteInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'UserID' => 'UserID',
+    'UserID' => Yii::t('app','UserID'),
     'MyInviter' => 'MyInviter',//我的邀请人
     'InviteCounts' => 'InviteCounts',//总邀请人数
     'TotalBonus' => 'TotalBonus',//总奖金
