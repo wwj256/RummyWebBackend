@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'TotalFee',
             [
-                'attribute' => 'Back Cash',
+                'attribute' => Yii::t('app','BackCash'),
                 'format' => 'raw',
                 'value' => function($model){
                     return ($model->TotalDeposit - $model->TotalWithdraw - $model->TotalFee)/100;
@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' => 'Net Rake',
+                'attribute' => Yii::t('app', 'NetRake'),
                 'format' => 'raw',
                 'value' => function($model){
                     return ($model->TotalRake - $model->UseBonus)/100;

@@ -228,9 +228,9 @@ return \yii\widgets\ActiveForm::validate($model);
 
 //            HttpTool::doGet(Yii::$app->params['APIUrlSocket']."ustd/public/index.php/trade/sendaddr?omniid=$id&bk=".GFTool::getBasicConfigValue('"bktoken"'));
             if( $value == 2 ){
-                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"KYC Certification",'Content'=>"KYC Application：{$model->RecordTime}\nCongratulations, your KYC certification has been approved.\nThank you for playing Rummy Genius."]);
+                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"KYC Certification",'Content'=>"KYC Application：{$model->RecordTime}\nCongratulations, your KYC certification has been approved.\nThank you for playing ".Yii::$app->params['AppName']]);
             }else{
-                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'KYC Certification','Content'=>"KYC Application：{$model->RecordTime}\nYour KYC authentication failed, please fill in the KYC information correctly, if you have any questions, please contact customer service.\nThank you for playing Rummy Genius."]);
+                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'KYC Certification','Content'=>"KYC Application：{$model->RecordTime}\nYour KYC authentication failed, please fill in the KYC information correctly, if you have any questions, please contact customer service.\nThank you for playing ".Yii::$app->params['AppName']]);
             }
             return 'change complete';
         }else{

@@ -186,12 +186,12 @@ return \yii\widgets\ActiveForm::validate($model);
                     if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
                         return 'add gold fail, errorCode='.$serverRespon->CODE;
                     }
-                    Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"Withdrawal success",'Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nThe withdrawal is successful. Please check your bank account within the next few days.\nThank you for playing Rummy Genius."]);
+                    Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"Withdrawal success",'Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nThe withdrawal is successful. Please check your bank account within the next few days.\nThank you for playing ".Yii::$app->params['AppName']]);
                 }else{
                     return 'add gold fail, ERR_CONNECTION_REFUSED';
                 }
             }else{
-                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'Withdrawal of failure','Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nYour request is rejected, it may be because the information provided is not correct. If it is correct, please contact customer service.\nThank you for playing Rummy Genius."]);
+                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'Withdrawal of failure','Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nYour request is rejected, it may be because the information provided is not correct. If it is correct, please contact customer service.\nThank you for playing ".Yii::$app->params['AppName']]);
             }
             return 'action success!';
         }else{

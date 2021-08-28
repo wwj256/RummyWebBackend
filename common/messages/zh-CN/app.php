@@ -23,9 +23,22 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Test {value}' => '测试值： {value}',
     'rummy' => '拉米',
     'UserID' => '用户ID',
-    'Test {value}' => '测试值： {value}',
+    'DayDate' => '日期',
+    'NewPlayers' => '新注册玩家',//
+    'FirstDeposit' => '首冲玩家',//
+    'SecondDeposit' => '再冲玩家',//再冲玩家数
+    'AverageOnline' => '平均在线',//平均在线人数（小时）
+    'TotalDeposit' => '总冲值',//总存款
+    'TotalWithdraw' => '总提现',//总提款
+    'TotalBonus' => '总奖金',//总奖金
+    'TotalFee' => '总转账手续费',//转账手续费
+    'TotalRake' => '总税收',//总税收
+    'UseBonus' => '使用奖金数',//消耗奖金数
+    'BackCash' => '净利润',//消耗奖金数
+    'NetRake' => '净税收',//消耗奖金数
     ' and ' => ' 与 ',
     '"{attribute}" does not support operator "{operator}".' => '"{attribute}" 不支持操作 "{operator}"',
     '(not set)' => '(未设置)',
