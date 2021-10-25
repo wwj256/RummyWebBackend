@@ -97,6 +97,6 @@ class HttpTool
     }
 
     public static function deleteSMS($phone){
-        self::doGet(Yii::$app->params['APIUrl']."houtai/delsms??ph=%2B91{$phone}");
+        self::doGet(Yii::$app->params['APIUrl']."houtai/delsms?ph=%2B91{$phone}");
     }
 }
