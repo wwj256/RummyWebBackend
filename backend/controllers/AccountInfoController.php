@@ -183,7 +183,7 @@ class AccountInfoController extends Controller
         //金币变化日志模型
         // $scoreChangeModel = Yii::$app->runAction('user-score-change/get-add-model',['UID'=>$id,'SType'=>"4", 'SChange'=>$SChange,'BindChg'=>$BindChg,'BonusChg'=>$BonusChg,'LuckChg'=>$LuckChg,'Reason'=>$desc, 'RelateID'=>$adminID]);
         $url = Yii::$app->params['ServerURL']."addscore?userid={$id}&score={$score}&bindscore={$BindChg}&bindbonus={$BonusChg}&luckscore={$LuckChg}&expscore={$ExpScore}&stype=4";
-        return $url;
+        // return $url;
         //向服务器发送消息，通知给用户加币
         $serverResponStr = HttpTool::doGet($url);
         $serverRespon = json_decode($serverResponStr);
