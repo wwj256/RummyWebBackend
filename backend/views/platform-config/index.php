@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Platform Configs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="platform-config-index">
+<div class="platform-config-index"  style="overflow: auto;">
 
     <p>
         <?= Html::a(Yii::t('app', 'AddPlatform Config'), ['create'], ['class' => 'btn btn-success']) ?>

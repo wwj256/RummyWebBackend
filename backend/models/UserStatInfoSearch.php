@@ -17,7 +17,7 @@ class UserStatInfoSearch extends UserStatInfo
     public function rules()
     {
         return [
-            [['UserID', 'TPayScore', 'TPayCnt', 'TDrawScore', 'TDrawCnt', 'TGameCnt', 'TBrokeUp', 'TWinScore', 'TLostScore', 'TPointCnt', 'TPoolCnt', 'TDealCnt', 'TPoint10Cnt', 'TMatchCnt', 'TTicketScore', 'TAssistScore', 'TInviteScore'], 'integer'],
+            [['UserID', 'TPayScore', 'TPayCnt', 'TDrawScore', 'TDrawCnt', 'TGameCnt', 'TBrokeUp', 'TWinScore', 'TLostScore', 'TPointCnt', 'TPoolCnt', 'TDealCnt', 'TPoint10Cnt', 'TMatchCnt', 'TTicketScore', 'TAssistScore', 'TInviteScore', 'TGameTax'], 'integer'],
         ];
     }
 
@@ -74,6 +74,7 @@ class UserStatInfoSearch extends UserStatInfo
             'TTicketScore' => $this->TTicketScore,
             'TAssistScore' => $this->TAssistScore,
             'TInviteScore' => $this->TInviteScore,
+            'TGameTax' => $this->TGameTax,
         ]);
 
         return $dataProvider;

@@ -16,6 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'UniqueID')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'InviteID')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'PInviteID')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'Password')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'NickName')->textInput(['maxlength' => true]) ?>

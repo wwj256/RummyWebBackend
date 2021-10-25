@@ -41,6 +41,9 @@ class UserScoreChangeController extends Controller
         $form = Yii::$app->request->get('UserScoreChangeSearch');
         $UserID = isset($form['UID'])?trim($form['UID']):'';
         $SType = isset($form['SType'])?trim($form['SType']):'';
+        if( $SType == 0 ){
+            $SType = "";
+        }
 
         $create_time = isset($form['create_time'])?trim($form['create_time']):'';
         $end_time = isset($form['end_time'])?trim($form['end_time']):'';

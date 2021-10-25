@@ -37,7 +37,8 @@ $this->title = '';
             data = JSON.parse(data);
             if( data && data['NickName'] ){
                 document.getElementById('targetName').value = data['NickName'];
-                document.getElementById('targetScore').value = data['Score']/100;
+                document.getElementById('targetScore').value = (data['Score'] - data['BindScore'])/100;
+                document.getElementById('targetBindScore').value = data['BindScore']/100;
                 $("#targetInfo").show();
             }else{
                 alert("User not found, please re-enter user ID");
@@ -81,6 +82,8 @@ $this->title = '';
         <input type="text" id="targetName"  >
         <span class="leftLabel" >BlueGems:</span>
         <input type="text" id="targetScore"  >
+        <span class="leftLabel" style="width: 100px;">BindBlueGems:</span>
+        <input type="text" id="targetBindScore"  >
     </div>
     <div class="formItem">
         <span class="leftLabel" >DealScore:</span>

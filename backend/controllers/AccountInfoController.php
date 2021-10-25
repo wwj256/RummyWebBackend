@@ -183,6 +183,7 @@ class AccountInfoController extends Controller
         //金币变化日志模型
         // $scoreChangeModel = Yii::$app->runAction('user-score-change/get-add-model',['UID'=>$id,'SType'=>"4", 'SChange'=>$SChange,'BindChg'=>$BindChg,'BonusChg'=>$BonusChg,'LuckChg'=>$LuckChg,'Reason'=>$desc, 'RelateID'=>$adminID]);
         $url = Yii::$app->params['ServerURL']."addscore?userid={$id}&score={$score}&bindscore={$BindChg}&bindbonus={$BonusChg}&luckscore={$LuckChg}&expscore={$ExpScore}&stype=4";
+        return $url;
         //向服务器发送消息，通知给用户加币
         $serverResponStr = HttpTool::doGet($url);
         $serverRespon = json_decode($serverResponStr);
@@ -191,7 +192,7 @@ class AccountInfoController extends Controller
                 return 'add gold fail, errorCode='.$serverRespon->CODE;
             }
         }else{
-            return 'add gold fail, ERR_CONNECTION_REFUSED';
+            return 'add gold fail, ERR_CONNECTION_REFUSED'.$url."____".$serverRespon;
         }
         //服务器加币成功后，金币变化日志模型保存日志数据,服务器会自已添加日志，后台不用再添加日志
         // if( !$scoreChangeModel->save() ){
@@ -213,15 +214,15 @@ class AccountInfoController extends Controller
         $serverRespon = json_decode($serverResponStr);
         if( $serverRespon ){
             if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
-                return 'add gold fail, errorCode='.$serverRespon->CODE;
+                return 'Update state fail, errorCode='.$serverRespon->CODE;
             }
         }else{
-            return 'add gold fail, ERR_CONNECTION_REFUSED';
+            return 'Update state fail, ERR_CONNECTION_REFUSED';
         }
         if( $status != 0 ){
             Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"Abnormal Account",'Content'=>"Dear player, your account has been flagged for suspicious activity. Until this is resolved, you will not be able to play/join games or withdraw any money. Please contact customer service for more information and assistance."]);
         }
-        return 'change sucess!';
+        return 'Update state sucess!';
     }
 
         /**

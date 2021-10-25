@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'User Stat Infos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-stat-info-index">
+<div class="user-stat-info-index" style="overflow: auto;">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -25,18 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'TPayCnt',
             'TDrawScore',
             'TDrawCnt',
-            //'TGameCnt',
-            //'TBrokeUp',
-            //'TWinScore',
-            //'TLostScore',
-            //'TPointCnt',
-            //'TPoolCnt',
-            //'TDealCnt',
-            //'TPoint10Cnt',
-            //'TMatchCnt',
-            //'TTicketScore',
-            //'TAssistScore',
-            //'TInviteScore',
+            'TGameCnt',
+            'TBrokeUp',
+            'TWinScore',
+            'TLostScore',
+            'TPointCnt',
+            'TPoolCnt',
+            'TDealCnt',
+            'TPoint10Cnt',
+            'TMatchCnt',
+            'TTicketScore',
+            'TAssistScore',
+            'TInviteScore',
+            'TGameTax',
 
             [
                 'class' => 'yii\grid\ActionColumn',

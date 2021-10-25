@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Sys Configs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sys-config-index">
+<div class="sys-config-index"  style="overflow: auto;">
 
     <p>
         <?= Html::a(Yii::t('app', 'AddSys Config'), ['create'], ['class' => 'btn btn-success']) ?>
@@ -21,11 +21,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [
+            'style' => 'overflow:auto;word-wrap:break-word;'
+        ],
+        
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'K',
-            'V',
+            [
+                'attribute' => 'V',
+                'format' => 'raw',
+                'contentOptions' => ['style'=>'max-width:900px;'],
+                'value' => function($model){
+                    return $model->V;
+                }
+            ],
             'Info',
 
             [

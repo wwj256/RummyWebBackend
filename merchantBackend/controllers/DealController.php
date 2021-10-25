@@ -28,12 +28,13 @@ class DealController extends \yii\web\Controller
 
         $uid = \Yii::$app->user->identity->getId();
         $userDeal = UserDeal::findIdentity($uid);
+        $serverResponStr = "";
         if( $type == 0 ){
             $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=%2B91$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
-            if( $serverRespon->code != 0 ){
-                return 'SMS code error!';
-            }
+            // if( $serverRespon->code != 0 ){
+            //     return 'SMS code error!';
+            // }
             
             $sqlStr = "SELECT * FROM lami_account.score_info WHERE UserID = $targetID;";
             $sqlData = Yii::$app->db->createCommand($sqlStr)
@@ -42,16 +43,19 @@ class DealController extends \yii\web\Controller
                 return "The account name does not exist, please enter it again！";//用户游戏ID未到找，请重新输入
             }else{
                 $sysConfig = SysConfig::findOne("TradeUserMinScore");
-                if( ($sqlData['Score'] - $sysConfig['V']) < ($score * 100)){
+                $userScore = $sqlData['Score'] - $sqlData['BindScore'];
+                if( ($userScore - $sysConfig['V']) < ($score * 100)){
                     return 'This user has insufficient funds. Please contact the user to help resolve his issue.';//'用户的金币不足，请与用户联系！';
                 }
             }
             $score = $score * -100;
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['ServerURL']."addscore?userid={$targetID}&score={$score}&stype=9&relateid=$uid");
         }else{
             $score = $score * 100;
             if( $userDeal->Score < $score ){
                 return 'You have an insufficient balance.';
             }
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['ServerURL']."addscore?userid={$targetID}&score={$score}&bindscore={$score}&stype=9&relateid=$uid");
         }
         
         $model = new LogDeal();
@@ -63,7 +67,6 @@ class DealController extends \yii\web\Controller
         $model->TargetPhone = $phone;
         
         //向服务器发送消息，通知给用户加币
-        $serverResponStr = HttpTool::doGet(Yii::$app->params['ServerURL']."addscore?userid={$targetID}&score={$score}&stype=9&relateid=$uid");
         $serverRespon = json_decode($serverResponStr);
         if( $serverRespon ){
             if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
@@ -94,7 +97,7 @@ class DealController extends \yii\web\Controller
 
     public function actionSearchInfo($id)
     {
-        $statisticsSql = "SELECT NickName, Score FROM lami_account.account_info as account , lami_account.score_info as scoreInfo WHERE account.UserID = scoreInfo.UserID AND account.UserID = $id";
+        $statisticsSql = "SELECT NickName, Score, BindScore FROM lami_account.account_info as account , lami_account.score_info as scoreInfo WHERE account.UserID = scoreInfo.UserID AND account.UserID = $id";
         $result = Yii::$app->db->createCommand($statisticsSql)
             ->queryOne();
 

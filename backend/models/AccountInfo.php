@@ -10,6 +10,9 @@ use Yii;
  * 
  * @property int $UserID 用户编号
  * @property int $SpreadID 渠道id
+ * @property int $InviteID 邀请人ID
+ * @property int $PInviteID 上级邀请ID
+ * @property int $RealReg 0-未填写 1-待审核 2-已通过 3-未通过
  * @property string $UniqueID 唯一标识
  * @property string $Password 登录密码
  * @property string $NickName 昵称
@@ -23,6 +26,7 @@ use Yii;
  * @property string $LoginIP 最后登录IP
  * @property string $LoginDate 最后登录时间
  * @property string $LoginMachine 最后登录机器码
+ * @property string $Status 用户状态：0正常,1禁止游戏和提现,2禁止登陆
  */
 class AccountInfo extends \yii\db\ActiveRecord
 {
@@ -48,7 +52,7 @@ class AccountInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['SpreadID', 'IsRobot', 'Platform'], 'integer'],
+            [['SpreadID', 'IsRobot', 'Platform', 'Status', 'InviteID', 'PInviteID'], 'integer'],
             [['FaceUrl'], 'required'],
             [['RegisterDate', 'LoginDate'], 'safe'],
             [['UniqueID', 'FaceUrl', 'RegisterMachine', 'LoginMachine'], 'string', 'max' => 255],
@@ -67,6 +71,8 @@ class AccountInfo extends \yii\db\ActiveRecord
         return [
     'UserID' => 'UserID',//用户编号
     'SpreadID' => 'SpreadID',//渠道id
+    'InviteID' => 'InviteID',//邀请人ID
+    'PInviteID' => 'PInviteID',//上级邀请ID
     'UniqueID' => 'UniqueID',//唯一标识
     'Password' => 'Password',//登录密码
     'NickName' => 'NickName',//昵称

@@ -25,6 +25,7 @@ use Yii;
  * @property int $TTicketScore 门票分数
  * @property int $TAssistScore 救助分数
  * @property int $TInviteScore 邀请获得分数
+ * @property int $TGameTax 邀请者游戏获得分数
  */
 class UserStatInfo extends \yii\db\ActiveRecord
 {
@@ -51,7 +52,7 @@ class UserStatInfo extends \yii\db\ActiveRecord
     {
         return [
             [['UserID'], 'required'],
-            [['UserID', 'TPayScore', 'TPayCnt', 'TDrawScore', 'TDrawCnt', 'TGameCnt', 'TBrokeUp', 'TWinScore', 'TLostScore', 'TPointCnt', 'TPoolCnt', 'TDealCnt', 'TPoint10Cnt', 'TMatchCnt', 'TTicketScore', 'TAssistScore', 'TInviteScore'], 'integer'],
+            [['UserID', 'TPayScore', 'TPayCnt', 'TDrawScore', 'TDrawCnt', 'TGameCnt', 'TBrokeUp', 'TWinScore', 'TLostScore', 'TPointCnt', 'TPoolCnt', 'TDealCnt', 'TPoint10Cnt', 'TMatchCnt', 'TTicketScore', 'TAssistScore', 'TInviteScore', 'TGameTax'], 'integer'],
             [['UserID'], 'unique'],
         ];
     }
@@ -79,6 +80,7 @@ class UserStatInfo extends \yii\db\ActiveRecord
     'TTicketScore' => 'TTicketScore',//门票分数
     'TAssistScore' => 'TAssistScore',//救助分数
     'TInviteScore' => 'TInviteScore',//邀请获得分数
+    'TGameTax' => 'TGameTax',//邀请者游戏中获得分数
         ];
     }
 }

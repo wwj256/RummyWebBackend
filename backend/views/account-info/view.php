@@ -32,6 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'UserID',
             'SpreadID',
+            'InviteID',
+            'PInviteID',
             'UniqueID',
             'Password',
             'NickName',
