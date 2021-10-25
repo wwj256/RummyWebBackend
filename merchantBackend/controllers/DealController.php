@@ -32,9 +32,9 @@ class DealController extends \yii\web\Controller
         if( $type == 0 ){
             $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=%2B91$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
-            // if( $serverRespon->code != 0 ){
-            //     return 'SMS code error!';
-            // }
+            if( $serverRespon->code != 0 ){
+                return 'SMS code error!';
+            }
             
             $sqlStr = "SELECT * FROM lami_account.score_info WHERE UserID = $targetID;";
             $sqlData = Yii::$app->db->createCommand($sqlStr)
