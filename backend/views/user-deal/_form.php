@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Password')->textInput(['maxlength' => true, 'disabled' => 'disabled']) ?>
+    <?= $form->field($model, 'Password')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Score')->textInput()->label('当前金币(单位：分)') ?>
 
