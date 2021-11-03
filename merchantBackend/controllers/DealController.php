@@ -30,7 +30,7 @@ class DealController extends \yii\web\Controller
         $userDeal = UserDeal::findIdentity($uid);
         $serverResponStr = "";
         if( $type == 0 ){
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=%2B91$phone&cd=$code");
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
             if( $serverRespon->code != 0 ){
                 return 'SMS code error!';
