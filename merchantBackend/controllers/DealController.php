@@ -69,9 +69,6 @@ class DealController extends \yii\web\Controller
         
         //向服务器发送消息，通知给用户加币
         $serverRespon = json_decode($serverResponStr);
-        if( !property_exists($serverRespon, 'code') ){
-            return $serverResponStr;
-        }
         if( $serverRespon ){
             if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
                 return "User Transaction Error code=$serverRespon->CODE, ".Yii::$app->params['errorCode'][$serverRespon->CODE];
