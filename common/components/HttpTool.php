@@ -82,9 +82,14 @@ class HttpTool
         return $data;
     }
 
-    public static function sendSMS($phone)
+    public static function sendSMS($phone, $needAddPre = 1)
     {
-        $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
+        $serverResponStr = "";
+        if( $needAddPre ){
+            $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
+        }else{
+            $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
+        }
         $serverRespon = json_decode($serverResponStr);
         // echo $serverResponStr;
         // echo var_dump(property_exists($serverRespon, 'code2'));

@@ -17,6 +17,10 @@ $this->title = '';
     function onSendSMS()
     {
         let txt_1 = document.getElementById('targetPhone').value;
+        if( txt_1 == "" ){
+            alert("If no mobile phone number is bound to the user, bind the mobile phone number!");
+            return;
+        }
         $.post("/deal/sendsms?phone="+txt_1, function (data){
             if( data == "1" ){
                 alert("SMS verification code sent successfully, please contact with the other party！");
@@ -39,6 +43,7 @@ $this->title = '';
                 document.getElementById('targetName').value = data['NickName'];
                 document.getElementById('targetScore').value = (data['Score'] - data['BindScore'])/100;
                 document.getElementById('targetBindScore').value = data['BindScore']/100;
+                document.getElementById('targetPhone').value = data['Phone'];
                 $("#targetInfo").show();
             }else{
                 alert("User not found, please re-enter user ID");
@@ -46,13 +51,25 @@ $this->title = '';
             // window.location.reload();
         });
     };
-    //交易货币，type，0:转入，1:转出
+    //交易货币，type，0:扣除用户金币，1:转给用户金币
     function btnDealHandler(type)
     {
         let txt_1 = document.getElementById('targetID').value;
         let txt_2 = document.getElementById('dealCount').value;
         let txt_3 = document.getElementById('targetPhone').value;
         let txt_4 = document.getElementById('targetCode').value;
+        if( txt_2 < <?= $tradeUserMinScore/100 ?> ){
+            alert("Withdrawal can not be less than <?= $tradeUserMinScore/100 ?> bluegems, binding limit can not be withdrawn");
+            return;
+        }
+        if( type == 0 ){
+            if( txt_4 == "" ){
+                alert("Please enter the OPT,If no mobile phone number is bound to the user, bind the mobile phone number!");
+                return;
+            }
+        }else{
+
+        }
         $.post("/deal/deal?targetID="+txt_1+"&score="+ txt_2+"&phone="+ txt_3 +"&code="+ txt_4 + "&type=" + type, function (data){
             if( data == '1' ){
                 alert('Deal success!');
@@ -61,11 +78,7 @@ $this->title = '';
             }
             // window.location.reload();
         });
-        if( type == 0 ){
-
-        }else{
-
-        }
+        
     }
 </script>
 <span style="font-size: 25px;">Transaction Operations Portal</span>
@@ -88,11 +101,11 @@ $this->title = '';
     <div class="formItem">
         <span class="leftLabel" >DealScore:</span>
         <input type="text" id="dealCount" placeholder="Transaction amount" oninput = "value=value.replace(/[^\d]/g,'')">
-        <span id="error_phone" style="color: #000000;">Users need to keep at least <?= $tradeUserMinScore/100 ?> bluegems</span>
+        <span id="error_phone" style="color: #000000;">Withdrawal can not be less than <?= $tradeUserMinScore/100 ?> bluegems, binding limit can not be withdrawn</span>
     </div>
     <div class="formItem">
         <span class="leftLabel">Mobile #:</span>
-        <input type="text" id="targetPhone" placeholder="Mobile phone no." oninput = "value=value.replace(/[^\d]/g,'')">
+        <input type="text" id="targetPhone" placeholder="Mobile phone no." oninput = "value=value.replace(/[^\d]/g,'')" disabled="disabled">
         <span id="error_phone" style="color: #000000;">User's Linked Mobile #</span>
     </div>
     <div class="formItem">

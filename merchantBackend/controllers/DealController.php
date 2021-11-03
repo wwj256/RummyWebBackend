@@ -42,7 +42,7 @@ class DealController extends \yii\web\Controller
             if( !$sqlData ){
                 return "The account name does not exist, please enter it again！";//用户游戏ID未到找，请重新输入
             }else{
-                $sysConfig = SysConfig::findOne("TradeUserMinScore");
+                $sysConfig = SysConfig::findOne("TradeUserSaveMinScore");
                 $userScore = $sqlData['Score'] - $sqlData['BindScore'];
                 if( ($userScore - $sysConfig['V']) < ($score * 100)){
                     return 'This user has insufficient funds. Please contact the user to help resolve his issue.';//'用户的金币不足，请与用户联系！';
@@ -97,7 +97,7 @@ class DealController extends \yii\web\Controller
 
     public function actionSearchInfo($id)
     {
-        $statisticsSql = "SELECT NickName, Score, BindScore FROM lami_account.account_info as account , lami_account.score_info as scoreInfo WHERE account.UserID = scoreInfo.UserID AND account.UserID = $id";
+        $statisticsSql = "SELECT NickName, Score, BindScore, Phone FROM lami_account.account_info as account , lami_account.score_info as scoreInfo, lami_account.user_bind_info as bindInfo WHERE account.UserID = scoreInfo.UserID AND account.UserID = bindInfo.UserID AND account.UserID = $id";
         $result = Yii::$app->db->createCommand($statisticsSql)
             ->queryOne();
 
@@ -115,7 +115,7 @@ class DealController extends \yii\web\Controller
 
     public function actionSendsms($phone)
     {
-        return HttpTool::sendSMS($phone);
+        return HttpTool::sendSMS($phone, 0);
         // $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
         // $serverRespon = json_decode($serverResponStr);
         // if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
