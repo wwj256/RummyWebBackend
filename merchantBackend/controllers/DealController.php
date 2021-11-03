@@ -83,7 +83,7 @@ class DealController extends \yii\web\Controller
             return 'User deal success，trade deal error！';
         }
         if( $type == 0 ){
-            $serverResponStr = HttpTool::deleteSMS($phone);
+            $serverResponStr = HttpTool::deleteSMS($phone, 0);
         }
 
         //保存日志
