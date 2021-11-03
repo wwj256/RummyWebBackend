@@ -32,6 +32,9 @@ class DealController extends \yii\web\Controller
         if( $type == 0 ){
             $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
+            if( !array_key_exists('code', $serverRespon) ){
+                return $serverResponStr;
+            }
             if( $serverRespon->code != 0 ){
                 return 'SMS code error!';
             }
@@ -68,6 +71,9 @@ class DealController extends \yii\web\Controller
         
         //向服务器发送消息，通知给用户加币
         $serverRespon = json_decode($serverResponStr);
+        if( !array_key_exists('code', $serverRespon) ){
+            return $serverResponStr;
+        }
         if( $serverRespon ){
             if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
                 return "User Transaction Error code=$serverRespon->CODE, ".Yii::$app->params['errorCode'][$serverRespon->CODE];
