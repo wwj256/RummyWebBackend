@@ -84,12 +84,14 @@ class HttpTool
 
     public static function sendSMS($phone, $needAddPre = 1)
     {
-        $serverResponStr = "";
+        $serverUrlStr = "";
         if( $needAddPre ){
-            $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
+            $serverUrlStr = Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}";
         }else{
-            $serverResponStr = self::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}");
+            $serverUrlStr = Yii::$app->params['APIUrl']."houtai/sendsms?ph={$phone}";
         }
+        // return $needAddPre."__".$serverUrlStr;
+        $serverResponStr = self::doGet($serverUrlStr);
         $serverRespon = json_decode($serverResponStr);
         // echo $serverResponStr;
         // echo var_dump(property_exists($serverRespon, 'code2'));

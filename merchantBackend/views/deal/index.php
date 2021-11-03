@@ -21,7 +21,7 @@ $this->title = '';
             alert("If no mobile phone number is bound to the user, bind the mobile phone number!");
             return;
         }
-        $.post("/deal/sendsms?phone="+txt_1, function (data){
+        $.post("/deal/sendsms?phone="+encodeURIComponent(txt_1), function (data){
             if( data == "1" ){
                 alert("SMS verification code sent successfully, please contact with the other party！");
             }else{
