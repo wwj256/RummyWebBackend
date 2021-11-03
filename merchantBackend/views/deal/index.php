@@ -58,6 +58,7 @@ $this->title = '';
         let txt_2 = document.getElementById('dealCount').value;
         let txt_3 = document.getElementById('targetPhone').value;
         let txt_4 = document.getElementById('targetCode').value;
+        txt_3 = encodeURIComponent(txt_3);
         if( txt_2 < <?= $tradeUserMinScore/100 ?> ){
             alert("Withdrawal can not be less than <?= $tradeUserMinScore/100 ?> bluegems, binding limit can not be withdrawn");
             return;
