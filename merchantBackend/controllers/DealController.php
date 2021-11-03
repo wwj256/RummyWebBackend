@@ -32,9 +32,7 @@ class DealController extends \yii\web\Controller
         if( $type == 0 ){
             $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
-            if( !property_exists($serverRespon, 'code') ){
-                return $serverResponStr;
-            }
+            return $serverResponStr;
             if( $serverRespon->code != 0 ){
                 return 'SMS code error!';
             }
