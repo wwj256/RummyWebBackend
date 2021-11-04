@@ -119,6 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>SpreadID</th>
                 <th>Status</th>
                 <th>LoginDate</th>
+                <th>RegisterDate</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -150,6 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                         ?></td>
                     <td><?=$val['LoginDate'] ?></td>
+                    <td><?=$val['RegisterDate'] ?></td>
                     <td><?php
                         echo html::a('View','view?id='.$val['UserID'], ['class'=>"btn btn-default"])." ";
                         if( $isAdmin ){
