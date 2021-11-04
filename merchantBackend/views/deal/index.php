@@ -73,6 +73,7 @@ $this->title = '';
         }
         $.post("/deal/deal?targetID="+txt_1+"&score="+ txt_2+"&phone="+ txt_3 +"&code="+ txt_4 + "&type=" + type, function (data){
             if( data == '1' ){
+                document.getElementById('targetCode').value = "";
                 alert('Deal success!');
             }else{
                 alert(data);
