@@ -29,10 +29,11 @@ class DealController extends \yii\web\Controller
         $uid = \Yii::$app->user->identity->getId();
         $userDeal = UserDeal::findIdentity($uid);
         $serverResponStr = "";
+        $urlPhone = urlencode($phone);
         if( $type == 0 ){
-            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code");
+            $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/checksms?ph=$urlPhone&cd=$code");
             $serverRespon = json_decode($serverResponStr);
-            // return Yii::$app->params['APIUrl']."houtai/checksms?ph=$phone&cd=$code"."___".$serverResponStr;
+            // return Yii::$app->params['APIUrl']."houtai/checksms?ph=$urlPhone&cd=$code"."___".$serverResponStr;
             if( $serverRespon->code != 0 ){
                 return 'SMS code error!';
             }
@@ -58,7 +59,7 @@ class DealController extends \yii\web\Controller
             }
             $serverResponStr = HttpTool::doGet(Yii::$app->params['ServerURL']."addscore?userid={$targetID}&score={$score}&bindscore={$score}&stype=9&relateid=$uid");
         }
-        
+        // return $serverResponStr;
         $model = new LogDeal();
         $model->UserID = $uid;
         $model->Type = $type;
@@ -84,7 +85,7 @@ class DealController extends \yii\web\Controller
             return 'User deal success，trade deal error！';
         }
         if( $type == 0 ){
-            $serverResponStr = HttpTool::deleteSMS(urlencode($phone), 0);
+            $serverResponStr = HttpTool::deleteSMS($urlPhone, 0);
         }
 
         //保存日志
@@ -116,7 +117,7 @@ class DealController extends \yii\web\Controller
 
     public function actionSendsms($phone)
     {
-        return HttpTool::sendSMS($phone, 0);
+        return HttpTool::sendSMS(urlencode($phone), 0);
         // $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/sendsms?ph=%2B91{$phone}");
         // $serverRespon = json_decode($serverResponStr);
         // if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容

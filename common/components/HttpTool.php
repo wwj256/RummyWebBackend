@@ -103,7 +103,13 @@ class HttpTool
         return "1";
     }
 
-    public static function deleteSMS($phone){
-        self::doGet(Yii::$app->params['APIUrl']."houtai/delsms?ph=%2B91{$phone}");
+    public static function deleteSMS($phone, $needAddPre = 1){
+        $serverUrlStr = "";
+        if( $needAddPre ){
+            $serverUrlStr = Yii::$app->params['APIUrl']."houtai/delsms?ph=%2B91{$phone}";
+        }else{
+            $serverUrlStr = Yii::$app->params['APIUrl']."houtai/delsms?ph={$phone}";
+        }
+        self::doGet($serverUrlStr);
     }
 }
