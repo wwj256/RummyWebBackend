@@ -169,35 +169,22 @@ return \yii\widgets\ActiveForm::validate($model);
         if( $model->Status  == $value ){
 //            return '不用修改';
         }
-        $changeTypeSucess = true;
         $model->Status = $value;
         $model->OperatorID = Yii::$app->user->id;
         $model->OperatorTime = date("Y-m-d H:i:s");
         if( $desc ) $model->Desc = $desc;
 
-        if($changeTypeSucess && $model->save() ){
-            $withdrawAmount = $model->Amount/100;
-            $withdrawTax = $model->Tax/100;
-            if( $value == 1 ){
-                //向服务器发送消息，通知给用户加币
-                $serverResponStr = HttpTool::doGet(Yii::$app->params['ServerURL']."addscore?userid={$id}&score={$model->Amount}&stype=4");
-                $serverRespon = json_decode($serverResponStr);
-                if( $serverRespon ){
-                    if( $serverRespon->CODE != 0 ){//服务器加币如果不成功，打印错误内容
-                        return 'add gold fail, errorCode='.$serverRespon->CODE;
-                    }
-                    Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>"Withdrawal success",'Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nThe withdrawal is successful. Please check your bank account within the next few days.\nThank you for playing ".Yii::$app->params['AppName']]);
-                }else{
-                    return 'add gold fail, ERR_CONNECTION_REFUSED';
-                }
-            }else{
-                Yii::$app->runAction("user-mail-info/add-mail", ['UserID'=>$id,'Title'=>'Withdrawal of failure','Content'=>"Withdrawal Application：{$model->OperatorTime}\nWithdrawal Amount：₹{$withdrawAmount}\nBank Tax：₹{$withdrawTax}\nYour request is rejected, it may be because the information provided is not correct. If it is correct, please contact customer service.\nThank you for playing ".Yii::$app->params['AppName']]);
+        $serverResponStr = HttpTool::doGet(Yii::$app->params['APIUrl']."houtai/draw?oid={$id}&operid={$model->OperatorID}&mode=0&stat={$value}");
+        $serverRespon = json_decode($serverResponStr);
+        // return $serverResponStr;
+        if( $serverRespon ){
+            if( $serverRespon->code != 0 ){//服务器加币如果不成功，打印错误内容
+                return 'action failure, errorCode='.$serverRespon->code;
             }
             return 'action success!';
         }else{
-            return 'action failure!';
+            return 'action failure, ERR_CONNECTION_REFUSED';
         }
-
     }
 
     /**
