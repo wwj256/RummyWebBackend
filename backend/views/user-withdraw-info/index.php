@@ -89,7 +89,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->BeforeScore/100;
                 }
             ],
-            'Tax',
+            [
+                'attribute' => 'Tax',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->Tax/100;
+                }
+            ],
             [
                 'attribute' => 'Status',
                 'format' => 'raw',
