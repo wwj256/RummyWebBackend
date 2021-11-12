@@ -32,12 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'FirstDeposit',
             'SecondDeposit',
             'AverageOnline',
+            'OnlinePlayers',
+            'GamePlayers',
+            'GameInnings',
             'TotalDeposit',
             'TotalWithdraw',
             'TotalBonus',
             'TotalFee',
             'TotalRake',
             'UseBonus',
+            'UpdateTime',
         ],
     ]) ?>
 

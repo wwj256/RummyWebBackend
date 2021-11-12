@@ -22,6 +22,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AverageOnline')->textInput() ?>
 
+    <?= $form->field($model, 'OnlinePlayers')->textInput() ?>
+
+    <?= $form->field($model, 'GamePlayers')->textInput() ?>
+
+    <?= $form->field($model, 'GameInnings')->textInput() ?>
+
     <?= $form->field($model, 'TotalDeposit')->textInput() ?>
 
     <?= $form->field($model, 'TotalWithdraw')->textInput() ?>
@@ -33,6 +39,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'TotalRake')->textInput() ?>
 
     <?= $form->field($model, 'UseBonus')->textInput() ?>
+
+    <?= $form->field($model, 'UpdateTime')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

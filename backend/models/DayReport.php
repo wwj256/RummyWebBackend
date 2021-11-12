@@ -12,13 +12,17 @@ use Yii;
  * @property int $NewPlayers 新注册玩家数
  * @property int $FirstDeposit 首冲玩家数
  * @property int $SecondDeposit 再冲玩家数
- * @property int $AverageOnline 平均在线人数（小时）
+ * @property double $AverageOnline 今日平均每小时在线人数
+ * @property int $OnlinePlayers 今日在线人数
+ * @property int $GamePlayers 今日玩游戏人数
+ * @property int $GameInnings 今日总局数
  * @property int $TotalDeposit 总存款
  * @property int $TotalWithdraw 总提款
  * @property int $TotalBonus 总奖金
  * @property int $TotalFee 转账手续费
  * @property int $TotalRake 总税收
  * @property int $UseBonus 消耗奖金数
+ * @property string $UpdateTime
  */
 class DayReport extends \yii\db\ActiveRecord
 {
@@ -45,8 +49,9 @@ class DayReport extends \yii\db\ActiveRecord
     {
         return [
             [['DayDate'], 'required'],
-            [['DayDate'], 'safe'],
-            [['NewPlayers', 'FirstDeposit', 'SecondDeposit', 'AverageOnline', 'TotalDeposit', 'TotalWithdraw', 'TotalBonus', 'TotalFee', 'TotalRake', 'UseBonus'], 'integer'],
+            [['DayDate', 'UpdateTime'], 'safe'],
+            [['NewPlayers', 'FirstDeposit', 'SecondDeposit', 'OnlinePlayers', 'GamePlayers', 'GameInnings', 'TotalDeposit', 'TotalWithdraw', 'TotalBonus', 'TotalFee', 'TotalRake', 'UseBonus'], 'integer'],
+            [['AverageOnline'], 'number'],
             [['DayDate'], 'unique'],
         ];
     }
@@ -57,17 +62,21 @@ class DayReport extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-    'DayDate' => 'DayDate',//日期
-    'NewPlayers' => 'NewPlayers',//新注册玩家数
-    'FirstDeposit' => 'FirstDeposit',//首冲玩家数
-    'SecondDeposit' => 'SecondDeposit',//再冲玩家数
-    'AverageOnline' => 'AverageOnline',//平均在线人数（小时）
-    'TotalDeposit' => 'TotalDeposit',//总存款
-    'TotalWithdraw' => 'TotalWithdraw',//总提款
-    'TotalBonus' => 'TotalBonus',//总奖金
-    'TotalFee' => 'TotalFee',//转账手续费
-    'TotalRake' => 'TotalRake',//总税收
-    'UseBonus' => 'UseBonus',//消耗奖金数
+    'DayDate' => '日期',
+    'NewPlayers' => '新注册玩家数',
+    'FirstDeposit' => '首冲玩家数',
+    'SecondDeposit' => '再冲玩家数',
+    'AverageOnline' => '今日平均每小时在线人数',
+    'OnlinePlayers' => '今日在线人数',
+    'GamePlayers' => '今日玩游戏人数',
+    'GameInnings' => '今日总局数',
+    'TotalDeposit' => '总存款',
+    'TotalWithdraw' => '总提款',
+    'TotalBonus' => '总奖金',
+    'TotalFee' => '转账手续费',
+    'TotalRake' => '总税收',
+    'UseBonus' => '消耗奖金数',
+    'UpdateTime' => '',
         ];
     }
 }

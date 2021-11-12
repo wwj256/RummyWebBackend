@@ -23,7 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'NewPlayers',
             'FirstDeposit',
             'SecondDeposit',
-            'AverageOnline',
+            'OnlinePlayers',
+            'GamePlayers',
+            'GameInnings',
             [
                 'attribute' => 'TotalDeposit',
                 'format' => 'raw',

@@ -159,11 +159,24 @@ class DayReportController extends Controller
                 $secondDeposit++;
             }
         }
-        //平均在线人数
-        $statisticsSql = "SELECT SUM(SOnline) as count  FROM lami_record.day_online_stat WHERE (DATEDIFF(SDay,'$dayTime') = 0);";
+        // 'OnlinePlayers',
+        // 'GamePlayers',
+        // 'GameInnings',
+        //今日在线人数
+        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.user_api_login WHERE (DATEDIFF(UpdateTime,'$dayTime') = 0) GROUP BY UID;";
+        $statisticsData = Yii::$app->db->createCommand($statisticsSql)
+            ->queryAll();
+        $gamePlayers = count($statisticsData);
+        //今日玩游戏人数
+        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.user_login_out WHERE (DATEDIFF(UpdateTime,'$dayTime') = 0) GROUP BY UID;";
+        $statisticsData = Yii::$app->db->createCommand($statisticsSql)
+            ->queryAll();
+        $onlinePlayers = count($statisticsData);
+        //今日游戏总局数
+        $statisticsSql = "SELECT COUNT(*) as count FROM lami_record.game_record WHERE (DATEDIFF(BeginTime,'$dayTime') = 0);";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryOne();
-        $averageOnline = $statisticsData['count']/24;
+        $gameInnings = $statisticsData['count'] ? $statisticsData['count'] : 0;
         //总存款
         $statisticsSql = "SELECT SUM(Amount) as count,SUM(BindBonus) as bindBonus  FROM lami_account.user_order_info WHERE (`Status` = 1 OR `Status` = 3) AND (DATEDIFF(PayTime,'$dayTime') = 0);";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
@@ -188,10 +201,11 @@ class DayReportController extends Controller
         $statisticsSql = "SELECT * FROM lami_record.day_report WHERE DayDate = '$dayTime';";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryAll();
+
         if( count($statisticsData) > 0 ){
-            $statisticsSql = "UPDATE lami_record.day_report SET NewPlayers=$newPlayers, FirstDeposit=$firstDeposit, SecondDeposit=$secondDeposit, AverageOnline=$averageOnline, TotalDeposit=$totalDeposit, TotalWithdraw=$totalWithdraw, TotalBonus=$totalBonus, TotalFee=$totalFee, TotalRake=$totalRake, UseBonus=$totalUseBonus WHERE DayDate = '$dayTime';";
+            $statisticsSql = "UPDATE lami_record.day_report SET NewPlayers=$newPlayers, FirstDeposit=$firstDeposit, SecondDeposit=$secondDeposit, OnlinePlayers=$onlinePlayers, GamePlayers=$gamePlayers, GameInnings=$gameInnings, TotalDeposit=$totalDeposit, TotalWithdraw=$totalWithdraw, TotalBonus=$totalBonus, TotalFee=$totalFee, TotalRake=$totalRake, UseBonus=$totalUseBonus WHERE DayDate = '$dayTime';";
         }else{
-            $statisticsSql = "INSERT INTO lami_record.day_report (DayDate, NewPlayers, FirstDeposit, SecondDeposit, AverageOnline, TotalDeposit, TotalWithdraw, TotalBonus, TotalFee, TotalRake, UseBonus) VALUES ('$dayTime',$newPlayers,$firstDeposit,$secondDeposit,$averageOnline,$totalDeposit,$totalWithdraw,$totalBonus,$totalFee,$totalRake,$totalUseBonus);";
+            $statisticsSql = "INSERT INTO lami_record.day_report (DayDate, NewPlayers, FirstDeposit, SecondDeposit, OnlinePlayers, GamePlayers, GameInnings, TotalDeposit, TotalWithdraw, TotalBonus, TotalFee, TotalRake, UseBonus) VALUES ('$dayTime',$newPlayers,$firstDeposit,$secondDeposit,$onlinePlayers,$gamePlayers,$gameInnings,$totalDeposit,$totalWithdraw,$totalBonus,$totalFee,$totalRake,$totalUseBonus);";
         }
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->execute();
