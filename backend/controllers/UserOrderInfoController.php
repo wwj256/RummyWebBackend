@@ -72,7 +72,7 @@ class UserOrderInfoController extends Controller
             ->andFilterWhere(['=', 'account_info.NickName', $NickName])
             ->orderBy('CreateTime DESC');
 
-        $pages = new Pagination(['totalCount' =>$query->count(), 'pageSize' => '20']);
+        $pages = new Pagination(['totalCount' =>$query->count(), 'pageSize' => '50']);
         $model = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
         $searchModel = new UserOrderInfoSearch();
         $searchModel->load(Yii::$app->request->queryParams);
