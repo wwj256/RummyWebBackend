@@ -166,12 +166,12 @@ class DayReportController extends Controller
         $statisticsSql = "SELECT COUNT(UID) FROM lami_record.user_api_login WHERE (DATEDIFF(UpdateTime,'$dayTime') = 0) GROUP BY UID;";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryAll();
-        $gamePlayers = count($statisticsData);
+        $onlinePlayers = count($statisticsData);
         //今日玩游戏人数
-        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.user_login_out WHERE (DATEDIFF(UpdateTime,'$dayTime') = 0) GROUP BY UID;";
+        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.game_record_player WHERE (DATEDIFF(BeginTime,'$dayTime') = 0) GROUP BY UID;";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryAll();
-        $onlinePlayers = count($statisticsData);
+        $gamePlayers = count($statisticsData);
         //今日游戏总局数
         $statisticsSql = "SELECT COUNT(*) as count FROM lami_record.game_record WHERE (DATEDIFF(BeginTime,'$dayTime') = 0);";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
