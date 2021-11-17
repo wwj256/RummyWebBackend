@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'Url',
                 'format'=>'raw',
                 'value'=>function($m){
-                    return Html::img(Yii::$app->params['APIUrl'] ."image/download?url=$m->Url",
+                    return Html::img(Yii::$app->params['ImageURL'] ."image/download?url=$m->Url",
                         [
                             'width' => 350]
                     );

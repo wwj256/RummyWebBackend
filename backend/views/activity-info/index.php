@@ -55,10 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'Url',
                 'format' => 'raw',
                 'value' => function($model){
-                    // $img_base64 = \common\components\HttpTool::doGet(Yii::$app->params['APIUrl']."image/downlang?lang=en&url=". $model->Url);
+                    // $img_base64 = \common\components\HttpTool::doGet(Yii::$app->params['ImageURL']."image/downlang?lang=en&url=". $model->Url);
 //                    echo "<script type='text/javascript'>readTextFile('https://test.rummyjugaad.com:18080/image/download?url=$model->Url',$model->ID);</script>";
 //                    return "<img id='$model->ID' >";
-                    $url = Yii::$app->params['APIUrl'].'/image/downlang?lang=en&url='.$model->Url;
+                    $url = Yii::$app->params['ImageURL'].'/image/downlang?lang=en&url='.$model->Url;
                     return "<img id='$model->ID' src={$url} style='width:300px'>";
 //                    return "<img id="" src="data:image/jpg/png/gif;base64,' . $img_base64 .'" >';
 //                    return '';
@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image_in',
                 'format' => 'raw',
                 'value' => function($model){
-                    $url = Yii::$app->params['APIUrl'];
+                    $url = Yii::$app->params['ImageURL'];
                     return "<img id='$model->ID' src={$url}/image/downlang?lang=in&url=$model->Url style='width:300px'>";
                 }
             ],
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image_ta',
                 'format' => 'raw',
                 'value' => function($model){
-                    $url = Yii::$app->params['APIUrl'];
+                    $url = Yii::$app->params['ImageURL'];
                     return "<img id='$model->ID' src={$url}/image/downlang?lang=ta&url=$model->Url style='width:300px'>";
                 }
             ],

@@ -51,7 +51,7 @@ use yii\helpers\Url;
                     $.ajax({
                         type: "POST",
                         dataType: "json",
-                        url: 'http://65.0.251.93:18080/image/Uploadlang',
+                        url: <?php $apiUrl = Yii::$app->params['ImageURL']; echo "'{$apiUrl}image/Uploadlang'" ?>,
                         contentType: "application/json",
                         data:JSON.stringify({
                             "PreKey": "Lami*2020#zz",
@@ -90,7 +90,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Tiltle')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Url')->textInput(['placeholder'=>'Click below to select files and upload active images', 'readonly'=>true]) ?>
-    <img id='image_en' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=en" : '""' ?> style='width:300px'>
+    <img id='image_en' src=<?php echo $model->Url ? Yii::$app->params['ImageURL']."image/downlang?url=$model->Url&lang=en" : '""' ?> style='width:300px'>
     <div class="form-group field-activityinfo-imageurl">
         <label class="control-label" for="activityinfo-imageurl">Upload en activity image.</label>
         <input type="hidden" name="ActivityInfo[imageUrl]" value="">
@@ -99,7 +99,7 @@ use yii\helpers\Url;
         </div>
         <div class="help-block"></div>
     </div>
-    <img id='image_in' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=in" : '""' ?> style='width:300px'>
+    <img id='image_in' src=<?php echo $model->Url ? Yii::$app->params['ImageURL']."image/downlang?url=$model->Url&lang=in" : '""' ?> style='width:300px'>
     <div class="form-group field-activityinfo-imageurl">
         <label class="control-label" for="activityinfo-imageurl">Upload in activity image.</label>
         <input type="hidden" name="ActivityInfo[imageUrl]" value="">
@@ -108,7 +108,7 @@ use yii\helpers\Url;
         </div>
         <div class="help-block"></div>
     </div>
-    <img id='image_ta' src=<?php echo $model->Url ? Yii::$app->params['APIUrl']."image/downlang?url=$model->Url&lang=ta" : '""' ?> style='width:300px'>
+    <img id='image_ta' src=<?php echo $model->Url ? Yii::$app->params['ImageURL']."image/downlang?url=$model->Url&lang=ta" : '""' ?> style='width:300px'>
     <div class="form-group field-activityinfo-imageurl">
         <label class="control-label" for="activityinfo-imageurl">Upload ta activity image.</label>
         <input type="hidden" name="ActivityInfo[imageUrl]" value="">
