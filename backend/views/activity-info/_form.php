@@ -51,7 +51,7 @@ use yii\helpers\Url;
                     $.ajax({
                         type: "POST",
                         dataType: "json",
-                        url: <?php $apiUrl = Yii::$app->params['APIUrl']; echo "'{$apiUrl}image/Uploadlang'" ?>,
+                        url: 'http://65.0.251.93:18080/image/Uploadlang',
                         contentType: "application/json",
                         data:JSON.stringify({
                             "PreKey": "Lami*2020#zz",

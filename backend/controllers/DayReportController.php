@@ -168,7 +168,7 @@ class DayReportController extends Controller
             ->queryAll();
         $onlinePlayers = count($statisticsData);
         //今日玩游戏人数
-        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.game_record_player WHERE (DATEDIFF(BeginTime,'$dayTime') = 0) GROUP BY UID;";
+        $statisticsSql = "SELECT COUNT(UID) FROM lami_record.game_record_player WHERE (DATEDIFF(BeginTime,'$dayTime') = 0) AND UID > 1000 GROUP BY UID;";
         $statisticsData = Yii::$app->db->createCommand($statisticsSql)
             ->queryAll();
         $gamePlayers = count($statisticsData);
